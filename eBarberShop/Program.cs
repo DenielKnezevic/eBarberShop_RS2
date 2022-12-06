@@ -1,3 +1,7 @@
+using eBarberShop.Services.Database;
+using eBarberShop.Services.Services;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +10,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddAutoMapper(typeof(IKorisnikService));
+builder.Services.AddDbContext<eBarberShopContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("eBarberShop")));
 
 var app = builder.Build();
 

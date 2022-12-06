@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace eBarberShop.Services.Database
 {
-    public class Drzava
+    public class VrstaProizvoda
     {
-        public int DrzavaID { get; set; }
-        public string Naziv { get; set; } = null!;
-
+        public int VrstaProizvodaID { get; set; }
+        public string? Naziv { get; set; }
+        public string? Opis { get; set; }
     }
 }

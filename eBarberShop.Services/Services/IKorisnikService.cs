@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace eBarberShop.Services.Services
 {
-    public interface IBaseService<T,TDb,TSearch>
+    public interface IKorisnikService
     {
-        IEnumerable<T> GetAll(TSearch obj);
-        T GetById(int id);
     }
 }

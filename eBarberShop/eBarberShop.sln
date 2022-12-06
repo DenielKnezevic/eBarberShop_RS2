@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBarberShop", "eBarberShop.csproj", "{F5B0ED1A-79E2-4BF9-815D-1956465AA076}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eBarberShop", "eBarberShop.csproj", "{F5B0ED1A-79E2-4BF9-815D-1956465AA076}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBarberShop.Services", "..\eBarberShop.Services\eBarberShop.Services.csproj", "{6C42F158-A075-4669-9B59-90D8A669D2F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eBarberShop.Services", "..\eBarberShop.Services\eBarberShop.Services.csproj", "{6C42F158-A075-4669-9B59-90D8A669D2F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBarberShop.Models", "..\eBarberShop.Models\eBarberShop.Models.csproj", "{560A9A48-DDDD-4862-8805-31ED1263434D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{6C42F158-A075-4669-9B59-90D8A669D2F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C42F158-A075-4669-9B59-90D8A669D2F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C42F158-A075-4669-9B59-90D8A669D2F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{560A9A48-DDDD-4862-8805-31ED1263434D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{560A9A48-DDDD-4862-8805-31ED1263434D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{560A9A48-DDDD-4862-8805-31ED1263434D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{560A9A48-DDDD-4862-8805-31ED1263434D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

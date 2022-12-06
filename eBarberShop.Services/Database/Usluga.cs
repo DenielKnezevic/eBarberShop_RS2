@@ -8,5 +8,8 @@ namespace eBarberShop.Services.Database
 {
     public class Usluga
     {
+        public int UslugaID { get; set; }
+        public string Naziv { get; set; } = null!;
+        public string Opis { get; set; } = null!;
     }
 }
