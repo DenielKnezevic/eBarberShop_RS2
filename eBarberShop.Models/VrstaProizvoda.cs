@@ -4,9 +4,10 @@ using System.Text;
 
 namespace eBarberShop.Models
 {
-    public class Grad
+    public class VrstaProizvoda
     {
-        public int GradID { get; set; }
+        public int VrstaProizvodaID { get; set; }
         public string Naziv { get; set; }
+        public string Opis { get; set; }
     }
 }

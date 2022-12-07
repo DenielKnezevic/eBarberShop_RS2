@@ -14,6 +14,18 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<eBarberShopContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("eBarberShop")));
 
 builder.Services.AddTransient<IDrzavaService,DrzavaService>();
+builder.Services.AddTransient<IGradService,GradService>();
+builder.Services.AddTransient<IUlogaService,UlogaService>();
+builder.Services.AddTransient<IUslugaService,UslugaService>();
+builder.Services.AddTransient<IVrstaProizvodaService, VrstaProizvodaService>();
+builder.Services.AddTransient<IProizvodService,ProizvodService>();
+builder.Services.AddTransient<IKorisnikService, KorisnikService>();
+builder.Services.AddTransient<ITerminService, TerminService>();
+builder.Services.AddTransient<ISlikaService, SlikaService>();
+builder.Services.AddTransient<IRecenzijaService,RecenzijaService>();
+builder.Services.AddTransient<INovostService, NovostService>();
+builder.Services.AddTransient<IProizvodService, ProizvodService>();
+builder.Services.AddTransient<INarudzbaService,NarudzbaService>();
 builder.Services.AddAutoMapper(typeof(IDrzavaService));
 
 var app = builder.Build();

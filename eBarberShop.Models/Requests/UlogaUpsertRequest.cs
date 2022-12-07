@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace eBarberShop.Models
+namespace eBarberShop.Models.Requests
 {
-    public class Grad
+    public class UlogaUpsertRequest
     {
-        public int GradID { get; set; }
         public string Naziv { get; set; }
+        public string Opis { get; set; }
     }
 }

@@ -4,8 +4,9 @@ using System.Text;
 
 namespace eBarberShop.Models.Requests
 {
-    public class GradUpsertRequest
+    public class SlikaUpdateRequest
     {
-        public string Naziv { get; set; }
+        public byte[] SlikaByte { get; set; }
+        public string Opis { get; set; }
     }
 }

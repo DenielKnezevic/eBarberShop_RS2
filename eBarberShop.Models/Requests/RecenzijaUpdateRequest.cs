@@ -4,8 +4,7 @@ using System.Text;
 
 namespace eBarberShop.Models.Requests
 {
-    public class GradUpsertRequest
+    public class RecenzijaUpdateRequest
     {
-        public string Naziv { get; set; }
     }
 }

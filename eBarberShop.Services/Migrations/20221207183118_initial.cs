@@ -276,25 +276,19 @@ namespace eBarberShop.Services.Migrations
                 {
                     NarudzbaProizvodiID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    KorisnikID = table.Column<int>(type: "int", nullable: false),
                     ProizvodID = table.Column<int>(type: "int", nullable: false),
-                    Kolicina = table.Column<int>(type: "int", nullable: false),
-                    NarudzbaID = table.Column<int>(type: "int", nullable: true)
+                    NarudzbaID = table.Column<int>(type: "int", nullable: false),
+                    Kolicina = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_NarudzbaProizvodis", x => x.NarudzbaProizvodiID);
                     table.ForeignKey(
-                        name: "FK_NarudzbaProizvodis_Korisniks_KorisnikID",
-                        column: x => x.KorisnikID,
-                        principalTable: "Korisniks",
-                        principalColumn: "KorisnikID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_NarudzbaProizvodis_Narudzbas_NarudzbaID",
                         column: x => x.NarudzbaID,
                         principalTable: "Narudzbas",
-                        principalColumn: "NarudzbaID");
+                        principalColumn: "NarudzbaID",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_NarudzbaProizvodis_Proizvods_ProizvodID",
                         column: x => x.ProizvodID,
@@ -355,11 +349,6 @@ namespace eBarberShop.Services.Migrations
                 name: "IX_KorisnikUlogas_UlogaID",
                 table: "KorisnikUlogas",
                 column: "UlogaID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_NarudzbaProizvodis_KorisnikID",
-                table: "NarudzbaProizvodis",
-                column: "KorisnikID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_NarudzbaProizvodis_NarudzbaID",

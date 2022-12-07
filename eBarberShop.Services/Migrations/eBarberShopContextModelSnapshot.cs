@@ -169,18 +169,13 @@ namespace eBarberShop.Services.Migrations
                     b.Property<int>("Kolicina")
                         .HasColumnType("int");
 
-                    b.Property<int>("KorisnikID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("NarudzbaID")
+                    b.Property<int>("NarudzbaID")
                         .HasColumnType("int");
 
                     b.Property<int>("ProizvodID")
                         .HasColumnType("int");
 
                     b.HasKey("NarudzbaProizvodiID");
-
-                    b.HasIndex("KorisnikID");
 
                     b.HasIndex("NarudzbaID");
 
@@ -470,15 +465,11 @@ namespace eBarberShop.Services.Migrations
 
             modelBuilder.Entity("eBarberShop.Services.Database.NarudzbaProizvodi", b =>
                 {
-                    b.HasOne("eBarberShop.Services.Database.Korisnik", "Korisnik")
-                        .WithMany()
-                        .HasForeignKey("KorisnikID")
+                    b.HasOne("eBarberShop.Services.Database.Narudzba", "Narudzba")
+                        .WithMany("NarudzbaProizvodis")
+                        .HasForeignKey("NarudzbaID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("eBarberShop.Services.Database.Narudzba", null)
-                        .WithMany("NarudzbaProizvodis")
-                        .HasForeignKey("NarudzbaID");
 
                     b.HasOne("eBarberShop.Services.Database.Proizvod", "Proizvod")
                         .WithMany("NarudzbaProizvodis")
@@ -486,7 +477,7 @@ namespace eBarberShop.Services.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Korisnik");
+                    b.Navigation("Narudzba");
 
                     b.Navigation("Proizvod");
                 });
