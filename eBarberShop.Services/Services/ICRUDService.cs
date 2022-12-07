@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eBarberShop.Services.Services
 {
-    public interface ICRUDService<T,TDb,TSearch,TInsertRequest,TUpdateRequest> : IBaseService<T,TDb,TSearch>
+    public interface ICRUDService<T,TSearch,TInsertRequest,TUpdateRequest> : IBaseService<T,TSearch>
     {
         T Insert(TInsertRequest request);
         T Update(TUpdateRequest request, int id);

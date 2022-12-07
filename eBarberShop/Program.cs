@@ -11,8 +11,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddAutoMapper(typeof(IKorisnikService));
 builder.Services.AddDbContext<eBarberShopContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("eBarberShop")));
+
+builder.Services.AddTransient<IDrzavaService,DrzavaService>();
+builder.Services.AddAutoMapper(typeof(IDrzavaService));
 
 var app = builder.Build();
 

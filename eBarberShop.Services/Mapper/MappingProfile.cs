@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using eBarberShop.Models;
+using eBarberShop.Models.Requests;
 
 namespace eBarberShop.Services.Mapper
 {
@@ -12,7 +13,9 @@ namespace eBarberShop.Services.Mapper
     {
         public MappingProfile()
         {
-            CreateMap<Database.Korisnik, Korisnik>();
+            CreateMap<Database.Drzava, Drzava>();
+
+            CreateMap<DrzavaUpsertRequest, Database.Drzava>();
         }
     }
 }

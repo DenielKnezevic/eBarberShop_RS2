@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace eBarberShop.Services.Services
 {
     public class CRUDService<T, TDb, TSearch, TInsertRequest, TUpdateRequest> : BaseService<T, TDb, TSearch>,
-        ICRUDService<T, TDb, TSearch, TInsertRequest, TUpdateRequest> where T : class where TDb : class where TSearch : class where TInsertRequest : class where TUpdateRequest : class
+        ICRUDService<T, TSearch, TInsertRequest, TUpdateRequest> where T : class where TDb : class where TSearch : class where TInsertRequest : class where TUpdateRequest : class
     {
         public CRUDService(eBarberShopContext db,IMapper mapper) : base(db,mapper)
         {
@@ -30,7 +30,9 @@ namespace eBarberShop.Services.Services
 
         public T Update(TUpdateRequest request, int id)
         {
-            var entity = _db.Set<TDb>().Find(id);
+            var set = _db.Set<TDb>();
+
+            var entity = set.Find(id);
 
             _mapper.Map(request, entity);
 

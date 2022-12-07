@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace eBarberShop.Services.Services
 {
-    public class BaseService<T, TDb, TSearch> : IBaseService<T, TDb, TSearch> where T : class where TDb : class where TSearch : class
+    public class BaseService<T, TDb, TSearch> : IBaseService<T, TSearch> where T : class where TDb : class where TSearch : class
     {
         public eBarberShopContext _db;
         public IMapper _mapper;
