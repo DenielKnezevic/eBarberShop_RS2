@@ -12,6 +12,7 @@ namespace eBarberShop.Models
         public decimal Cijena { get; set; }
         public byte[] Slika { get; set; }
         public int VrstaProizvodaID { get; set; }
+        public string VrstaProizvodaNaziv => VrstaProizvoda.Naziv;
 
         public virtual VrstaProizvoda VrstaProizvoda { get; set; }
     }

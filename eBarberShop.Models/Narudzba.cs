@@ -10,6 +10,8 @@ namespace eBarberShop.Models
         public string BrojNarudzbe { get; set; }
         public int KorisnikID { get; set; }
         public DateTime DatumNarudzbe { get; set; }
+        public bool IsCanceled { get; set; } = false;
+        public bool IsShipped { get; set; } = false;
         public virtual Korisnik Korisnik { get; set; }
 
         public virtual ICollection<NarudzbaProizvodi> NarudzbaProizvodis { get; set; }
