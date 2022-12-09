@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using eBarberShop.Models.Requests;
+using eBarberShop.Models.SearchObjects;
 using eBarberShop.Services.Database;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace eBarberShop.Services.Services
 {
-    public class KorisnikService : CRUDService<Models.Korisnik, Korisnik, object , KorisnikInsertRequest , KorisnikUpdateRequest> , IKorisnikService
+    public class KorisnikService : CRUDService<Models.Korisnik, Korisnik, KorisnikSearchObject, KorisnikInsertRequest , KorisnikUpdateRequest> , IKorisnikService
     {
         public KorisnikService(eBarberShopContext db , IMapper mapper):base(db , mapper)
         {
@@ -40,6 +41,26 @@ namespace eBarberShop.Services.Services
         public override IQueryable<Korisnik> AddInclude(IQueryable<Korisnik> entity)
         {
             entity = entity.Include("KorisnikUlogas.Uloga");
+
+            return entity;
+        }
+
+        public override IQueryable<Korisnik> AddFilter(IQueryable<Korisnik> entity, KorisnikSearchObject obj)
+        {
+            if(!string.IsNullOrWhiteSpace(obj.Ime))
+            {
+                entity = entity.Where(x => x.Ime.ToLower().StartsWith(obj.Ime.ToLower()));
+            }
+
+            if (!string.IsNullOrWhiteSpace(obj.Prezime))
+            {
+                entity = entity.Where(x => x.Prezime.ToLower().StartsWith(obj.Prezime.ToLower()));
+            }
+
+            if(!string.IsNullOrWhiteSpace(obj.KorisnickoIme))
+            {
+                entity = entity.Where(x => x.KorisnickoIme.StartsWith(obj.KorisnickoIme));
+            }
 
             return entity;
         }

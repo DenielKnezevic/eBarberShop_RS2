@@ -22,9 +22,9 @@ namespace eBarberShop.Services.Services
         {
             var entity = _db.Set<TDb>().AsQueryable();
 
-            entity = AddFilter(entity,obj);
-
             entity = AddInclude(entity);
+
+            entity = AddFilter(entity, obj);
 
             return _mapper.Map<IEnumerable<T>>(entity); 
         }

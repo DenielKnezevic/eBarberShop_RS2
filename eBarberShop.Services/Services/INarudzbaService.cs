@@ -1,4 +1,5 @@
 ﻿using eBarberShop.Models.Requests;
+using eBarberShop.Models.SearchObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace eBarberShop.Services.Services
 {
-    public interface INarudzbaService : ICRUDService<Models.Narudzba, object , NarudzbaInsertRequest , NarudzbaUpdateRequest>
+    public interface INarudzbaService : ICRUDService<Models.Narudzba, NarudzbaSearchObject , NarudzbaInsertRequest , NarudzbaUpdateRequest>
     {
     }
 }

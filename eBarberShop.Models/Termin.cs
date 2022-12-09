@@ -8,6 +8,7 @@ namespace eBarberShop.Models
     {
         public int TerminID { get; set; }
         public DateTime DatumTermina { get; set; }
+        public DateTime DatumKreiranja { get; set; }
         public string VrijemeTermina { get; set; }
         public int KorisnikID { get; set; }
     }
