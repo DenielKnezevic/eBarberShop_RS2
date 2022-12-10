@@ -9,7 +9,7 @@ namespace eBarberShop.WinUI
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            frmProizvod frmProizvod = new frmProizvod();
+            frmUposlenik frmProizvod = new frmUposlenik();
             frmProizvod.Show();
         }
     }

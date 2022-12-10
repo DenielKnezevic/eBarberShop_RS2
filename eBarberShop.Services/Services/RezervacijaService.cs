@@ -37,6 +37,16 @@ namespace eBarberShop.Services.Services
                 entity = entity.Where(x => x.KorisnikID == obj.KorisnikID);
             }
 
+            if(obj.IsArchived == true)
+            {
+                entity = entity.Where(x =>x.IsArchived == obj.IsArchived);
+            }
+
+            if (obj.IsArchived == false)
+            {
+                entity = entity.Where(x => x.IsArchived == obj.IsArchived);
+            }
+
             return entity;
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace eBarberShop.Models
@@ -15,7 +16,6 @@ namespace eBarberShop.Models
         public int GradID { get; set; }
         public int DrzavaID { get; set; }
         public string KorisnickoIme { get; set; }
-
         public virtual ICollection<KorisnikUloga> KorisnikUlogas { get; set; }
     }
 }

@@ -8,5 +8,6 @@ namespace eBarberShop.Models.SearchObjects
     {
         public int? KorisnikID { get; set; }
         public DateTime? DatumRezervacije { get; set; }
+        public bool IsArchived { get; set; }
     }
 }

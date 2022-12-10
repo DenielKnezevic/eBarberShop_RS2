@@ -38,6 +38,11 @@ namespace eBarberShop.WinUI
 
         private async void frmProizvod_Load(object sender, EventArgs e)
         {
+           await UcitajComboBox();
+        }
+
+        private async Task UcitajComboBox()
+        {
             var list = await serviceVrstaProizvod.GetAll<List<VrstaProizvoda>>();
             cmbVrstaProizvod.DataSource = list;
             cmbVrstaProizvod.DisplayMember = "Naziv";
