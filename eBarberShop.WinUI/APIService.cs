@@ -12,6 +12,7 @@ namespace eBarberShop.WinUI
     {
         public static string Username = null;
         public static string Password = null;
+        public static Korisnik Korisnik = null;
         public string Endpoint = "https://localhost:44379/api/";
         public string Resource;
 
@@ -27,7 +28,14 @@ namespace eBarberShop.WinUI
             if (search != null)
                 Query = await search.ToQueryString();
 
-            var result = await $"{Endpoint}{Resource}?{Query}".GetJsonAsync<T>();
+            var result = await $"{Endpoint}{Resource}?{Query}".WithBasicAuth(Username,Password).GetJsonAsync<T>();
+
+            return result;
+        }
+
+        public async Task<Models.Korisnik> Authenticate()
+        {
+            var result = await $"{Endpoint}{Resource}/Authenticate".WithBasicAuth(Username, Password).GetJsonAsync<Models.Korisnik>();
 
             return result;
         }

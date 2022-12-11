@@ -14,7 +14,7 @@ namespace eBarberShop.Controllers
         }
 
         [HttpPost]
-        public T Insert([FromBody] TInsertRequest request)
+        public virtual T Insert([FromBody] TInsertRequest request)
         {
             return ((ICRUDService<T,TSearch,TInsertRequest,TUpdateRequest>)_service).Insert(request);
         }

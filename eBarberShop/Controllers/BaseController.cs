@@ -1,4 +1,5 @@
 ﻿using eBarberShop.Services.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,6 +7,7 @@ namespace eBarberShop.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class BaseController<T,TSearch> : ControllerBase where T : class where TSearch : class
     {
         public IBaseService<T, TSearch> _service;
