@@ -122,11 +122,7 @@ namespace eBarberShop.WinUI
 
         private void Proizvodi_Click(object sender, EventArgs e)
         {
-            frmProizvod childrenForm = new frmProizvod();
-            childrenForm.MdiParent = this;
-            childrenForm.Text = "Window " + childFormNumber++;
-            childrenForm.WindowState = FormWindowState.Maximized;
-            childrenForm.Show();
+            
         }
 
         private void Rezervacije_Click(object sender, EventArgs e)
@@ -159,6 +155,29 @@ namespace eBarberShop.WinUI
         private void Arhiva_Click(object sender, EventArgs e)
         {
             frmArhiva childrenForm = new frmArhiva();
+            childrenForm.MdiParent = this;
+            childrenForm.Text = "Window " + childFormNumber++;
+            childrenForm.WindowState = FormWindowState.Maximized;
+            childrenForm.Show();
+        }
+
+        private void mdiMain_Load(object sender, EventArgs e)
+        {
+           //konfigurisati visible za odredjenog korisnika
+        }
+
+        private void DodajProizvod_Click(object sender, EventArgs e)
+        {
+            frmProizvodDodaj childrenForm = new frmProizvodDodaj();
+            childrenForm.MdiParent = this;
+            childrenForm.Text = "Window " + childFormNumber++;
+            childrenForm.WindowState = FormWindowState.Maximized;
+            childrenForm.Show();
+        }
+
+        private void PregledProizvoda_Click(object sender, EventArgs e)
+        {
+            frmProizvod childrenForm = new frmProizvod();
             childrenForm.MdiParent = this;
             childrenForm.Text = "Window " + childFormNumber++;
             childrenForm.WindowState = FormWindowState.Maximized;

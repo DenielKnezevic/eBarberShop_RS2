@@ -31,7 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.Uposlenici = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Proizvodi = new System.Windows.Forms.ToolStripMenuItem();
+            this.PregledProizvoda = new System.Windows.Forms.ToolStripMenuItem();
+            this.DodajProizvod = new System.Windows.Forms.ToolStripMenuItem();
             this.Rezervacije = new System.Windows.Forms.ToolStripMenuItem();
             this.Novosti = new System.Windows.Forms.ToolStripMenuItem();
             this.Slike = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,17 +62,42 @@
             // 
             // Uposlenici
             // 
+            this.Uposlenici.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
             this.Uposlenici.Name = "Uposlenici";
             this.Uposlenici.Size = new System.Drawing.Size(92, 24);
             this.Uposlenici.Text = "Uposlenici";
             this.Uposlenici.Click += new System.EventHandler(this.Uposlenici_Click_1);
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(225, 26);
+            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
+            // 
             // Proizvodi
             // 
+            this.Proizvodi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.PregledProizvoda,
+            this.DodajProizvod});
             this.Proizvodi.Name = "Proizvodi";
             this.Proizvodi.Size = new System.Drawing.Size(85, 24);
             this.Proizvodi.Text = "Proizvodi";
             this.Proizvodi.Click += new System.EventHandler(this.Proizvodi_Click);
+            // 
+            // PregledProizvoda
+            // 
+            this.PregledProizvoda.Name = "PregledProizvoda";
+            this.PregledProizvoda.Size = new System.Drawing.Size(214, 26);
+            this.PregledProizvoda.Text = "Pregled proizvoda";
+            this.PregledProizvoda.Click += new System.EventHandler(this.PregledProizvoda_Click);
+            // 
+            // DodajProizvod
+            // 
+            this.DodajProizvod.Name = "DodajProizvod";
+            this.DodajProizvod.Size = new System.Drawing.Size(214, 26);
+            this.DodajProizvod.Text = "Dodaj proizvod";
+            this.DodajProizvod.Click += new System.EventHandler(this.DodajProizvod_Click);
             // 
             // Rezervacije
             // 
@@ -110,6 +138,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "mdiMain";
             this.Text = "mdiMain";
+            this.Load += new System.EventHandler(this.mdiMain_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -127,6 +156,9 @@
         private ToolStripMenuItem Novosti;
         private ToolStripMenuItem Slike;
         private ToolStripMenuItem Arhiva;
+        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripMenuItem DodajProizvod;
+        private ToolStripMenuItem PregledProizvoda;
     }
 }
 

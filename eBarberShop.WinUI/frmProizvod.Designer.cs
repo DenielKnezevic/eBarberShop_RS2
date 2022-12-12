@@ -37,13 +37,16 @@
             // 
             // dgvProizvod
             // 
+            this.dgvProizvod.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProizvod.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProizvod.Location = new System.Drawing.Point(15, 88);
             this.dgvProizvod.Name = "dgvProizvod";
             this.dgvProizvod.RowHeadersWidth = 51;
             this.dgvProizvod.RowTemplate.Height = 29;
+            this.dgvProizvod.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProizvod.Size = new System.Drawing.Size(773, 350);
             this.dgvProizvod.TabIndex = 0;
+            this.dgvProizvod.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProizvod_CellContentClick);
             // 
             // txtProizvodiSearch
             // 

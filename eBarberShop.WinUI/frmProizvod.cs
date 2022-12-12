@@ -34,6 +34,7 @@ namespace eBarberShop.WinUI
             var list = await service.GetAll<List<Proizvod>>(proizvodSeachObject);
 
             dgvProizvod.DataSource = list;
+
         }
 
         private async void frmProizvod_Load(object sender, EventArgs e)
@@ -49,6 +50,14 @@ namespace eBarberShop.WinUI
             cmbVrstaProizvod.ValueMember = "VrstaProizvodaID";
             cmbVrstaProizvod.SelectedItem = null;
             cmbVrstaProizvod.SelectedText = "Izaberite vrstu proizvoda";
+        }
+
+        private void dgvProizvod_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var proizvod = dgvProizvod.SelectedRows[0].DataBoundItem as Proizvod;
+
+            frmProizvodDodaj frmProizvodDodaj = new frmProizvodDodaj(proizvod);
+            frmProizvodDodaj.ShowDialog();
         }
     }
 }

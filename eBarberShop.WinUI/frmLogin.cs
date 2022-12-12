@@ -19,7 +19,7 @@ namespace eBarberShop.WinUI
                 APIService.Username = txtUsername.Text;
                 APIService.Password = txtPassword.Text;
 
-                APIService.Korisnik = await service.Authenticate(APIService.Username,APIService.Password);
+                APIService.Korisnik = await service.Authenticate();
 
                 if(APIService.Korisnik != null)
                 {

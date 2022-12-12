@@ -16,6 +16,7 @@ namespace eBarberShop.Models
         public int GradID { get; set; }
         public int DrzavaID { get; set; }
         public string KorisnickoIme { get; set; }
+        public List<int> Uloge => KorisnikUlogas?.Select(x => x.UlogaID).ToList();
         public virtual ICollection<KorisnikUloga> KorisnikUlogas { get; set; }
     }
 }
