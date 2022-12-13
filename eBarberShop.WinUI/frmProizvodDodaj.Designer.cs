@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnDodajProizvod = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,7 +39,6 @@
             this.txtCijena = new System.Windows.Forms.TextBox();
             this.txtNaziv = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.btnDodajProizvod = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
             this.SuspendLayout();
@@ -60,6 +60,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Proizvod";
+            // 
+            // btnDodajProizvod
+            // 
+            this.btnDodajProizvod.Location = new System.Drawing.Point(180, 309);
+            this.btnDodajProizvod.Name = "btnDodajProizvod";
+            this.btnDodajProizvod.Size = new System.Drawing.Size(194, 29);
+            this.btnDodajProizvod.TabIndex = 4;
+            this.btnDodajProizvod.Text = "Dodaj proizvod";
+            this.btnDodajProizvod.UseVisualStyleBackColor = true;
+            this.btnDodajProizvod.Click += new System.EventHandler(this.btnDodajProizvod_Click);
             // 
             // label3
             // 
@@ -108,6 +118,7 @@
             // 
             // pbSlika
             // 
+            this.pbSlika.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbSlika.Location = new System.Drawing.Point(312, 54);
             this.pbSlika.Name = "pbSlika";
             this.pbSlika.Size = new System.Drawing.Size(182, 212);
@@ -131,16 +142,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog";
-            // 
-            // btnDodajProizvod
-            // 
-            this.btnDodajProizvod.Location = new System.Drawing.Point(180, 309);
-            this.btnDodajProizvod.Name = "btnDodajProizvod";
-            this.btnDodajProizvod.Size = new System.Drawing.Size(194, 29);
-            this.btnDodajProizvod.TabIndex = 4;
-            this.btnDodajProizvod.Text = "Dodaj proizvod";
-            this.btnDodajProizvod.UseVisualStyleBackColor = true;
-            this.btnDodajProizvod.Click += new System.EventHandler(this.btnDodajProizvod_Click);
             // 
             // frmProizvodDodaj
             // 

@@ -35,13 +35,16 @@
             // 
             // dgvNovost
             // 
+            this.dgvNovost.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvNovost.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNovost.Location = new System.Drawing.Point(12, 112);
             this.dgvNovost.Name = "dgvNovost";
             this.dgvNovost.RowHeadersWidth = 51;
             this.dgvNovost.RowTemplate.Height = 29;
+            this.dgvNovost.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNovost.Size = new System.Drawing.Size(776, 326);
             this.dgvNovost.TabIndex = 0;
+            this.dgvNovost.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNovost_CellContentClick);
             // 
             // btnPrikazi
             // 

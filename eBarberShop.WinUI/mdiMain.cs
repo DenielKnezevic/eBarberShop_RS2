@@ -104,20 +104,12 @@ namespace eBarberShop.WinUI
 
         private void Uposlenici_Click(object sender, EventArgs e)
         {
-            frmUposlenik childrenForm = new frmUposlenik();
-            childrenForm.MdiParent = this;
-            childrenForm.Text = "Window " + childFormNumber++;
-            childrenForm.WindowState = FormWindowState.Maximized;
-            childrenForm.Show();
+            
         }
 
         private void Uposlenici_Click_1(object sender, EventArgs e)
         {
-            frmUposlenik childrenForm = new frmUposlenik();
-            childrenForm.MdiParent = this;
-            childrenForm.Text = "Window " + childFormNumber++;
-            childrenForm.WindowState = FormWindowState.Maximized;
-            childrenForm.Show();
+
         }
 
         private void Proizvodi_Click(object sender, EventArgs e)
@@ -127,43 +119,50 @@ namespace eBarberShop.WinUI
 
         private void Rezervacije_Click(object sender, EventArgs e)
         {
-            frmRezervacija childrenForm = new frmRezervacija();
-            childrenForm.MdiParent = this;
-            childrenForm.Text = "Window " + childFormNumber++;
-            childrenForm.WindowState = FormWindowState.Maximized;
-            childrenForm.Show();
+
         }
 
         private void Novosti_Click(object sender, EventArgs e)
         {
-            frmNovost childrenForm = new frmNovost();
-            childrenForm.MdiParent = this;
-            childrenForm.Text = "Window " + childFormNumber++;
-            childrenForm.WindowState = FormWindowState.Maximized;
-            childrenForm.Show();
+
         }
 
         private void Slike_Click(object sender, EventArgs e)
         {
-            frmSlika childrenForm = new frmSlika();
-            childrenForm.MdiParent = this;
-            childrenForm.Text = "Window " + childFormNumber++;
-            childrenForm.WindowState = FormWindowState.Maximized;
-            childrenForm.Show();
+
         }
 
         private void Arhiva_Click(object sender, EventArgs e)
         {
-            frmArhiva childrenForm = new frmArhiva();
-            childrenForm.MdiParent = this;
-            childrenForm.Text = "Window " + childFormNumber++;
-            childrenForm.WindowState = FormWindowState.Maximized;
-            childrenForm.Show();
+
         }
 
         private void mdiMain_Load(object sender, EventArgs e)
         {
-           //konfigurisati visible za odredjenog korisnika
+            //konfigurisati visible za odredjenog korisnika
+            if (APIService.Korisnik.Uloge.ToLower().Contains("administrator"))
+            {
+                Uposlenici.Visible = true;
+                Proizvodi.Visible = true;
+                Rezervacije.Visible = true;
+                Novosti.Visible = true;
+                Slike.Visible = true;
+                Arhiva.Visible = true;
+            }
+
+            else if (APIService.Korisnik.Uloge.ToLower().Contains("uposlenik"))
+            {
+                Proizvodi.Visible = true;
+                Rezervacije.Visible = true;
+                Novosti.Visible = true;
+                Slike.Visible = true;
+                Arhiva.Visible = true;
+            }
+
+            else
+            {
+                MessageBox.Show("Nemate permisije za pristup");
+            }
         }
 
         private void DodajProizvod_Click(object sender, EventArgs e)
@@ -178,6 +177,69 @@ namespace eBarberShop.WinUI
         private void PregledProizvoda_Click(object sender, EventArgs e)
         {
             frmProizvod childrenForm = new frmProizvod();
+            childrenForm.MdiParent = this;
+            childrenForm.Text = "Window " + childFormNumber++;
+            childrenForm.WindowState = FormWindowState.Maximized;
+            childrenForm.Show();
+        }
+
+        private void UposlenikPregled_Click(object sender, EventArgs e)
+        {
+            frmUposlenik childrenForm = new frmUposlenik();
+            childrenForm.MdiParent = this;
+            childrenForm.Text = "Window " + childFormNumber++;
+            childrenForm.WindowState = FormWindowState.Maximized;
+            childrenForm.Show();
+        }
+
+        private void RezervacijaPregled_Click(object sender, EventArgs e)
+        {
+            frmRezervacija childrenForm = new frmRezervacija();
+            childrenForm.MdiParent = this;
+            childrenForm.Text = "Window " + childFormNumber++;
+            childrenForm.WindowState = FormWindowState.Maximized;
+            childrenForm.Show();
+        }
+
+        private void NovostiPregled_Click(object sender, EventArgs e)
+        {
+            frmNovost childrenForm = new frmNovost();
+            childrenForm.MdiParent = this;
+            childrenForm.Text = "Window " + childFormNumber++;
+            childrenForm.WindowState = FormWindowState.Maximized;
+            childrenForm.Show();
+        }
+
+        private void SlikaPregled_Click(object sender, EventArgs e)
+        {
+            frmSlika childrenForm = new frmSlika();
+            childrenForm.MdiParent = this;
+            childrenForm.Text = "Window " + childFormNumber++;
+            childrenForm.WindowState = FormWindowState.Maximized;
+            childrenForm.Show();
+        }
+
+        private void ArhivaPregled_Click(object sender, EventArgs e)
+        {
+            frmArhiva childrenForm = new frmArhiva();
+            childrenForm.MdiParent = this;
+            childrenForm.Text = "Window " + childFormNumber++;
+            childrenForm.WindowState = FormWindowState.Maximized;
+            childrenForm.Show();
+        }
+
+        private void NovostiDodaj_Click(object sender, EventArgs e)
+        {
+            frmNovostiDodaj childrenForm = new frmNovostiDodaj();
+            childrenForm.MdiParent = this;
+            childrenForm.Text = "Window " + childFormNumber++;
+            childrenForm.WindowState = FormWindowState.Maximized;
+            childrenForm.Show();
+        }
+
+        private void SlikaDodaj_Click(object sender, EventArgs e)
+        {
+            frmSlikaDodaj childrenForm = new frmSlikaDodaj();
             childrenForm.MdiParent = this;
             childrenForm.Text = "Window " + childFormNumber++;
             childrenForm.WindowState = FormWindowState.Maximized;

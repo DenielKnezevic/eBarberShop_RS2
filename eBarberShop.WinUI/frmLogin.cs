@@ -21,11 +21,16 @@ namespace eBarberShop.WinUI
 
                 APIService.Korisnik = await service.Authenticate();
 
-                if(APIService.Korisnik != null)
+                if(APIService.Korisnik != null && (APIService.Korisnik.Uloge.ToLower().Contains("administrator") ||
+                    (APIService.Korisnik.Uloge.ToLower().Contains("uposlenik"))))
                 {
                     mdiMain mdiMain = new mdiMain();
                     mdiMain.Show();
                     this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Nemate permisije za pristup aplikaciji");
                 }
             }
             catch (Exception ex)

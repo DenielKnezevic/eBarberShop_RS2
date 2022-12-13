@@ -27,5 +27,12 @@ namespace eBarberShop.WinUI
 
             dgvNovost.DataSource = lista;
         }
+
+        private void dgvNovost_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var item = dgvNovost.SelectedRows[0].DataBoundItem as Novost;
+            frmNovostiDodaj frmNovostiDodaj = new frmNovostiDodaj(item);
+            frmNovostiDodaj.Show();
+        }
     }
 }

@@ -31,14 +31,22 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.Uposlenici = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.UposlenikPregled = new System.Windows.Forms.ToolStripMenuItem();
+            this.UposlenikDodaj = new System.Windows.Forms.ToolStripMenuItem();
             this.Proizvodi = new System.Windows.Forms.ToolStripMenuItem();
             this.PregledProizvoda = new System.Windows.Forms.ToolStripMenuItem();
             this.DodajProizvod = new System.Windows.Forms.ToolStripMenuItem();
             this.Rezervacije = new System.Windows.Forms.ToolStripMenuItem();
+            this.RezervacijaPregled = new System.Windows.Forms.ToolStripMenuItem();
+            this.RezervacijaUredi = new System.Windows.Forms.ToolStripMenuItem();
             this.Novosti = new System.Windows.Forms.ToolStripMenuItem();
+            this.NovostiPregled = new System.Windows.Forms.ToolStripMenuItem();
+            this.NovostiDodaj = new System.Windows.Forms.ToolStripMenuItem();
             this.Slike = new System.Windows.Forms.ToolStripMenuItem();
+            this.SlikaPregled = new System.Windows.Forms.ToolStripMenuItem();
+            this.SlikaDodaj = new System.Windows.Forms.ToolStripMenuItem();
             this.Arhiva = new System.Windows.Forms.ToolStripMenuItem();
+            this.ArhivaPregled = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -63,17 +71,26 @@
             // Uposlenici
             // 
             this.Uposlenici.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
+            this.UposlenikPregled,
+            this.UposlenikDodaj});
             this.Uposlenici.Name = "Uposlenici";
             this.Uposlenici.Size = new System.Drawing.Size(92, 24);
             this.Uposlenici.Text = "Uposlenici";
+            this.Uposlenici.Visible = false;
             this.Uposlenici.Click += new System.EventHandler(this.Uposlenici_Click_1);
             // 
-            // toolStripMenuItem1
+            // UposlenikPregled
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(225, 26);
-            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
+            this.UposlenikPregled.Name = "UposlenikPregled";
+            this.UposlenikPregled.Size = new System.Drawing.Size(218, 26);
+            this.UposlenikPregled.Text = "Pregled uposlenika";
+            this.UposlenikPregled.Click += new System.EventHandler(this.UposlenikPregled_Click);
+            // 
+            // UposlenikDodaj
+            // 
+            this.UposlenikDodaj.Name = "UposlenikDodaj";
+            this.UposlenikDodaj.Size = new System.Drawing.Size(218, 26);
+            this.UposlenikDodaj.Text = "Dodaj uposlenika";
             // 
             // Proizvodi
             // 
@@ -83,6 +100,7 @@
             this.Proizvodi.Name = "Proizvodi";
             this.Proizvodi.Size = new System.Drawing.Size(85, 24);
             this.Proizvodi.Text = "Proizvodi";
+            this.Proizvodi.Visible = false;
             this.Proizvodi.Click += new System.EventHandler(this.Proizvodi_Click);
             // 
             // PregledProizvoda
@@ -101,31 +119,94 @@
             // 
             // Rezervacije
             // 
+            this.Rezervacije.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.RezervacijaPregled,
+            this.RezervacijaUredi});
             this.Rezervacije.Name = "Rezervacije";
             this.Rezervacije.Size = new System.Drawing.Size(98, 24);
             this.Rezervacije.Text = "Rezervacije";
+            this.Rezervacije.Visible = false;
             this.Rezervacije.Click += new System.EventHandler(this.Rezervacije_Click);
+            // 
+            // RezervacijaPregled
+            // 
+            this.RezervacijaPregled.Name = "RezervacijaPregled";
+            this.RezervacijaPregled.Size = new System.Drawing.Size(218, 26);
+            this.RezervacijaPregled.Text = "Pregled rezervacija";
+            this.RezervacijaPregled.Click += new System.EventHandler(this.RezervacijaPregled_Click);
+            // 
+            // RezervacijaUredi
+            // 
+            this.RezervacijaUredi.Name = "RezervacijaUredi";
+            this.RezervacijaUredi.Size = new System.Drawing.Size(218, 26);
+            this.RezervacijaUredi.Text = "Uredi rezervaciju";
             // 
             // Novosti
             // 
+            this.Novosti.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.NovostiPregled,
+            this.NovostiDodaj});
             this.Novosti.Name = "Novosti";
             this.Novosti.Size = new System.Drawing.Size(74, 24);
             this.Novosti.Text = "Novosti";
+            this.Novosti.Visible = false;
             this.Novosti.Click += new System.EventHandler(this.Novosti_Click);
+            // 
+            // NovostiPregled
+            // 
+            this.NovostiPregled.Name = "NovostiPregled";
+            this.NovostiPregled.Size = new System.Drawing.Size(224, 26);
+            this.NovostiPregled.Text = "Pregled novosti";
+            this.NovostiPregled.Click += new System.EventHandler(this.NovostiPregled_Click);
+            // 
+            // NovostiDodaj
+            // 
+            this.NovostiDodaj.Name = "NovostiDodaj";
+            this.NovostiDodaj.Size = new System.Drawing.Size(224, 26);
+            this.NovostiDodaj.Text = "Dodaj novost";
+            this.NovostiDodaj.Click += new System.EventHandler(this.NovostiDodaj_Click);
             // 
             // Slike
             // 
+            this.Slike.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SlikaPregled,
+            this.SlikaDodaj});
             this.Slike.Name = "Slike";
             this.Slike.Size = new System.Drawing.Size(54, 24);
             this.Slike.Text = "Slike";
+            this.Slike.Visible = false;
             this.Slike.Click += new System.EventHandler(this.Slike_Click);
+            // 
+            // SlikaPregled
+            // 
+            this.SlikaPregled.Name = "SlikaPregled";
+            this.SlikaPregled.Size = new System.Drawing.Size(224, 26);
+            this.SlikaPregled.Text = "Pregled slika";
+            this.SlikaPregled.Click += new System.EventHandler(this.SlikaPregled_Click);
+            // 
+            // SlikaDodaj
+            // 
+            this.SlikaDodaj.Name = "SlikaDodaj";
+            this.SlikaDodaj.Size = new System.Drawing.Size(224, 26);
+            this.SlikaDodaj.Text = "Dodaj sliku";
+            this.SlikaDodaj.Click += new System.EventHandler(this.SlikaDodaj_Click);
             // 
             // Arhiva
             // 
+            this.Arhiva.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ArhivaPregled});
             this.Arhiva.Name = "Arhiva";
             this.Arhiva.Size = new System.Drawing.Size(65, 24);
             this.Arhiva.Text = "Arhiva";
+            this.Arhiva.Visible = false;
             this.Arhiva.Click += new System.EventHandler(this.Arhiva_Click);
+            // 
+            // ArhivaPregled
+            // 
+            this.ArhivaPregled.Name = "ArhivaPregled";
+            this.ArhivaPregled.Size = new System.Drawing.Size(187, 26);
+            this.ArhivaPregled.Text = "Pregled arhive";
+            this.ArhivaPregled.Click += new System.EventHandler(this.ArhivaPregled_Click);
             // 
             // mdiMain
             // 
@@ -156,9 +237,17 @@
         private ToolStripMenuItem Novosti;
         private ToolStripMenuItem Slike;
         private ToolStripMenuItem Arhiva;
-        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripMenuItem UposlenikPregled;
         private ToolStripMenuItem DodajProizvod;
         private ToolStripMenuItem PregledProizvoda;
+        private ToolStripMenuItem UposlenikDodaj;
+        private ToolStripMenuItem RezervacijaPregled;
+        private ToolStripMenuItem RezervacijaUredi;
+        private ToolStripMenuItem NovostiPregled;
+        private ToolStripMenuItem NovostiDodaj;
+        private ToolStripMenuItem SlikaPregled;
+        private ToolStripMenuItem SlikaDodaj;
+        private ToolStripMenuItem ArhivaPregled;
     }
 }
 
