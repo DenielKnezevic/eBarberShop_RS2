@@ -245,5 +245,15 @@ namespace eBarberShop.WinUI
             childrenForm.WindowState = FormWindowState.Maximized;
             childrenForm.Show();
         }
+
+        private void UposlenikDodaj_Click(object sender, EventArgs e)
+        {
+            frmUposlenikDodaj childrenForm = new frmUposlenikDodaj();
+            childrenForm.MdiParent = this;
+            childrenForm.Text = "Window " + childFormNumber++;
+            childrenForm.WindowState = FormWindowState.Maximized;
+            childrenForm.Show();
+
+        }
     }
 }

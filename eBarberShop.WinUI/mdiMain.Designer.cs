@@ -82,15 +82,16 @@
             // UposlenikPregled
             // 
             this.UposlenikPregled.Name = "UposlenikPregled";
-            this.UposlenikPregled.Size = new System.Drawing.Size(218, 26);
+            this.UposlenikPregled.Size = new System.Drawing.Size(224, 26);
             this.UposlenikPregled.Text = "Pregled uposlenika";
             this.UposlenikPregled.Click += new System.EventHandler(this.UposlenikPregled_Click);
             // 
             // UposlenikDodaj
             // 
             this.UposlenikDodaj.Name = "UposlenikDodaj";
-            this.UposlenikDodaj.Size = new System.Drawing.Size(218, 26);
+            this.UposlenikDodaj.Size = new System.Drawing.Size(224, 26);
             this.UposlenikDodaj.Text = "Dodaj uposlenika";
+            this.UposlenikDodaj.Click += new System.EventHandler(this.UposlenikDodaj_Click);
             // 
             // Proizvodi
             // 
@@ -155,14 +156,14 @@
             // NovostiPregled
             // 
             this.NovostiPregled.Name = "NovostiPregled";
-            this.NovostiPregled.Size = new System.Drawing.Size(224, 26);
+            this.NovostiPregled.Size = new System.Drawing.Size(195, 26);
             this.NovostiPregled.Text = "Pregled novosti";
             this.NovostiPregled.Click += new System.EventHandler(this.NovostiPregled_Click);
             // 
             // NovostiDodaj
             // 
             this.NovostiDodaj.Name = "NovostiDodaj";
-            this.NovostiDodaj.Size = new System.Drawing.Size(224, 26);
+            this.NovostiDodaj.Size = new System.Drawing.Size(195, 26);
             this.NovostiDodaj.Text = "Dodaj novost";
             this.NovostiDodaj.Click += new System.EventHandler(this.NovostiDodaj_Click);
             // 
@@ -180,14 +181,14 @@
             // SlikaPregled
             // 
             this.SlikaPregled.Name = "SlikaPregled";
-            this.SlikaPregled.Size = new System.Drawing.Size(224, 26);
+            this.SlikaPregled.Size = new System.Drawing.Size(176, 26);
             this.SlikaPregled.Text = "Pregled slika";
             this.SlikaPregled.Click += new System.EventHandler(this.SlikaPregled_Click);
             // 
             // SlikaDodaj
             // 
             this.SlikaDodaj.Name = "SlikaDodaj";
-            this.SlikaDodaj.Size = new System.Drawing.Size(224, 26);
+            this.SlikaDodaj.Size = new System.Drawing.Size(176, 26);
             this.SlikaDodaj.Text = "Dodaj sliku";
             this.SlikaDodaj.Click += new System.EventHandler(this.SlikaDodaj_Click);
             // 

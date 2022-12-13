@@ -40,7 +40,7 @@ namespace eBarberShop.Services.Services
 
         public override IQueryable<Korisnik> AddInclude(IQueryable<Korisnik> entity)
         {
-            entity = entity.Include("KorisnikUlogas.Uloga");
+            entity = entity.Include("KorisnikUlogas.Uloga").Include(x => x.Grad).Include(x => x.Drzava);
 
             return entity;
         }
@@ -71,6 +71,23 @@ namespace eBarberShop.Services.Services
             var hash = GenerateHash(salt,insert.Lozinka);
             entity.LozinkaSalt = salt;
             entity.LozinkaHash = hash;
+        }
+
+        public Models.Korisnik AddUloga(int id)
+        {
+            var user = _db.Korisniks.Include("KorisnikUlogas.Uloga").FirstOrDefault(x => x.KorisnikID == id);
+            var uloga = _db.Ulogas.FirstOrDefault(x => x.Naziv.ToLower() == "uposlenik");
+
+            Database.KorisnikUloga nova = new Database.KorisnikUloga()
+                {
+                DatumIzmjene = DateTime.Now,
+                KorisnikID = id,
+                UlogaID = uloga.UlogaID
+            };
+            _db.KorisnikUlogas.Add(nova);
+            _db.SaveChanges();
+
+            return _mapper.Map<Models.Korisnik>(user);
         }
 
         public Models.Korisnik Login(string username, string password)

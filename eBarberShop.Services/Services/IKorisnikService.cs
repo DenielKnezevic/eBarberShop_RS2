@@ -11,5 +11,6 @@ namespace eBarberShop.Services.Services
     public interface IKorisnikService : ICRUDService<Models.Korisnik, KorisnikSearchObject , KorisnikInsertRequest, KorisnikUpdateRequest>
     {
         Models.Korisnik Login(string username, string password);
+        Models.Korisnik AddUloga(int id);
     }
 }

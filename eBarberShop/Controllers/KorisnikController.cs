@@ -21,6 +21,12 @@ namespace eBarberShop.Controllers
         {
             return base.Insert(request);
         }
+        [HttpPost("{id}/AddUloga")]
+        [Authorize(Roles = "Administrator")]
+        public Korisnik AddUloga(int id)
+        {
+            return ((IKorisnikService)_service).AddUloga(id);
+        }
 
         [HttpGet("Authenticate")]
         [AllowAnonymous]

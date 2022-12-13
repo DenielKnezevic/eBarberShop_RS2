@@ -1,4 +1,5 @@
 ﻿using eBarberShop.Models;
+using eBarberShop.Models.SearchObjects;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,21 @@ namespace eBarberShop.WinUI
 
         private async void btnPrikazi_Click(object sender, EventArgs e)
         {
-            var list = await service.GetAll<List<Korisnik>>();
+            await LoadData();
+        }
+
+        private void frmUposlenik_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        public async Task LoadData()
+        {
+            KorisnikSearchObject search = new KorisnikSearchObject();
+            search.Prezime = txtPrezime.Text;
+            search.Ime = txtIme.Text;
+
+            var list = await service.GetAll<List<Korisnik>>(search);
 
             List<Korisnik> konacnaLista = new List<Korisnik>();
 
@@ -30,7 +45,7 @@ namespace eBarberShop.WinUI
             {
                 foreach (var item2 in item.KorisnikUlogas)
                 {
-                    if (item2.UlogaID == 2)
+                    if (item2.Uloga.Naziv.ToLower() == "uposlenik")
                         konacnaLista.Add(item);
                 }
             }
