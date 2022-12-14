@@ -1,4 +1,5 @@
 ﻿using eBarberShop.Models;
+using eBarberShop.Models.Requests;
 using eBarberShop.Models.SearchObjects;
 using System;
 using System.Collections.Generic;
@@ -26,9 +27,17 @@ namespace eBarberShop.WinUI
             await LoadData();
         }
 
-        private void frmUposlenik_Load(object sender, EventArgs e)
+        private async void frmUposlenik_Load(object sender, EventArgs e)
         {
+            await LoadData();
 
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            btn.Text = "Izbrisi uposlenika";
+            btn.DataPropertyName = "IzbrisiUposlenika";
+            btn.HeaderText = "Akcija";
+            btn.UseColumnTextForButtonValue = true;
+
+            dgvUposlenik.Columns.Add(btn);
         }
 
         public async Task LoadData()
@@ -51,6 +60,28 @@ namespace eBarberShop.WinUI
             }
 
             dgvUposlenik.DataSource = konacnaLista;
+
+        }
+
+        private async void dgvUposlenik_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var grid = (DataGridView)sender;
+
+            if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                var korisnik = dgvUposlenik.SelectedRows[0].DataBoundItem as Korisnik;
+
+                KorisnikUpdateRequest request = new KorisnikUpdateRequest() { Uloga="uposlenik"};
+
+                if (MessageBox.Show($"Jeste li sigurni da zelite obrisati ovog zaposlenika?", "Message for user", MessageBoxButtons.OK) == DialogResult.OK)
+                {
+                    var result = await service.DeleteUloga(korisnik.KorisnikID, request);
+
+                    await LoadData();
+
+                    MessageBox.Show("Uspjesno ste obrisali uposlenika");
+                }
+            }
         }
     }
 }

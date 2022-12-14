@@ -38,7 +38,9 @@
             this.DodajProizvod = new System.Windows.Forms.ToolStripMenuItem();
             this.Rezervacije = new System.Windows.Forms.ToolStripMenuItem();
             this.RezervacijaPregled = new System.Windows.Forms.ToolStripMenuItem();
-            this.RezervacijaUredi = new System.Windows.Forms.ToolStripMenuItem();
+            this.Termini = new System.Windows.Forms.ToolStripMenuItem();
+            this.PregledTermina = new System.Windows.Forms.ToolStripMenuItem();
+            this.DodajTermin = new System.Windows.Forms.ToolStripMenuItem();
             this.Novosti = new System.Windows.Forms.ToolStripMenuItem();
             this.NovostiPregled = new System.Windows.Forms.ToolStripMenuItem();
             this.NovostiDodaj = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,6 +49,8 @@
             this.SlikaDodaj = new System.Windows.Forms.ToolStripMenuItem();
             this.Arhiva = new System.Windows.Forms.ToolStripMenuItem();
             this.ArhivaPregled = new System.Windows.Forms.ToolStripMenuItem();
+            this.Narudzba = new System.Windows.Forms.ToolStripMenuItem();
+            this.NarudzbaPregled = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -58,9 +62,11 @@
             this.Uposlenici,
             this.Proizvodi,
             this.Rezervacije,
+            this.Termini,
             this.Novosti,
             this.Slike,
-            this.Arhiva});
+            this.Arhiva,
+            this.Narudzba});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
@@ -82,14 +88,14 @@
             // UposlenikPregled
             // 
             this.UposlenikPregled.Name = "UposlenikPregled";
-            this.UposlenikPregled.Size = new System.Drawing.Size(224, 26);
+            this.UposlenikPregled.Size = new System.Drawing.Size(218, 26);
             this.UposlenikPregled.Text = "Pregled uposlenika";
             this.UposlenikPregled.Click += new System.EventHandler(this.UposlenikPregled_Click);
             // 
             // UposlenikDodaj
             // 
             this.UposlenikDodaj.Name = "UposlenikDodaj";
-            this.UposlenikDodaj.Size = new System.Drawing.Size(224, 26);
+            this.UposlenikDodaj.Size = new System.Drawing.Size(218, 26);
             this.UposlenikDodaj.Text = "Dodaj uposlenika";
             this.UposlenikDodaj.Click += new System.EventHandler(this.UposlenikDodaj_Click);
             // 
@@ -121,8 +127,7 @@
             // Rezervacije
             // 
             this.Rezervacije.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.RezervacijaPregled,
-            this.RezervacijaUredi});
+            this.RezervacijaPregled});
             this.Rezervacije.Name = "Rezervacije";
             this.Rezervacije.Size = new System.Drawing.Size(98, 24);
             this.Rezervacije.Text = "Rezervacije";
@@ -132,15 +137,32 @@
             // RezervacijaPregled
             // 
             this.RezervacijaPregled.Name = "RezervacijaPregled";
-            this.RezervacijaPregled.Size = new System.Drawing.Size(218, 26);
+            this.RezervacijaPregled.Size = new System.Drawing.Size(224, 26);
             this.RezervacijaPregled.Text = "Pregled rezervacija";
             this.RezervacijaPregled.Click += new System.EventHandler(this.RezervacijaPregled_Click);
             // 
-            // RezervacijaUredi
+            // Termini
             // 
-            this.RezervacijaUredi.Name = "RezervacijaUredi";
-            this.RezervacijaUredi.Size = new System.Drawing.Size(218, 26);
-            this.RezervacijaUredi.Text = "Uredi rezervaciju";
+            this.Termini.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.PregledTermina,
+            this.DodajTermin});
+            this.Termini.Name = "Termini";
+            this.Termini.Size = new System.Drawing.Size(72, 24);
+            this.Termini.Text = "Termini";
+            // 
+            // PregledTermina
+            // 
+            this.PregledTermina.Name = "PregledTermina";
+            this.PregledTermina.Size = new System.Drawing.Size(224, 26);
+            this.PregledTermina.Text = "Pregled termina";
+            this.PregledTermina.Click += new System.EventHandler(this.PregledTermina_Click);
+            // 
+            // DodajTermin
+            // 
+            this.DodajTermin.Name = "DodajTermin";
+            this.DodajTermin.Size = new System.Drawing.Size(224, 26);
+            this.DodajTermin.Text = "Dodaj termin";
+            this.DodajTermin.Click += new System.EventHandler(this.DodajTermin_Click);
             // 
             // Novosti
             // 
@@ -209,6 +231,20 @@
             this.ArhivaPregled.Text = "Pregled arhive";
             this.ArhivaPregled.Click += new System.EventHandler(this.ArhivaPregled_Click);
             // 
+            // Narudzba
+            // 
+            this.Narudzba.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.NarudzbaPregled});
+            this.Narudzba.Name = "Narudzba";
+            this.Narudzba.Size = new System.Drawing.Size(88, 24);
+            this.Narudzba.Text = "Narudzba";
+            // 
+            // NarudzbaPregled
+            // 
+            this.NarudzbaPregled.Name = "NarudzbaPregled";
+            this.NarudzbaPregled.Size = new System.Drawing.Size(205, 26);
+            this.NarudzbaPregled.Text = "Pregled narudzbi";
+            // 
             // mdiMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -243,12 +279,16 @@
         private ToolStripMenuItem PregledProizvoda;
         private ToolStripMenuItem UposlenikDodaj;
         private ToolStripMenuItem RezervacijaPregled;
-        private ToolStripMenuItem RezervacijaUredi;
         private ToolStripMenuItem NovostiPregled;
         private ToolStripMenuItem NovostiDodaj;
         private ToolStripMenuItem SlikaPregled;
         private ToolStripMenuItem SlikaDodaj;
         private ToolStripMenuItem ArhivaPregled;
+        private ToolStripMenuItem Termini;
+        private ToolStripMenuItem PregledTermina;
+        private ToolStripMenuItem DodajTermin;
+        private ToolStripMenuItem Narudzba;
+        private ToolStripMenuItem NarudzbaPregled;
     }
 }
 

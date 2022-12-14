@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.dgvKorisnici = new System.Windows.Forms.DataGridView();
-            this.DodajUposlenika = new System.Windows.Forms.DataGridViewButtonColumn();
             this.txtIme = new System.Windows.Forms.TextBox();
             this.btnPretraga = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,8 +41,6 @@
             // 
             this.dgvKorisnici.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvKorisnici.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvKorisnici.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.DodajUposlenika});
             this.dgvKorisnici.Location = new System.Drawing.Point(12, 90);
             this.dgvKorisnici.Name = "dgvKorisnici";
             this.dgvKorisnici.RowHeadersWidth = 51;
@@ -52,15 +49,6 @@
             this.dgvKorisnici.Size = new System.Drawing.Size(776, 348);
             this.dgvKorisnici.TabIndex = 0;
             this.dgvKorisnici.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKorisnici_CellContentClick);
-            // 
-            // DodajUposlenika
-            // 
-            this.DodajUposlenika.HeaderText = "Akcija";
-            this.DodajUposlenika.MinimumWidth = 6;
-            this.DodajUposlenika.Name = "DodajUposlenika";
-            this.DodajUposlenika.Text = "Dodaj uposlenika";
-            this.DodajUposlenika.UseColumnTextForButtonValue = true;
-            this.DodajUposlenika.Width = 55;
             // 
             // txtIme
             // 
@@ -130,7 +118,6 @@
         private TextBox txtIme;
         private Button btnPretraga;
         private Label label1;
-        private DataGridViewButtonColumn DodajUposlenika;
         private TextBox txtPrezime;
         private Label label2;
     }

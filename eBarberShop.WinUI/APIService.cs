@@ -47,9 +47,16 @@ namespace eBarberShop.WinUI
             return result;
         }
 
-        public async Task<Models.Korisnik> AddUloga(int id)
+        public async Task<Models.Korisnik> AddUloga(int id, object request)
         {
-            var result = await $"{Endpoint}{Resource}/{id}/AddUloga".WithBasicAuth(Username, Password).PostJsonAsync(null).ReceiveJson<Models.Korisnik>();
+            var result = await $"{Endpoint}{Resource}/{id}/AddUloga".WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<Models.Korisnik>();
+
+            return result;
+        }
+
+        public async Task<Models.Korisnik> DeleteUloga(int id, object request)
+        {
+            var result = await $"{Endpoint}{Resource}/{id}/DeleteUloga".WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<Models.Korisnik>();
 
             return result;
         }

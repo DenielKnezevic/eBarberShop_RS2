@@ -21,11 +21,17 @@ namespace eBarberShop.Controllers
         {
             return base.Insert(request);
         }
-        [HttpPost("{id}/AddUloga")]
+        [HttpPut("{id}/AddUloga")]
         [Authorize(Roles = "Administrator")]
-        public Korisnik AddUloga(int id)
+        public Korisnik AddUloga(int id, [FromBody]KorisnikUpdateRequest request)
         {
-            return ((IKorisnikService)_service).AddUloga(id);
+            return ((IKorisnikService)_service).AddUloga(id,request);
+        }
+        [HttpPut("{id}/DeleteUloga")]
+        [Authorize(Roles = "Administrator")]
+        public Korisnik DeleteUloga(int id, [FromBody] KorisnikUpdateRequest request)
+        {
+            return ((IKorisnikService)_service).DeleteUloga(id, request);
         }
 
         [HttpGet("Authenticate")]

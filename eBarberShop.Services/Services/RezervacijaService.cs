@@ -27,9 +27,9 @@ namespace eBarberShop.Services.Services
 
         public override IQueryable<Rezervacija> AddFilter(IQueryable<Rezervacija> entity, RezervacijaSearchObject obj)
         {
-            if(obj.DatumRezervacije.HasValue)
+            if(obj.DatumOd.HasValue && obj.DatumDo.HasValue)
             {
-                entity = entity.Where(x => x.DatumRezervacije.Date == obj.DatumRezervacije);
+                entity = entity.Where(x => x.DatumRezervacije.Date >= obj.DatumOd && x.DatumRezervacije.Date <= obj.DatumDo);
             }
 
             if(obj.KorisnikID.HasValue)

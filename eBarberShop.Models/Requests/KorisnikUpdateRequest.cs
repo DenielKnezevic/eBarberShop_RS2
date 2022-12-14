@@ -14,5 +14,6 @@ namespace eBarberShop.Models.Requests
         public int GradID { get; set; }
         public int DrzavaID { get; set; }
         public string Lozinka { get; set; }
+        public string Uloga { get; set; }
     }
 }

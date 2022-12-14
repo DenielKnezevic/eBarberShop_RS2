@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace eBarberShop.Services.Services
 {
-    public interface ITerminService : ICRUDService<Models.Termin,object,TerminUpsertRequest, TerminUpsertRequest>
+    public interface ITerminService : ICRUDService<Models.Termin, Models.SearchObjects.TerminSearchObject, TerminUpsertRequest, TerminUpsertRequest>
     {
     }
 }

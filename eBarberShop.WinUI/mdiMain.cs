@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eBarberShop.WinUI.Termin;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -254,6 +255,24 @@ namespace eBarberShop.WinUI
             childrenForm.WindowState = FormWindowState.Maximized;
             childrenForm.Show();
 
+        }
+
+        private void PregledTermina_Click(object sender, EventArgs e)
+        {
+            frmTermin childrenForm = new frmTermin();
+            childrenForm.MdiParent = this;
+            childrenForm.Text = "Window " + childFormNumber++;
+            childrenForm.WindowState = FormWindowState.Maximized;
+            childrenForm.Show();
+        }
+
+        private void DodajTermin_Click(object sender, EventArgs e)
+        {
+            frmTerminDodaj childrenForm = new frmTerminDodaj();
+            childrenForm.MdiParent = this;
+            childrenForm.Text = "Window " + childFormNumber++;
+            childrenForm.WindowState = FormWindowState.Maximized;
+            childrenForm.Show();
         }
     }
 }

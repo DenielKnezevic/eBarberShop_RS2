@@ -73,10 +73,10 @@ namespace eBarberShop.Services.Services
             entity.LozinkaHash = hash;
         }
 
-        public Models.Korisnik AddUloga(int id)
+        public Models.Korisnik AddUloga(int id, KorisnikUpdateRequest request)
         {
             var user = _db.Korisniks.Include("KorisnikUlogas.Uloga").FirstOrDefault(x => x.KorisnikID == id);
-            var uloga = _db.Ulogas.FirstOrDefault(x => x.Naziv.ToLower() == "uposlenik");
+            var uloga = _db.Ulogas.FirstOrDefault(x => x.Naziv.ToLower() == request.Uloga);
 
             Database.KorisnikUloga nova = new Database.KorisnikUloga()
                 {
@@ -85,6 +85,18 @@ namespace eBarberShop.Services.Services
                 UlogaID = uloga.UlogaID
             };
             _db.KorisnikUlogas.Add(nova);
+            _db.SaveChanges();
+
+            return _mapper.Map<Models.Korisnik>(user);
+        }
+
+        public Models.Korisnik DeleteUloga(int id, KorisnikUpdateRequest request)
+        {
+            var user = _db.Korisniks.Include("KorisnikUlogas.Uloga").FirstOrDefault(x => x.KorisnikID == id);
+            var uloga = _db.Ulogas.FirstOrDefault(x => x.Naziv.ToLower() == request.Uloga);
+            var korisnikUloga = _db.KorisnikUlogas.FirstOrDefault(x => x.KorisnikID == user.KorisnikID && x.UlogaID == uloga.UlogaID);
+
+            _db.KorisnikUlogas.Remove(korisnikUloga);
             _db.SaveChanges();
 
             return _mapper.Map<Models.Korisnik>(user);

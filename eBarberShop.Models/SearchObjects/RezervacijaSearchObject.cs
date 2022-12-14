@@ -7,7 +7,8 @@ namespace eBarberShop.Models.SearchObjects
     public class RezervacijaSearchObject : BaseSearchObject
     {
         public int? KorisnikID { get; set; }
-        public DateTime? DatumRezervacije { get; set; }
+        public DateTime? DatumOd { get; set; }
+        public DateTime? DatumDo { get; set; }
         public bool IsArchived { get; set; }
     }
 }

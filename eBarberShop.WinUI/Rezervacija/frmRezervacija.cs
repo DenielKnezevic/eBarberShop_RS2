@@ -23,12 +23,23 @@ namespace eBarberShop.WinUI
 
         private void btnPrikazi_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private async void frmRezervacija_Load(object sender, EventArgs e)
+        {
+            await LoadData();
+        }
+
+        public async Task LoadData()
+        {
             RezervacijaSearchObject search = new RezervacijaSearchObject();
 
-            search.DatumRezervacije = dtpDatum.Value.Date;
+            search.DatumOd = dtpDatumOd.Value.Date;
+            search.DatumDo = dtpDatumDo.Value.Date;
             search.IsArchived = false;
 
-            var list = service.GetAll<List<Rezervacija>>(search);
+            var list = await service.GetAll<List<Rezervacija>>(search);
 
             dgvRezervacija.DataSource = list;
         }

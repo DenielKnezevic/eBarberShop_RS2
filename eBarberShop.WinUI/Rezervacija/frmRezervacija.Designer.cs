@@ -30,7 +30,10 @@
         {
             this.dgvRezervacija = new System.Windows.Forms.DataGridView();
             this.btnPrikazi = new System.Windows.Forms.Button();
-            this.dtpDatum = new System.Windows.Forms.DateTimePicker();
+            this.dtpDatumDo = new System.Windows.Forms.DateTimePicker();
+            this.dtpDatumOd = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRezervacija)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,25 +57,55 @@
             this.btnPrikazi.UseVisualStyleBackColor = true;
             this.btnPrikazi.Click += new System.EventHandler(this.btnPrikazi_Click);
             // 
-            // dtpDatum
+            // dtpDatumDo
             // 
-            this.dtpDatum.Location = new System.Drawing.Point(399, 53);
-            this.dtpDatum.Name = "dtpDatum";
-            this.dtpDatum.Size = new System.Drawing.Size(280, 27);
-            this.dtpDatum.TabIndex = 2;
+            this.dtpDatumDo.Location = new System.Drawing.Point(278, 55);
+            this.dtpDatumDo.Name = "dtpDatumDo";
+            this.dtpDatumDo.Size = new System.Drawing.Size(261, 27);
+            this.dtpDatumDo.TabIndex = 2;
+            // 
+            // dtpDatumOd
+            // 
+            this.dtpDatumOd.Location = new System.Drawing.Point(12, 55);
+            this.dtpDatumOd.Name = "dtpDatumOd";
+            this.dtpDatumOd.Size = new System.Drawing.Size(260, 27);
+            this.dtpDatumOd.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(106, 20);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Rezervacije od";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(278, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(106, 20);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Rezervacije do";
             // 
             // frmRezervacija
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dtpDatum);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dtpDatumOd);
+            this.Controls.Add(this.dtpDatumDo);
             this.Controls.Add(this.btnPrikazi);
             this.Controls.Add(this.dgvRezervacija);
             this.Name = "frmRezervacija";
             this.Text = "frmRezervacija";
+            this.Load += new System.EventHandler(this.frmRezervacija_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRezervacija)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -80,6 +113,9 @@
 
         private DataGridView dgvRezervacija;
         private Button btnPrikazi;
-        private DateTimePicker dtpDatum;
+        private DateTimePicker dtpDatumDo;
+        private DateTimePicker dtpDatumOd;
+        private Label label1;
+        private Label label2;
     }
 }

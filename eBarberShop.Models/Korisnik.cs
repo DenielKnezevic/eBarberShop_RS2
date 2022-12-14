@@ -8,7 +8,6 @@ namespace eBarberShop.Models
 {
     public class Korisnik
     {
-        [Browsable(false)]
         public int KorisnikID { get; set; }
         public string Ime { get; set; } 
         public string Prezime { get; set; } 

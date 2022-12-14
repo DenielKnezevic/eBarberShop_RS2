@@ -1,4 +1,5 @@
 ﻿using eBarberShop.Models;
+using eBarberShop.Models.Requests;
 using eBarberShop.Models.SearchObjects;
 using System;
 using System.Collections.Generic;
@@ -36,24 +37,42 @@ namespace eBarberShop.WinUI
                 if (item.KorisnikUlogas.Count == 0)
                     konacnaLista.Add(item);
             }
+
             dgvKorisnici.DataSource = konacnaLista;
+
         }
 
         private async void frmUposlenikDodaj_Load(object sender, EventArgs e)
         {
             await LoadData();
 
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            btn.Text = "Dodaj uposlenika";
+            btn.DataPropertyName = "DodajUposlenika";
+            btn.HeaderText = "Akcija";
+            btn.UseColumnTextForButtonValue = true;
+
+            dgvKorisnici.Columns.Add(btn);
+
         }
 
         private async void dgvKorisnici_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            var korisnik = dgvKorisnici.SelectedRows[0].DataBoundItem as Korisnik;
+            var grid = (DataGridView)sender;
 
-            var result = await service.AddUloga(korisnik.KorisnikID);
+            if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                var korisnik = dgvKorisnici.SelectedRows[0].DataBoundItem as Korisnik;
 
-            await LoadData();
+                KorisnikUpdateRequest request = new KorisnikUpdateRequest() { Uloga = "uposlenik"};
 
-            MessageBox.Show("Uspjesno ste dodali zaposlenika");
+                var result = await service.AddUloga(korisnik.KorisnikID,request);
+
+                await LoadData();
+
+                MessageBox.Show("Uspjesno ste dodali uposlenika");
+            }
+                
         }
 
         private async void btnPretraga_Click(object sender, EventArgs e)

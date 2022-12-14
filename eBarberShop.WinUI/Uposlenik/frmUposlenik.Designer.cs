@@ -44,8 +44,10 @@
             this.dgvUposlenik.Name = "dgvUposlenik";
             this.dgvUposlenik.RowHeadersWidth = 51;
             this.dgvUposlenik.RowTemplate.Height = 29;
+            this.dgvUposlenik.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUposlenik.Size = new System.Drawing.Size(776, 341);
             this.dgvUposlenik.TabIndex = 0;
+            this.dgvUposlenik.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUposlenik_CellContentClick);
             // 
             // btnPrikazi
             // 
