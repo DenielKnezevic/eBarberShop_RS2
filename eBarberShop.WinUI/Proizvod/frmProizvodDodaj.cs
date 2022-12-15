@@ -75,7 +75,7 @@ namespace eBarberShop.WinUI
             {
                 txtCijena.Text = _proizvod.Cijena.ToString();
                 txtNaziv.Text = _proizvod.Naziv;
-                cmbVrstaProizvoda.SelectedIndex = _proizvod.VrstaProizvodaID - 1;
+                cmbVrstaProizvoda.SelectedValue = _proizvod.VrstaProizvodaID;
                 pbSlika.Image = ImageHelper.FromByteToImage(_proizvod.Slika);
                 pbSlika.SizeMode = PictureBoxSizeMode.StretchImage;
             }

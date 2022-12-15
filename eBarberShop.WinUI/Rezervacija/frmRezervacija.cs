@@ -1,4 +1,5 @@
 ﻿using eBarberShop.Models;
+using eBarberShop.Models.Requests;
 using eBarberShop.Models.SearchObjects;
 using System;
 using System.Collections.Generic;
@@ -21,14 +22,30 @@ namespace eBarberShop.WinUI
             InitializeComponent();
         }
 
-        private void btnPrikazi_Click(object sender, EventArgs e)
+        private async void btnPrikazi_Click(object sender, EventArgs e)
         {
-
+            await LoadData();
         }
 
         private async void frmRezervacija_Load(object sender, EventArgs e)
         {
             await LoadData();
+
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            btn.Text = "Arhiviraj";
+            btn.DataPropertyName = "Arhiviraj";
+            btn.HeaderText = "Akcija";
+            btn.UseColumnTextForButtonValue = true;
+
+            DataGridViewButtonColumn btn1 = new DataGridViewButtonColumn();
+            btn1.Text = "Otkazi";
+            btn1.DataPropertyName = "Otkazi";
+            btn1.HeaderText = "Akcija";
+            btn1.UseColumnTextForButtonValue = true;
+
+
+            dgvRezervacija.Columns.Add(btn);
+            dgvRezervacija.Columns.Add(btn1);
         }
 
         public async Task LoadData()
@@ -42,6 +59,42 @@ namespace eBarberShop.WinUI
             var list = await service.GetAll<List<Rezervacija>>(search);
 
             dgvRezervacija.DataSource = list;
+        }
+
+        private async void dgvRezervacija_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var grid = (DataGridView)sender;
+
+            if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                var item = dgvRezervacija.SelectedRows[0].DataBoundItem as Rezervacija;
+
+                if (grid.Columns[e.ColumnIndex].Index == 5)
+                {
+                    RezervacijaUpsertRequest request = new RezervacijaUpsertRequest();
+                    request.IsArchived = true;
+                    request.IsCanceled = false;
+                    request.UslugaID = item.UslugaID;
+                    request.DatumRezervacije = item.DatumRezervacije;
+                    request.TerminID = item.TerminID;
+                    request.KorisnikID = item.KorisnikID;
+
+                    var result = await service.Update<Rezervacija>(item.RezervacijaID, request);
+
+                }
+                else if(grid.Columns[e.ColumnIndex].Index == 6)
+                {
+                    RezervacijaUpsertRequest request = new RezervacijaUpsertRequest();
+                    request.IsArchived = false;
+                    request.IsCanceled = true;
+                    request.UslugaID = item.UslugaID;
+                    request.DatumRezervacije = item.DatumRezervacije;
+                    request.TerminID = item.TerminID;
+                    request.KorisnikID = item.KorisnikID;
+
+                    var result = await service.Update<Rezervacija>(item.RezervacijaID, request);
+                }
+            }
         }
     }
 }

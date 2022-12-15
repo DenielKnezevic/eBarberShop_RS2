@@ -46,6 +46,7 @@
             this.dgvRezervacija.RowTemplate.Height = 29;
             this.dgvRezervacija.Size = new System.Drawing.Size(776, 341);
             this.dgvRezervacija.TabIndex = 0;
+            this.dgvRezervacija.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRezervacija_CellContentClick);
             // 
             // btnPrikazi
             // 

@@ -73,7 +73,7 @@ namespace eBarberShop.WinUI
 
                 KorisnikUpdateRequest request = new KorisnikUpdateRequest() { Uloga="uposlenik"};
 
-                if (MessageBox.Show($"Jeste li sigurni da zelite obrisati ovog zaposlenika?", "Message for user", MessageBoxButtons.OK) == DialogResult.OK)
+                if (MessageBox.Show($"Jeste li sigurni da zelite obrisati ovog zaposlenika?", $"Message for user - {APIService.Username}", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     var result = await service.DeleteUloga(korisnik.KorisnikID, request);
 
