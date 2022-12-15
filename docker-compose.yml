@@ -1,0 +1,32 @@
+version: "3"
+services:
+    ebarbershop-sql:
+        image: "mcr.microsoft.com/mssql/server:2017-latest"
+        restart: unless-stopped
+        environment:
+            SA_PASSWORD: "Deni123!"
+            ACCEPT_EULA: "Y"
+            MSSQL_PID: "Developer"
+        ports:
+            - 1401:1433
+        networks:
+            - ebarbershopnet
+
+    ebarbershop-api:
+        restart: unless-stopped
+        build: .
+        environment:
+            - ConnectionStrings:eBarberShop=Server=ebarbershop-sql,1433;Database=eBarberShop;User=sa;Password=Deni123!;
+            - ASPNETCORE_ENVIRONMENT=Development
+        ports:
+            - 5192:5192
+        networks:
+            - ebarbershopnet
+        depends_on:
+            - ebarbershop-sql
+        links:
+            - ebarbershop-sql 
+
+networks:
+  ebarbershopnet:
+    driver: bridge

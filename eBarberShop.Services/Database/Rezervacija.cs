@@ -12,7 +12,7 @@ namespace eBarberShop.Services.Database
         public int KorisnikID { get; set; }
         public int? TerminID { get; set; }
         public int UslugaID { get; set; }
-        public DateTime DatumRezervacije { get; set; }
+        public DateTime DatumRezervacije { get; set; } = DateTime.Now.Date;
         public bool IsCanceled { get; set; } = false;
         public bool IsArchived { get; set; } = false;
         public virtual Korisnik Korisnik { get; set; } = null!;

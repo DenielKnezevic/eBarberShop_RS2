@@ -52,7 +52,7 @@ namespace eBarberShop.WinUI.Termin
             {
                 dtpDatum.Value = _termin.DatumTermina.Date;
                 txtVrijeme.Text = _termin.VrijemeTermina;
-                cmbUposlenici.SelectedIndex = _termin.KorisnikID - 1;
+                cmbUposlenici.SelectedValue = _termin.KorisnikID;
             }
         }
 

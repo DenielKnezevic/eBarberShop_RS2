@@ -30,15 +30,8 @@ namespace eBarberShop.WinUI
             await LoadUposlenici();
         }
 
-        public async Task LoadData()
-        {
-            TerminSearchObject search = new TerminSearchObject();
-
-            if (Convert.ToInt32(cmbUposlenici.SelectedValue) > 0)
-                search.KorisnikID = Convert.ToInt32(cmbUposlenici.SelectedValue);
-
-            search.DatumTermina = dtpDatum.Value.Date;
-
+        public async Task LoadData(TerminSearchObject search = null)
+        { 
             dgvTermini.DataSource = await service.GetAll<List<Models.Termin>>(search);
         }
 
@@ -66,7 +59,13 @@ namespace eBarberShop.WinUI
 
         private async void btnPretraga_Click(object sender, EventArgs e)
         {
-            await LoadData();
+            TerminSearchObject search = new TerminSearchObject();
+
+            if (Convert.ToInt32(cmbUposlenici.SelectedValue) > 0)
+                search.KorisnikID = Convert.ToInt32(cmbUposlenici.SelectedValue);
+
+            search.DatumTermina = dtpDatum.Value.Date;
+            await LoadData(search);
         }
 
         private void dgvTermini_CellContentClick(object sender, DataGridViewCellEventArgs e)

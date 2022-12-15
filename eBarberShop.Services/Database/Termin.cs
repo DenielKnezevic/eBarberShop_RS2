@@ -10,7 +10,7 @@ namespace eBarberShop.Services.Database
     {
         public int TerminID { get; set; }
         public DateTime DatumTermina { get; set; }
-        public DateTime DatumKreiranja { get; set; } = DateTime.Now;
+        public DateTime DatumKreiranja { get; set; } = DateTime.Now.Date;
         public string VrijemeTermina { get; set; } = null!;
         public int KorisnikID { get; set; }
 

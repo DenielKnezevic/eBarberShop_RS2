@@ -25,17 +25,6 @@ namespace eBarberShop.WinUI
 
         private async void btnPrikazi_Click(object sender, EventArgs e)
         {
-            await LoadData();
-        }
-
-        private async void frmArhiva_Load(object sender, EventArgs e)
-        {
-            await LoadData();
-            await LoadUposlenike();
-        }
-
-        public async Task LoadData()
-        {
             RezervacijaSearchObject search = new RezervacijaSearchObject();
 
             search.IsArchived = true;
@@ -47,6 +36,17 @@ namespace eBarberShop.WinUI
                 search.KorisnikID = Convert.ToInt32(cmbUposlenik.SelectedValue);
             }
 
+            await LoadData(search);
+        }
+
+        private async void frmArhiva_Load(object sender, EventArgs e)
+        {
+            await LoadData();
+            await LoadUposlenike();
+        }
+
+        public async Task LoadData(RezervacijaSearchObject search = null)
+        { 
             var list = await service.GetAll<List<Rezervacija>>(search);
 
             dgvArhiva.DataSource = list;

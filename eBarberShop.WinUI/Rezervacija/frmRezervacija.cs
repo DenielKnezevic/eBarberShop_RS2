@@ -24,7 +24,13 @@ namespace eBarberShop.WinUI
 
         private async void btnPrikazi_Click(object sender, EventArgs e)
         {
-            await LoadData();
+            RezervacijaSearchObject search = new RezervacijaSearchObject();
+
+            search.DatumOd = dtpDatumOd.Value.Date;
+            search.DatumDo = dtpDatumDo.Value.Date;
+            search.IsArchived = false;
+
+            await LoadData(search);
         }
 
         private async void frmRezervacija_Load(object sender, EventArgs e)
@@ -48,14 +54,8 @@ namespace eBarberShop.WinUI
             dgvRezervacija.Columns.Add(btn1);
         }
 
-        public async Task LoadData()
-        {
-            RezervacijaSearchObject search = new RezervacijaSearchObject();
-
-            search.DatumOd = dtpDatumOd.Value.Date;
-            search.DatumDo = dtpDatumDo.Value.Date;
-            search.IsArchived = false;
-
+        public async Task LoadData(RezervacijaSearchObject search = null)
+        { 
             var list = await service.GetAll<List<Rezervacija>>(search);
 
             dgvRezervacija.DataSource = list;

@@ -23,9 +23,7 @@ namespace eBarberShop.WinUI
 
         private async void btnPrikazi_Click(object sender, EventArgs e)
         {
-            var list = await service.GetAll<List<Slika>>();
-
-            dgvSlika.DataSource = list;
+            await LoadData();
         }
 
         private void dgvSlika_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -33,6 +31,18 @@ namespace eBarberShop.WinUI
             var item = dgvSlika.SelectedRows[0].DataBoundItem as Slika;
             frmSlikaDodaj frmSlikaDodaj = new frmSlikaDodaj(item);
             frmSlikaDodaj.Show();
+        }
+
+        private async void frmSlika_Load(object sender, EventArgs e)
+        {
+            await LoadData();
+        }
+
+        public async Task LoadData()
+        {
+            var list = await service.GetAll<List<Slika>>();
+
+            dgvSlika.DataSource = list;
         }
     }
 }

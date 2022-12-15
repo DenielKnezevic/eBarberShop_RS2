@@ -65,6 +65,7 @@
             this.Controls.Add(this.dgvSlika);
             this.Name = "frmSlika";
             this.Text = "frmSlika";
+            this.Load += new System.EventHandler(this.frmSlika_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSlika)).EndInit();
             this.ResumeLayout(false);
 

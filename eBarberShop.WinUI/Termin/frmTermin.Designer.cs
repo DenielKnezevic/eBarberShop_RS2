@@ -42,6 +42,7 @@
             this.dgvTermini.Name = "dgvTermini";
             this.dgvTermini.RowHeadersWidth = 51;
             this.dgvTermini.RowTemplate.Height = 29;
+            this.dgvTermini.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTermini.Size = new System.Drawing.Size(776, 350);
             this.dgvTermini.TabIndex = 0;
             this.dgvTermini.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTermini_CellContentClick);

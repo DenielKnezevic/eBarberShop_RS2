@@ -65,6 +65,7 @@
             this.Controls.Add(this.dgvNovost);
             this.Name = "frmNovost";
             this.Text = "frmNovost";
+            this.Load += new System.EventHandler(this.frmNovost_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvNovost)).EndInit();
             this.ResumeLayout(false);
 

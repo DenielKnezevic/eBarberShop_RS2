@@ -23,9 +23,7 @@ namespace eBarberShop.WinUI
 
         private async void btnPrikazi_Click(object sender, EventArgs e)
         {
-            var lista = await service.GetAll<List<Novost>>();
-
-            dgvNovost.DataSource = lista;
+            await LoadData();
         }
 
         private void dgvNovost_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -33,6 +31,18 @@ namespace eBarberShop.WinUI
             var item = dgvNovost.SelectedRows[0].DataBoundItem as Novost;
             frmNovostiDodaj frmNovostiDodaj = new frmNovostiDodaj(item);
             frmNovostiDodaj.Show();
+        }
+
+        public async Task LoadData()
+        {
+            var lista = await service.GetAll<List<Novost>>();
+
+            dgvNovost.DataSource = lista;
+        }
+
+        private async void frmNovost_Load(object sender, EventArgs e)
+        {
+            await LoadData();
         }
     }
 }

@@ -28,18 +28,18 @@ namespace eBarberShop.WinUI
 
             proizvodSeachObject.Naziv = txtProizvodiSearch.Text;
 
-            if(Convert.ToInt32(cmbVrstaProizvod.SelectedValue) > 0)
+            if (Convert.ToInt32(cmbVrstaProizvod.SelectedValue) > 0)
                 proizvodSeachObject.VrstaProizvodaID = Convert.ToInt32(cmbVrstaProizvod.SelectedValue);
 
-            var list = await service.GetAll<List<Proizvod>>(proizvodSeachObject);
-
-            dgvProizvod.DataSource = list;
+            await LoadData(proizvodSeachObject);
 
         }
 
         private async void frmProizvod_Load(object sender, EventArgs e)
         {
            await UcitajComboBox();
+            await LoadData();
+           
         }
 
         private async Task UcitajComboBox()
@@ -50,6 +50,13 @@ namespace eBarberShop.WinUI
             cmbVrstaProizvod.ValueMember = "VrstaProizvodaID";
             cmbVrstaProizvod.SelectedItem = null;
             cmbVrstaProizvod.SelectedText = "Izaberite vrstu proizvoda";
+        }
+        
+        public async Task LoadData(ProizvodSearchObject search = null)
+        {
+            var list = await service.GetAll<List<Proizvod>>(search);
+
+            dgvProizvod.DataSource = list;
         }
 
         private void dgvProizvod_CellContentClick(object sender, DataGridViewCellEventArgs e)

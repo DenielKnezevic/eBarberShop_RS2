@@ -11,7 +11,7 @@ namespace eBarberShop.Services.Database
         public int RecenzijaID { get; set; }
         public string? SadrzajRecenzije { get; set; }
         public int Ocjena { get; set; }
-        public DateTime DatumKreiranja { get; set; } = DateTime.Now;
+        public DateTime DatumKreiranja { get; set; } = DateTime.Now.Date;
         public int KorisnikID { get; set; }
 
         public virtual Korisnik Korisnik { get; set; } = null!;
