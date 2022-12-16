@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using eBarberShop.Models;
+using eBarberShop.WinUI.Properties;
 
 namespace eBarberShop.WinUI
 {
@@ -13,7 +14,7 @@ namespace eBarberShop.WinUI
         public static string Username = null;
         public static string Password = null;
         public static Korisnik Korisnik = null;
-        public string Endpoint = "https://localhost:44379/api/";
+        public string Endpoint = Resources.LocalAPI;
         public string Resource;
 
         public APIService(string resource)
