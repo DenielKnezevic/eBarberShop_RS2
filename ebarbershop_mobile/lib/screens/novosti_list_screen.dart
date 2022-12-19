@@ -1,4 +1,5 @@
 import 'package:ebarbershop_mobile/providers/novosti-provider.dart';
+import 'package:ebarbershop_mobile/screens/slika_list_screen.dart';
 import 'package:ebarbershop_mobile/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -52,7 +53,9 @@ class _NovostListScreenState extends State<NovostListScreen> {
         ]),
       ),
     ),),
-   floatingActionButton: FloatingActionButton(onPressed: () {},
+   floatingActionButton: FloatingActionButton(onPressed: () {
+    Navigator.pushNamed(context, SlikaListScreen.routeName);
+   },
    backgroundColor: Colors.amber[300],
    child: const Icon(Icons.photo_library_rounded),),
     );

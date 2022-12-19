@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last
 import 'package:ebarbershop_mobile/providers/korisnik-provider.dart';
 import 'package:ebarbershop_mobile/providers/novosti-provider.dart';
+import 'package:ebarbershop_mobile/providers/slika-provider.dart';
 import 'package:ebarbershop_mobile/screens/novosti_list_screen.dart';
+import 'package:ebarbershop_mobile/screens/slika_list_screen.dart';
 import 'package:ebarbershop_mobile/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +12,8 @@ void main() {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => NovostiProvider()),
-      ChangeNotifierProvider(create: (_) => KorisnikProvider())
+      ChangeNotifierProvider(create: (_) => KorisnikProvider()),
+      ChangeNotifierProvider(create: (_) => SlikaProvider())
     ],
     child: MaterialApp(
       debugShowCheckedModeBanner: true,
@@ -18,6 +21,9 @@ void main() {
       onGenerateRoute: (settings) {
         if(settings.name == NovostListScreen.routeName){
           return MaterialPageRoute(builder: ((context) => NovostListScreen()));
+        }
+        if(settings.name == SlikaListScreen.routeName){
+          return MaterialPageRoute(builder: ((context) => SlikaListScreen()));
         }
       },
     ),
