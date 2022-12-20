@@ -38,17 +38,17 @@ class _SlikaListScreenState extends State<SlikaListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: SingleChildScrollView(child: 
+      appBar: AppBar(title: Text("eBarberShop"),backgroundColor: Colors.grey[800],),
+      body: SafeArea(child: 
       Container(
         height: 700,
         child: 
       Column(children: [
           buildHeader(),
-          Expanded(child: GridView.count(crossAxisCount: 3,
-          crossAxisSpacing: 8.0,
-          mainAxisSpacing: 8.0,
+          Expanded(child: GridView.count(crossAxisCount: 2,
+          childAspectRatio: 3/2,
           children: _buildGallery(),))
-      ]),)),)
+      ]),)),
     );
   }
 
@@ -58,7 +58,7 @@ class _SlikaListScreenState extends State<SlikaListScreen> {
       child: Text(
         "Galerija",
         style: TextStyle(
-            color: Colors.grey, fontSize: 40, fontWeight: FontWeight.w600),
+            color: Colors.grey[800], fontSize: 40, fontWeight: FontWeight.w600),
       ),
     );
   }
@@ -69,11 +69,10 @@ class _SlikaListScreenState extends State<SlikaListScreen> {
           Container(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                   Container(
-                    width: 125,
-                    height: 125,
+                    width: 180,
                     child: imageFromBase64String(e.slikaByte!),)
             ]),
           )).cast<Widget>().toList();

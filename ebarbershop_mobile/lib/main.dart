@@ -16,6 +16,7 @@ void main() {
       ChangeNotifierProvider(create: (_) => SlikaProvider())
     ],
     child: MaterialApp(
+      theme: ThemeData(primaryColor: Colors.grey[800]),
       debugShowCheckedModeBanner: true,
       home: Home(),
       onGenerateRoute: (settings) {
@@ -87,7 +88,7 @@ class Home extends StatelessWidget {
                     Authorization.Password = _password.text;
 
                     Authorization.korisnik = await _korisnikProvider.Authenticate();
-
+                    
                     Navigator.pushNamed(context, NovostListScreen.routeName);
                   },
                   child: Container(

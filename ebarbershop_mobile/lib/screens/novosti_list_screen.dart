@@ -56,7 +56,7 @@ class _NovostListScreenState extends State<NovostListScreen> {
    floatingActionButton: FloatingActionButton(onPressed: () {
     Navigator.pushNamed(context, SlikaListScreen.routeName);
    },
-   backgroundColor: Colors.amber[300],
+   backgroundColor: Colors.grey[800],
    child: const Icon(Icons.photo_library_rounded),),
     );
   }
@@ -67,7 +67,7 @@ class _NovostListScreenState extends State<NovostListScreen> {
       child: Text(
         "Novosti",
         style: TextStyle(
-            color: Colors.grey, fontSize: 40, fontWeight: FontWeight.w600),
+            color: Colors.grey[800], fontSize: 40, fontWeight: FontWeight.w600),
       ),
     );
   }
