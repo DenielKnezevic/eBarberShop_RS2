@@ -20,7 +20,7 @@ namespace eBarberShop.Services.Services
 
         public override IQueryable<Rezervacija> AddInclude(IQueryable<Rezervacija> entity)
         {
-            entity = entity.Include(x => x.Termin).Include(y => y.Termin); 
+            entity = entity.Include(x => x.Termin).Include(y => y.Korisnik); 
 
             return entity;
         }
@@ -29,7 +29,7 @@ namespace eBarberShop.Services.Services
         {
             if(obj.DatumOd.HasValue && obj.DatumDo.HasValue)
             {
-                entity = entity.Where(x => x.DatumRezervacije.Date >= obj.DatumOd && x.DatumRezervacije.Date <= obj.DatumDo);
+                entity = entity.Where(x => x.Termin.DatumTermina.Date >= obj.DatumOd && x.Termin.DatumTermina.Date <= obj.DatumDo);
             }
 
             if(obj.KorisnikID.HasValue)

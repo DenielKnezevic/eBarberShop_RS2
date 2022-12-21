@@ -70,7 +70,7 @@ namespace eBarberShop.WinUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://localhost:44379/api/.
+        ///   Looks up a localized string similar to https://localhost:7240/api/.
         /// </summary>
         internal static string LocalAPI {
             get {

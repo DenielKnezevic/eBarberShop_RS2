@@ -38,6 +38,7 @@
             // 
             // dgvArhiva
             // 
+            this.dgvArhiva.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvArhiva.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArhiva.Location = new System.Drawing.Point(12, 102);
             this.dgvArhiva.Name = "dgvArhiva";

@@ -42,8 +42,10 @@
             this.dgvNarudzba.Name = "dgvNarudzba";
             this.dgvNarudzba.RowHeadersWidth = 51;
             this.dgvNarudzba.RowTemplate.Height = 29;
+            this.dgvNarudzba.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNarudzba.Size = new System.Drawing.Size(776, 344);
             this.dgvNarudzba.TabIndex = 0;
+            this.dgvNarudzba.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNarudzba_CellContentClick);
             // 
             // btnPrikazi
             // 

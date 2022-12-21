@@ -44,6 +44,11 @@ namespace eBarberShop.Services.Services
             return entity;
         }
 
+        public override void BeforeInsert(NarudzbaInsertRequest insert, Narudzba entity)
+        {
+            entity.BrojNarudzbe = Guid.NewGuid().ToString();
+        }
+
         public override IQueryable<Narudzba> AddFilter(IQueryable<Narudzba> entity, NarudzbaSearchObject obj)
         {
             if(!string.IsNullOrWhiteSpace(obj.BrojNarudzbe))
@@ -59,6 +64,16 @@ namespace eBarberShop.Services.Services
             if(obj.DatumNarudzbe.HasValue)
             {
                 entity = entity.Where(x => x.DatumNarudzbe.Date == obj.DatumNarudzbe);
+            }
+
+            if(obj.IsShipped == true)
+            {
+                entity = entity.Where(x => x.IsShipped == obj.IsShipped);
+            }
+
+            if (obj.IsShipped == false)
+            {
+                entity = entity.Where(x => x.IsShipped == obj.IsShipped);
             }
 
             return entity;

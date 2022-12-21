@@ -1,4 +1,5 @@
 ﻿using eBarberShop.Models;
+using eBarberShop.Models.Requests;
 using eBarberShop.Models.SearchObjects;
 using System;
 using System.Collections.Generic;
@@ -22,9 +23,17 @@ namespace eBarberShop.WinUI
             InitializeComponent();
         }
 
-        private void frmNarudzba_Load(object sender, EventArgs e)
+        private async void frmNarudzba_Load(object sender, EventArgs e)
         {
+            await LoadData();
 
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            btn.Text = "Isporuci";
+            btn.DataPropertyName = "Isporuci";
+            btn.HeaderText = "Akcija";
+            btn.UseColumnTextForButtonValue = true;
+
+            dgvNarudzba.Columns.Add(btn);
         }
 
         private async void btnPrikazi_Click(object sender, EventArgs e)
@@ -35,9 +44,45 @@ namespace eBarberShop.WinUI
 
             search.BrojNarudzbe = txtNarudzbaSearch.Text;
 
-            var list = await service.GetAll<List<Narudzba>>(search);
+            await LoadData(search);
 
-            dgvNarudzba.DataSource = list;
+            
+        }
+
+        public async Task LoadData(NarudzbaSearchObject search = null)
+        {
+            if(search == null)
+            {
+                search = new NarudzbaSearchObject();
+                search.IsShipped = false;
+                var list = await service.GetAll<List<Narudzba>>(search);
+
+                dgvNarudzba.DataSource = list;
+
+            }
+            else
+            {
+                var list = await service.GetAll<List<Narudzba>>(search);
+
+                dgvNarudzba.DataSource = list;
+            }
+        }
+
+        private async void dgvNarudzba_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var grid = (DataGridView)sender;
+
+            if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                var narudzba = dgvNarudzba.SelectedRows[0].DataBoundItem as Narudzba;
+
+                NarudzbaUpdateRequest request = new NarudzbaUpdateRequest() { IsShipped = true };
+
+                    var result = await service.Update<Narudzba>(narudzba.NarudzbaID, request);
+
+                    await LoadData();
+
+            }
         }
     }
 }

@@ -274,5 +274,14 @@ namespace eBarberShop.WinUI
             childrenForm.WindowState = FormWindowState.Maximized;
             childrenForm.Show();
         }
+
+        private void NarudzbaPregled_Click(object sender, EventArgs e)
+        {
+            frmNarudzba childrenForm = new frmNarudzba();
+            childrenForm.MdiParent = this;
+            childrenForm.Text = "Window " + childFormNumber++;
+            childrenForm.WindowState = FormWindowState.Maximized;
+            childrenForm.Show();
+        }
     }
 }

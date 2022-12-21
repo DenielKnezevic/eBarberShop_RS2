@@ -44,6 +44,7 @@
             this.dgvRezervacija.Name = "dgvRezervacija";
             this.dgvRezervacija.RowHeadersWidth = 51;
             this.dgvRezervacija.RowTemplate.Height = 29;
+            this.dgvRezervacija.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRezervacija.Size = new System.Drawing.Size(776, 341);
             this.dgvRezervacija.TabIndex = 0;
             this.dgvRezervacija.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRezervacija_CellContentClick);

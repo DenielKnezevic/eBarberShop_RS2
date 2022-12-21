@@ -37,6 +37,7 @@
             // 
             // dgvTermini
             // 
+            this.dgvTermini.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTermini.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTermini.Location = new System.Drawing.Point(12, 88);
             this.dgvTermini.Name = "dgvTermini";

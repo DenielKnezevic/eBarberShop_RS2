@@ -56,9 +56,20 @@ namespace eBarberShop.WinUI
 
         public async Task LoadData(RezervacijaSearchObject search = null)
         { 
-            var list = await service.GetAll<List<Rezervacija>>(search);
+            if(search == null)
+            {
+                search = new RezervacijaSearchObject();
+                search.IsArchived=false;
+                var list = await service.GetAll<List<Rezervacija>>(search);
 
-            dgvRezervacija.DataSource = list;
+                dgvRezervacija.DataSource = list;
+            }
+            else
+            {
+                var list = await service.GetAll<List<Rezervacija>>(search);
+
+                dgvRezervacija.DataSource = list;
+            }
         }
 
         private async void dgvRezervacija_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -81,6 +92,8 @@ namespace eBarberShop.WinUI
 
                     var result = await service.Update<Rezervacija>(item.RezervacijaID, request);
 
+                    await LoadData();
+
                 }
                 else if(grid.Columns[e.ColumnIndex].Index == 6)
                 {
@@ -93,6 +106,8 @@ namespace eBarberShop.WinUI
                     request.KorisnikID = item.KorisnikID;
 
                     var result = await service.Update<Rezervacija>(item.RezervacijaID, request);
+
+                    await LoadData();
                 }
             }
         }

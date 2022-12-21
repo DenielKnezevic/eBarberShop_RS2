@@ -62,11 +62,11 @@
             this.Uposlenici,
             this.Proizvodi,
             this.Rezervacije,
+            this.Narudzba,
             this.Termini,
             this.Novosti,
             this.Slike,
-            this.Arhiva,
-            this.Narudzba});
+            this.Arhiva});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
@@ -137,7 +137,7 @@
             // RezervacijaPregled
             // 
             this.RezervacijaPregled.Name = "RezervacijaPregled";
-            this.RezervacijaPregled.Size = new System.Drawing.Size(224, 26);
+            this.RezervacijaPregled.Size = new System.Drawing.Size(218, 26);
             this.RezervacijaPregled.Text = "Pregled rezervacija";
             this.RezervacijaPregled.Click += new System.EventHandler(this.RezervacijaPregled_Click);
             // 
@@ -153,14 +153,14 @@
             // PregledTermina
             // 
             this.PregledTermina.Name = "PregledTermina";
-            this.PregledTermina.Size = new System.Drawing.Size(224, 26);
+            this.PregledTermina.Size = new System.Drawing.Size(198, 26);
             this.PregledTermina.Text = "Pregled termina";
             this.PregledTermina.Click += new System.EventHandler(this.PregledTermina_Click);
             // 
             // DodajTermin
             // 
             this.DodajTermin.Name = "DodajTermin";
-            this.DodajTermin.Size = new System.Drawing.Size(224, 26);
+            this.DodajTermin.Size = new System.Drawing.Size(198, 26);
             this.DodajTermin.Text = "Dodaj termin";
             this.DodajTermin.Click += new System.EventHandler(this.DodajTermin_Click);
             // 
@@ -242,8 +242,9 @@
             // NarudzbaPregled
             // 
             this.NarudzbaPregled.Name = "NarudzbaPregled";
-            this.NarudzbaPregled.Size = new System.Drawing.Size(205, 26);
+            this.NarudzbaPregled.Size = new System.Drawing.Size(224, 26);
             this.NarudzbaPregled.Text = "Pregled narudzbi";
+            this.NarudzbaPregled.Click += new System.EventHandler(this.NarudzbaPregled_Click);
             // 
             // mdiMain
             // 

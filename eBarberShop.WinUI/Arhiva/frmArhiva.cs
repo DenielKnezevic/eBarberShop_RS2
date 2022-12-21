@@ -47,9 +47,19 @@ namespace eBarberShop.WinUI
 
         public async Task LoadData(RezervacijaSearchObject search = null)
         { 
-            var list = await service.GetAll<List<Rezervacija>>(search);
+            if(search == null)
+            { 
+                search = new RezervacijaSearchObject();
+                search.IsArchived=true;
 
-            dgvArhiva.DataSource = list;
+                var list = await service.GetAll<List<Rezervacija>>(search);
+                dgvArhiva.DataSource = list;
+            }
+            else
+            {
+                var list = await service.GetAll<List<Rezervacija>>(search);
+                dgvArhiva.DataSource = list;
+            }
         }
 
         public async Task LoadUposlenike()

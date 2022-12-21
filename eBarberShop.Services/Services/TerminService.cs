@@ -2,6 +2,7 @@
 using eBarberShop.Models.Requests;
 using eBarberShop.Models.SearchObjects;
 using eBarberShop.Services.Database;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,13 @@ namespace eBarberShop.Services.Services
         public TerminService(eBarberShopContext db , IMapper mapper):base(db,mapper)
         {
 
+        }
+
+        public override IQueryable<Termin> AddInclude(IQueryable<Termin> entity)
+        {
+            entity = entity.Include(x => x.Korisnik);
+
+            return entity;
         }
 
         public override IQueryable<Termin> AddFilter(IQueryable<Termin> entity, TerminSearchObject obj)

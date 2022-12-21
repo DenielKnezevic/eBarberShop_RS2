@@ -9,5 +9,6 @@ namespace eBarberShop.Models.SearchObjects
         public string BrojNarudzbe { get; set; }
         public int? KorisnikID { get; set; }
         public DateTime? DatumNarudzbe { get; set; }
+        public bool IsShipped { get; set; }
     }
 }

@@ -6,5 +6,6 @@ namespace eBarberShop.Models.Requests
 {
     public class NarudzbaUpdateRequest
     {
+        public bool IsShipped { get; set; }
     }
 }
