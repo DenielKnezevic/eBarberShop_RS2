@@ -11,6 +11,7 @@ namespace eBarberShop.Models
         public int SlikaID { get; set; }
         [DisplayName("Dodao korisnik")]
         public string UposlenikIme => $"{Korisnik?.Ime} {Korisnik?.Prezime}";
+        [DisplayName("Slika")]
         public byte[] SlikaByte { get; set; }
         public string Opis { get; set; }
         [Browsable(false)]

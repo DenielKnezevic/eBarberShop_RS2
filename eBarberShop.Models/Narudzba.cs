@@ -10,14 +10,21 @@ namespace eBarberShop.Models
     {
         [Browsable(false)]
         public int NarudzbaID { get; set; }
+        [DisplayName("Broj narudzbe")]
         public string BrojNarudzbe { get; set; }
         [Browsable(false)]
         public int KorisnikID { get; set; }
         [DisplayName("Narucio korisnik")]
         public string KorisnikIme => $"{Korisnik?.Ime} {Korisnik?.Prezime}";
+        [DisplayName("Datum narudzbe")]
         public DateTime DatumNarudzbe { get; set; }
+        [DisplayName("Kupljeni proizvodi")]
         public string NarudzbaProizvodi => string.Join(", ", NarudzbaProizvodis?.Select(x => x.Proizvod?.Naziv)?.ToList());
+        [DisplayName("Ukupna cijena")]
+        public decimal UkupnaCijena => NarudzbaProizvodis.Sum(x => x.Proizvod.Cijena);
+        [DisplayName("Otkazano")]
         public bool IsCanceled { get; set; } = false;
+        [DisplayName("Isporuceno")]
         public bool IsShipped { get; set; } = false;
         [Browsable(false)]
         public virtual Korisnik Korisnik { get; set; }

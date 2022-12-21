@@ -1,5 +1,6 @@
 ﻿using eBarberShop.Models;
 using eBarberShop.Models.SearchObjects;
+using eBarberShop.WinUI.Arhiva;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -82,6 +83,22 @@ namespace eBarberShop.WinUI
             cmbUposlenik.ValueMember = "KorisnikID";
             cmbUposlenik.SelectedItem = null;
             cmbUposlenik.SelectedText = "Izaberite uposlenika";
+        }
+
+        private void btnIzvjestaj_Click(object sender, EventArgs e)
+        {
+            var list = dgvArhiva.DataSource as List<Rezervacija>;
+
+            if(list.Count > 0)
+            {
+                var frmReport = new frmArhivaRezervacijaReport(list);
+                frmReport.Show();
+            }
+
+            else
+            {
+                MessageBox.Show("Nema podataka za izvjestaj");
+            }
         }
     }
 }

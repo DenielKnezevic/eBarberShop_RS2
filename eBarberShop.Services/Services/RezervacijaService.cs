@@ -20,7 +20,7 @@ namespace eBarberShop.Services.Services
 
         public override IQueryable<Rezervacija> AddInclude(IQueryable<Rezervacija> entity)
         {
-            entity = entity.Include(x => x.Termin).Include(y => y.Korisnik); 
+            entity = entity.Include(x => x.Termin).ThenInclude(x => x.Korisnik).Include(y => y.Korisnik).Include(x => x.Usluga); 
 
             return entity;
         }

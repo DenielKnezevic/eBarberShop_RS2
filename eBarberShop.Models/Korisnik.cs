@@ -11,6 +11,7 @@ namespace eBarberShop.Models
         public int KorisnikID { get; set; }
         public string Ime { get; set; } 
         public string Prezime { get; set; } 
+        [DisplayName("Datum rodjenja")]
         public DateTime DatumRodjenja { get; set; }
         public string Email { get; set; }
         public string Telefon { get; set; }
@@ -19,6 +20,7 @@ namespace eBarberShop.Models
         public int GradID { get; set; }
         [Browsable(false)]
         public int DrzavaID { get; set; }
+        [DisplayName("Korisnicko ime")]
         public string KorisnickoIme { get; set; }
         public string Uloge => string.Join(", ", KorisnikUlogas?.Select(x => x.Uloga?.Naziv)?.ToList());
         [Browsable(false)]

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRezervacija" targetNamespace="http://tempuri.org/dsRezervacija.xsd" xmlns:mstns="http://tempuri.org/dsRezervacija.xsd" xmlns="http://tempuri.org/dsRezervacija.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRezervacija" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsRezervacija" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsRezervacija">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Rb" msprop:Generator_UserColumnName="Rb" msprop:Generator_ColumnPropNameInTable="RbColumn" msprop:Generator_ColumnPropNameInRow="Rb" msprop:Generator_ColumnVarNameInTable="columnRb" type="xs:string" minOccurs="0" />
+              <xs:element name="KorisnikIme" msprop:Generator_UserColumnName="KorisnikIme" msprop:Generator_ColumnPropNameInTable="KorisnikImeColumn" msprop:Generator_ColumnPropNameInRow="KorisnikIme" msprop:Generator_ColumnVarNameInTable="columnKorisnikIme" type="xs:string" minOccurs="0" />
+              <xs:element name="DatumRezervacije" msprop:Generator_UserColumnName="DatumRezervacije" msprop:Generator_ColumnPropNameInTable="DatumRezervacijeColumn" msprop:Generator_ColumnPropNameInRow="DatumRezervacije" msprop:Generator_ColumnVarNameInTable="columnDatumRezervacije" type="xs:string" minOccurs="0" />
+              <xs:element name="DatumTermina" msprop:Generator_UserColumnName="DatumTermina" msprop:Generator_ColumnPropNameInTable="DatumTerminaColumn" msprop:Generator_ColumnPropNameInRow="DatumTermina" msprop:Generator_ColumnVarNameInTable="columnDatumTermina" type="xs:string" minOccurs="0" />
+              <xs:element name="UposlenikIme" msprop:Generator_UserColumnName="UposlenikIme" msprop:Generator_ColumnPropNameInTable="UposlenikImeColumn" msprop:Generator_ColumnPropNameInRow="UposlenikIme" msprop:Generator_ColumnVarNameInTable="columnUposlenikIme" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

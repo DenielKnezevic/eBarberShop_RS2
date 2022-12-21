@@ -17,6 +17,7 @@ namespace eBarberShop.Models
         public int VrstaProizvodaID { get; set; }
         [Browsable(false)]
         public virtual VrstaProizvoda VrstaProizvoda { get; set; }
+        [DisplayName("Vrsta proizvoda")]
         public string VrstaProizvodaNaziv => VrstaProizvoda?.Naziv;
     }
 }

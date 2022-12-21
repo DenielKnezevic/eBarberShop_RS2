@@ -1,4 +1,5 @@
-﻿using eBarberShop.WinUI.Termin;
+﻿using eBarberShop.WinUI.Arhiva;
+using eBarberShop.WinUI.Termin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -278,6 +279,15 @@ namespace eBarberShop.WinUI
         private void NarudzbaPregled_Click(object sender, EventArgs e)
         {
             frmNarudzba childrenForm = new frmNarudzba();
+            childrenForm.MdiParent = this;
+            childrenForm.Text = "Window " + childFormNumber++;
+            childrenForm.WindowState = FormWindowState.Maximized;
+            childrenForm.Show();
+        }
+
+        private void ArhivaNarudzbe_Click(object sender, EventArgs e)
+        {
+            frmArhivaNarudzbe childrenForm = new frmArhivaNarudzbe();
             childrenForm.MdiParent = this;
             childrenForm.Text = "Window " + childFormNumber++;
             childrenForm.WindowState = FormWindowState.Maximized;

@@ -1,6 +1,6 @@
-﻿namespace eBarberShop.WinUI
+﻿namespace eBarberShop.WinUI.Arhiva
 {
-    partial class frmArhiva
+    partial class frmArhivaNarudzbe
     {
         /// <summary>
         /// Required designer variable.
@@ -28,94 +28,85 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvArhiva = new System.Windows.Forms.DataGridView();
+            this.txtArhivaSearch = new System.Windows.Forms.TextBox();
+            this.dtpDatum = new System.Windows.Forms.DateTimePicker();
             this.btnPrikazi = new System.Windows.Forms.Button();
-            this.dtpDatumOd = new System.Windows.Forms.DateTimePicker();
-            this.dtpDatumDo = new System.Windows.Forms.DateTimePicker();
-            this.cmbUposlenik = new System.Windows.Forms.ComboBox();
+            this.dgvArhiva = new System.Windows.Forms.DataGridView();
             this.btnIzvjestaj = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArhiva)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvArhiva
+            // txtArhivaSearch
             // 
-            this.dgvArhiva.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvArhiva.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvArhiva.Location = new System.Drawing.Point(12, 102);
-            this.dgvArhiva.Name = "dgvArhiva";
-            this.dgvArhiva.RowHeadersWidth = 51;
-            this.dgvArhiva.RowTemplate.Height = 29;
-            this.dgvArhiva.Size = new System.Drawing.Size(776, 336);
-            this.dgvArhiva.TabIndex = 0;
+            this.txtArhivaSearch.Location = new System.Drawing.Point(12, 50);
+            this.txtArhivaSearch.Name = "txtArhivaSearch";
+            this.txtArhivaSearch.Size = new System.Drawing.Size(396, 27);
+            this.txtArhivaSearch.TabIndex = 7;
+            // 
+            // dtpDatum
+            // 
+            this.dtpDatum.Location = new System.Drawing.Point(418, 50);
+            this.dtpDatum.Name = "dtpDatum";
+            this.dtpDatum.Size = new System.Drawing.Size(264, 27);
+            this.dtpDatum.TabIndex = 6;
             // 
             // btnPrikazi
             // 
-            this.btnPrikazi.Location = new System.Drawing.Point(694, 67);
+            this.btnPrikazi.Location = new System.Drawing.Point(694, 49);
             this.btnPrikazi.Name = "btnPrikazi";
             this.btnPrikazi.Size = new System.Drawing.Size(94, 29);
-            this.btnPrikazi.TabIndex = 1;
+            this.btnPrikazi.TabIndex = 5;
             this.btnPrikazi.Text = "Prikazi";
             this.btnPrikazi.UseVisualStyleBackColor = true;
             this.btnPrikazi.Click += new System.EventHandler(this.btnPrikazi_Click);
             // 
-            // dtpDatumOd
+            // dgvArhiva
             // 
-            this.dtpDatumOd.Location = new System.Drawing.Point(12, 69);
-            this.dtpDatumOd.Name = "dtpDatumOd";
-            this.dtpDatumOd.Size = new System.Drawing.Size(250, 27);
-            this.dtpDatumOd.TabIndex = 2;
-            // 
-            // dtpDatumDo
-            // 
-            this.dtpDatumDo.Location = new System.Drawing.Point(268, 69);
-            this.dtpDatumDo.Name = "dtpDatumDo";
-            this.dtpDatumDo.Size = new System.Drawing.Size(250, 27);
-            this.dtpDatumDo.TabIndex = 3;
-            // 
-            // cmbUposlenik
-            // 
-            this.cmbUposlenik.FormattingEnabled = true;
-            this.cmbUposlenik.Location = new System.Drawing.Point(524, 68);
-            this.cmbUposlenik.Name = "cmbUposlenik";
-            this.cmbUposlenik.Size = new System.Drawing.Size(164, 28);
-            this.cmbUposlenik.TabIndex = 4;
+            this.dgvArhiva.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvArhiva.Location = new System.Drawing.Point(12, 94);
+            this.dgvArhiva.Name = "dgvArhiva";
+            this.dgvArhiva.RowHeadersWidth = 51;
+            this.dgvArhiva.RowTemplate.Height = 29;
+            this.dgvArhiva.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvArhiva.Size = new System.Drawing.Size(776, 344);
+            this.dgvArhiva.TabIndex = 4;
+            this.dgvArhiva.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArhiva_CellContentClick);
             // 
             // btnIzvjestaj
             // 
             this.btnIzvjestaj.Location = new System.Drawing.Point(652, 444);
             this.btnIzvjestaj.Name = "btnIzvjestaj";
             this.btnIzvjestaj.Size = new System.Drawing.Size(136, 29);
-            this.btnIzvjestaj.TabIndex = 5;
+            this.btnIzvjestaj.TabIndex = 8;
             this.btnIzvjestaj.Text = "Isprintaj izvjestaj";
             this.btnIzvjestaj.UseVisualStyleBackColor = true;
             this.btnIzvjestaj.Click += new System.EventHandler(this.btnIzvjestaj_Click);
             // 
-            // frmArhiva
+            // frmArhivaNarudzbe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 502);
+            this.ClientSize = new System.Drawing.Size(800, 490);
             this.Controls.Add(this.btnIzvjestaj);
-            this.Controls.Add(this.cmbUposlenik);
-            this.Controls.Add(this.dtpDatumDo);
-            this.Controls.Add(this.dtpDatumOd);
+            this.Controls.Add(this.txtArhivaSearch);
+            this.Controls.Add(this.dtpDatum);
             this.Controls.Add(this.btnPrikazi);
             this.Controls.Add(this.dgvArhiva);
-            this.Name = "frmArhiva";
-            this.Text = "frmArhiva";
-            this.Load += new System.EventHandler(this.frmArhiva_Load);
+            this.Name = "frmArhivaNarudzbe";
+            this.Text = "frmArhivaNarudzbe";
+            this.Load += new System.EventHandler(this.frmArhivaNarudzbe_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArhiva)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private DataGridView dgvArhiva;
+        private TextBox txtArhivaSearch;
+        private DateTimePicker dtpDatum;
         private Button btnPrikazi;
-        private DateTimePicker dtpDatumOd;
-        private DateTimePicker dtpDatumDo;
-        private ComboBox cmbUposlenik;
+        private DataGridView dgvArhiva;
         private Button btnIzvjestaj;
     }
 }

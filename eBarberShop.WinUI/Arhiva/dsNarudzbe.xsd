@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsNarudzbe" targetNamespace="http://tempuri.org/dsNarudzbe.xsd" xmlns:mstns="http://tempuri.org/dsNarudzbe.xsd" xmlns="http://tempuri.org/dsNarudzbe.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsNarudzbe" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="dsNarudzbe" msprop:Generator_DataSetName="dsNarudzbe">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Narudzbe" msprop:Generator_RowEvHandlerName="NarudzbeRowChangeEventHandler" msprop:Generator_RowDeletedName="NarudzbeRowDeleted" msprop:Generator_RowDeletingName="NarudzbeRowDeleting" msprop:Generator_RowEvArgName="NarudzbeRowChangeEvent" msprop:Generator_TablePropName="Narudzbe" msprop:Generator_RowChangedName="NarudzbeRowChanged" msprop:Generator_RowChangingName="NarudzbeRowChanging" msprop:Generator_TableClassName="NarudzbeDataTable" msprop:Generator_RowClassName="NarudzbeRow" msprop:Generator_TableVarName="tableNarudzbe" msprop:Generator_UserTableName="Narudzbe">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Rb" msprop:Generator_ColumnPropNameInRow="Rb" msprop:Generator_ColumnPropNameInTable="RbColumn" msprop:Generator_ColumnVarNameInTable="columnRb" msprop:Generator_UserColumnName="Rb" type="xs:string" minOccurs="0" />
+              <xs:element name="Kupac" msprop:Generator_ColumnPropNameInRow="Kupac" msprop:Generator_ColumnPropNameInTable="KupacColumn" msprop:Generator_ColumnVarNameInTable="columnKupac" msprop:Generator_UserColumnName="Kupac" type="xs:string" minOccurs="0" />
+              <xs:element name="Proizvodi" msprop:Generator_ColumnPropNameInRow="Proizvodi" msprop:Generator_ColumnPropNameInTable="ProizvodiColumn" msprop:Generator_ColumnVarNameInTable="columnProizvodi" msprop:Generator_UserColumnName="Proizvodi" type="xs:string" minOccurs="0" />
+              <xs:element name="UkupnaCijena" msprop:Generator_ColumnPropNameInRow="UkupnaCijena" msprop:Generator_ColumnPropNameInTable="UkupnaCijenaColumn" msprop:Generator_ColumnVarNameInTable="columnUkupnaCijena" msprop:Generator_UserColumnName="UkupnaCijena" type="xs:string" minOccurs="0" />
+              <xs:element name="DatumNarudzbe" msprop:Generator_ColumnPropNameInRow="DatumNarudzbe" msprop:Generator_ColumnPropNameInTable="DatumNarudzbeColumn" msprop:Generator_ColumnVarNameInTable="columnDatumNarudzbe" msprop:Generator_UserColumnName="DatumNarudzbe" type="xs:string" minOccurs="0" />
+              <xs:element name="BrojNarudzbe" msprop:Generator_ColumnPropNameInRow="BrojNarudzbe" msprop:Generator_ColumnPropNameInTable="BrojNarudzbeColumn" msprop:Generator_ColumnVarNameInTable="columnBrojNarudzbe" msprop:Generator_UserColumnName="BrojNarudzbe" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

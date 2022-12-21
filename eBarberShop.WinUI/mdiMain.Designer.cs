@@ -38,6 +38,8 @@
             this.DodajProizvod = new System.Windows.Forms.ToolStripMenuItem();
             this.Rezervacije = new System.Windows.Forms.ToolStripMenuItem();
             this.RezervacijaPregled = new System.Windows.Forms.ToolStripMenuItem();
+            this.Narudzba = new System.Windows.Forms.ToolStripMenuItem();
+            this.NarudzbaPregled = new System.Windows.Forms.ToolStripMenuItem();
             this.Termini = new System.Windows.Forms.ToolStripMenuItem();
             this.PregledTermina = new System.Windows.Forms.ToolStripMenuItem();
             this.DodajTermin = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,9 +51,8 @@
             this.SlikaDodaj = new System.Windows.Forms.ToolStripMenuItem();
             this.Arhiva = new System.Windows.Forms.ToolStripMenuItem();
             this.ArhivaPregled = new System.Windows.Forms.ToolStripMenuItem();
-            this.Narudzba = new System.Windows.Forms.ToolStripMenuItem();
-            this.NarudzbaPregled = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.ArhivaNarudzbe = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -141,6 +142,21 @@
             this.RezervacijaPregled.Text = "Pregled rezervacija";
             this.RezervacijaPregled.Click += new System.EventHandler(this.RezervacijaPregled_Click);
             // 
+            // Narudzba
+            // 
+            this.Narudzba.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.NarudzbaPregled});
+            this.Narudzba.Name = "Narudzba";
+            this.Narudzba.Size = new System.Drawing.Size(88, 24);
+            this.Narudzba.Text = "Narudzba";
+            // 
+            // NarudzbaPregled
+            // 
+            this.NarudzbaPregled.Name = "NarudzbaPregled";
+            this.NarudzbaPregled.Size = new System.Drawing.Size(205, 26);
+            this.NarudzbaPregled.Text = "Pregled narudzbi";
+            this.NarudzbaPregled.Click += new System.EventHandler(this.NarudzbaPregled_Click);
+            // 
             // Termini
             // 
             this.Termini.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -217,7 +233,8 @@
             // Arhiva
             // 
             this.Arhiva.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ArhivaPregled});
+            this.ArhivaPregled,
+            this.ArhivaNarudzbe});
             this.Arhiva.Name = "Arhiva";
             this.Arhiva.Size = new System.Drawing.Size(65, 24);
             this.Arhiva.Text = "Arhiva";
@@ -227,24 +244,16 @@
             // ArhivaPregled
             // 
             this.ArhivaPregled.Name = "ArhivaPregled";
-            this.ArhivaPregled.Size = new System.Drawing.Size(187, 26);
-            this.ArhivaPregled.Text = "Pregled arhive";
+            this.ArhivaPregled.Size = new System.Drawing.Size(262, 26);
+            this.ArhivaPregled.Text = "Pregled arhive rezervacija";
             this.ArhivaPregled.Click += new System.EventHandler(this.ArhivaPregled_Click);
             // 
-            // Narudzba
+            // ArhivaNarudzbe
             // 
-            this.Narudzba.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.NarudzbaPregled});
-            this.Narudzba.Name = "Narudzba";
-            this.Narudzba.Size = new System.Drawing.Size(88, 24);
-            this.Narudzba.Text = "Narudzba";
-            // 
-            // NarudzbaPregled
-            // 
-            this.NarudzbaPregled.Name = "NarudzbaPregled";
-            this.NarudzbaPregled.Size = new System.Drawing.Size(224, 26);
-            this.NarudzbaPregled.Text = "Pregled narudzbi";
-            this.NarudzbaPregled.Click += new System.EventHandler(this.NarudzbaPregled_Click);
+            this.ArhivaNarudzbe.Name = "ArhivaNarudzbe";
+            this.ArhivaNarudzbe.Size = new System.Drawing.Size(262, 26);
+            this.ArhivaNarudzbe.Text = "Pregled arhive narudzbi";
+            this.ArhivaNarudzbe.Click += new System.EventHandler(this.ArhivaNarudzbe_Click);
             // 
             // mdiMain
             // 
@@ -290,6 +299,7 @@
         private ToolStripMenuItem DodajTermin;
         private ToolStripMenuItem Narudzba;
         private ToolStripMenuItem NarudzbaPregled;
+        private ToolStripMenuItem ArhivaNarudzbe;
     }
 }
 

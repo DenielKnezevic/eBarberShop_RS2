@@ -9,7 +9,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Arhiva\NarudzbeReport.rdlc" />
+    <None Remove="Arhiva\RezervacijaReport.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Arhiva\NarudzbeReport.rdlc" />
+    <EmbeddedResource Include="Arhiva\RezervacijaReport.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Flurl.Http" Version="3.2.4" />
+    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.17" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,6 +28,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Arhiva\dsNarudzbe.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>dsNarudzbe.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Arhiva\dsRezervacija.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>dsRezervacija.xsd</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -29,6 +50,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Arhiva\dsNarudzbe.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsNarudzbe.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Arhiva\dsRezervacija.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRezervacija.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>
