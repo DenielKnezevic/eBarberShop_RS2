@@ -29,30 +29,34 @@
         private void InitializeComponent()
         {
             this.txtArhivaSearch = new System.Windows.Forms.TextBox();
-            this.dtpDatum = new System.Windows.Forms.DateTimePicker();
+            this.dtpDatumDo = new System.Windows.Forms.DateTimePicker();
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.dgvArhiva = new System.Windows.Forms.DataGridView();
             this.btnIzvjestaj = new System.Windows.Forms.Button();
+            this.dtpDatumOd = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArhiva)).BeginInit();
             this.SuspendLayout();
             // 
             // txtArhivaSearch
             // 
-            this.txtArhivaSearch.Location = new System.Drawing.Point(12, 50);
+            this.txtArhivaSearch.Location = new System.Drawing.Point(12, 61);
             this.txtArhivaSearch.Name = "txtArhivaSearch";
-            this.txtArhivaSearch.Size = new System.Drawing.Size(396, 27);
+            this.txtArhivaSearch.Size = new System.Drawing.Size(176, 27);
             this.txtArhivaSearch.TabIndex = 7;
             // 
-            // dtpDatum
+            // dtpDatumDo
             // 
-            this.dtpDatum.Location = new System.Drawing.Point(418, 50);
-            this.dtpDatum.Name = "dtpDatum";
-            this.dtpDatum.Size = new System.Drawing.Size(264, 27);
-            this.dtpDatum.TabIndex = 6;
+            this.dtpDatumDo.Location = new System.Drawing.Point(441, 61);
+            this.dtpDatumDo.Name = "dtpDatumDo";
+            this.dtpDatumDo.Size = new System.Drawing.Size(241, 27);
+            this.dtpDatumDo.TabIndex = 6;
             // 
             // btnPrikazi
             // 
-            this.btnPrikazi.Location = new System.Drawing.Point(694, 49);
+            this.btnPrikazi.Location = new System.Drawing.Point(694, 60);
             this.btnPrikazi.Name = "btnPrikazi";
             this.btnPrikazi.Size = new System.Drawing.Size(94, 29);
             this.btnPrikazi.TabIndex = 5;
@@ -82,14 +86,52 @@
             this.btnIzvjestaj.UseVisualStyleBackColor = true;
             this.btnIzvjestaj.Click += new System.EventHandler(this.btnIzvjestaj_Click);
             // 
+            // dtpDatumOd
+            // 
+            this.dtpDatumOd.Location = new System.Drawing.Point(194, 61);
+            this.dtpDatumOd.Name = "dtpDatumOd";
+            this.dtpDatumOd.Size = new System.Drawing.Size(241, 27);
+            this.dtpDatumOd.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(441, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 20);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Datum do:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(194, 38);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 20);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Datum od:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 38);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(102, 20);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Broj narudzbe";
+            // 
             // frmArhivaNarudzbe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 490);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dtpDatumOd);
             this.Controls.Add(this.btnIzvjestaj);
             this.Controls.Add(this.txtArhivaSearch);
-            this.Controls.Add(this.dtpDatum);
+            this.Controls.Add(this.dtpDatumDo);
             this.Controls.Add(this.btnPrikazi);
             this.Controls.Add(this.dgvArhiva);
             this.Name = "frmArhivaNarudzbe";
@@ -104,9 +146,13 @@
         #endregion
 
         private TextBox txtArhivaSearch;
-        private DateTimePicker dtpDatum;
+        private DateTimePicker dtpDatumDo;
         private Button btnPrikazi;
         private DataGridView dgvArhiva;
         private Button btnIzvjestaj;
+        private DateTimePicker dtpDatumOd;
+        private Label label2;
+        private Label label1;
+        private Label label3;
     }
 }

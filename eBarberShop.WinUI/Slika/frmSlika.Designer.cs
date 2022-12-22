@@ -30,6 +30,8 @@
         {
             this.dgvSlika = new System.Windows.Forms.DataGridView();
             this.btnPrikazi = new System.Windows.Forms.Button();
+            this.cmbKorisnik = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSlika)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +50,7 @@
             // 
             // btnPrikazi
             // 
-            this.btnPrikazi.Location = new System.Drawing.Point(694, 49);
+            this.btnPrikazi.Location = new System.Drawing.Point(694, 59);
             this.btnPrikazi.Name = "btnPrikazi";
             this.btnPrikazi.Size = new System.Drawing.Size(94, 29);
             this.btnPrikazi.TabIndex = 1;
@@ -56,11 +58,30 @@
             this.btnPrikazi.UseVisualStyleBackColor = true;
             this.btnPrikazi.Click += new System.EventHandler(this.btnPrikazi_Click);
             // 
+            // cmbKorisnik
+            // 
+            this.cmbKorisnik.FormattingEnabled = true;
+            this.cmbKorisnik.Location = new System.Drawing.Point(12, 60);
+            this.cmbKorisnik.Name = "cmbKorisnik";
+            this.cmbKorisnik.Size = new System.Drawing.Size(295, 28);
+            this.cmbKorisnik.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 20);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Uposlenik:";
+            // 
             // frmSlika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmbKorisnik);
             this.Controls.Add(this.btnPrikazi);
             this.Controls.Add(this.dgvSlika);
             this.Name = "frmSlika";
@@ -68,6 +89,7 @@
             this.Load += new System.EventHandler(this.frmSlika_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSlika)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -75,5 +97,7 @@
 
         private DataGridView dgvSlika;
         private Button btnPrikazi;
+        private ComboBox cmbKorisnik;
+        private Label label2;
     }
 }

@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -27,7 +28,7 @@ namespace eBarberShop.WinUI.Termin
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+          
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -80,25 +81,95 @@ namespace eBarberShop.WinUI.Termin
 
         private async void btnDodaj_Click(object sender, EventArgs e)
         {
-           if(_termin != null)
+           if(ValidateChildren())
             {
-                TerminUpsertRequest request = new TerminUpsertRequest();
+                string pattern = @"\d{2}:\d{2}";
+                bool isMatch = Regex.IsMatch(txtVrijeme.Text, pattern);
+                if (isMatch == false)
+                {
+                    MessageBox.Show("Unesite samo brojeve i : (format mora biti 12:00)");
+                    return;
+                }
 
-                request.VrijemeTermina = txtVrijeme.Text;
-                request.DatumTermina = dtpDatum.Value.Date;
-                request.KorisnikID = Convert.ToInt32(cmbUposlenici.SelectedValue);
+                if (_termin != null)
+                {
+                    TerminUpsertRequest request = new TerminUpsertRequest();
 
-                var insert = await service.Update<Models.Termin>(_termin.KorisnikID,request);
+                    request.VrijemeTermina = txtVrijeme.Text;
+                    request.DatumTermina = dtpDatum.Value.Date;
+                    request.KorisnikID = Convert.ToInt32(cmbUposlenici.SelectedValue);
+
+                    var insert = await service.Update<Models.Termin>(_termin.KorisnikID, request);
+
+                    MessageBox.Show("Uspjesno ste uredili termin");
+                }
+                else
+                {
+                    TerminUpsertRequest request = new TerminUpsertRequest();
+
+                    request.VrijemeTermina = txtVrijeme.Text;
+                    request.DatumTermina = dtpDatum.Value.Date;
+                    request.KorisnikID = Convert.ToInt32(cmbUposlenici.SelectedValue);
+
+                    var insert = await service.Add<Models.Termin>(request);
+
+                    MessageBox.Show("Uspjesno ste dodali termin");
+                }
+            }
+        }
+
+        private void dtpDatum_Validating(object sender, CancelEventArgs e)
+        {
+            if(dtpDatum.Value.Date < DateTime.Now.Date)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(dtpDatum, "Datum ne smije biti manji od trenutnog");
             }
             else
             {
-                TerminUpsertRequest request = new TerminUpsertRequest();
+                e.Cancel = false;
+                errorProvider.SetError(dtpDatum, "");
+            }
+        }
 
-                request.VrijemeTermina = txtVrijeme.Text;
-                request.DatumTermina = dtpDatum.Value.Date;
-                request.KorisnikID = Convert.ToInt32(cmbUposlenici.SelectedValue);
+        private void cmbUposlenici_Validated(object sender, EventArgs e)
+        {
+            
+        }
 
-                var insert = await service.Add<Models.Termin>(request);
+        private void cmbUposlenici_Validating(object sender, CancelEventArgs e)
+        {
+            if (Convert.ToInt32((cmbUposlenici.SelectedValue)) < 1)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(cmbUposlenici, "Morate odabrati uposlenika");
+            }
+
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(cmbUposlenici, "");
+            }
+        }
+
+        private void txtVrijeme_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtVrijeme.Text))
+            {
+                e.Cancel = true;
+                txtVrijeme.Focus();
+                errorProvider.SetError(txtVrijeme, "Vrijeme ne moze ostati prazno polje");
+            }
+            else if (txtVrijeme.Text.Length < 4)
+            {
+                e.Cancel = true;
+                txtVrijeme.Focus();
+                errorProvider.SetError(txtVrijeme, "Vrijeme ne moze da sadrzi manje od 4 karaktera");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(txtVrijeme, "");
             }
         }
     }

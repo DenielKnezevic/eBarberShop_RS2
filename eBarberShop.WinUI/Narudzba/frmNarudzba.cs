@@ -40,8 +40,8 @@ namespace eBarberShop.WinUI
         {
             NarudzbaSearchObject search = new NarudzbaSearchObject();
 
-            search.DatumNarudzbe = dtpDatum.Value.Date;
-
+            search.DatumDo = dtpDatumDo.Value.Date;
+            search.DatumOd = dtpDatumOd.Value.Date;
             search.BrojNarudzbe = txtNarudzbaSearch.Text;
 
             await LoadData(search);

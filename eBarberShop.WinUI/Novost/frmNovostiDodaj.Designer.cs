@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -37,8 +38,10 @@
             this.rtbSadrzaj = new System.Windows.Forms.RichTextBox();
             this.txtNaslov = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -104,6 +107,7 @@
             this.pbSlika.TabIndex = 2;
             this.pbSlika.TabStop = false;
             this.pbSlika.Click += new System.EventHandler(this.pbSlika_Click);
+            this.pbSlika.Validating += new System.ComponentModel.CancelEventHandler(this.pbSlika_Validating);
             // 
             // rtbSadrzaj
             // 
@@ -112,6 +116,7 @@
             this.rtbSadrzaj.Size = new System.Drawing.Size(171, 120);
             this.rtbSadrzaj.TabIndex = 1;
             this.rtbSadrzaj.Text = "";
+            this.rtbSadrzaj.Validating += new System.ComponentModel.CancelEventHandler(this.rtbSadrzaj_Validating);
             // 
             // txtNaslov
             // 
@@ -119,10 +124,15 @@
             this.txtNaslov.Name = "txtNaslov";
             this.txtNaslov.Size = new System.Drawing.Size(171, 27);
             this.txtNaslov.TabIndex = 0;
+            this.txtNaslov.Validating += new System.ComponentModel.CancelEventHandler(this.txtNaslov_Validating);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog";
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // frmNovostiDodaj
             // 
@@ -136,6 +146,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -151,5 +162,6 @@
         private Label label3;
         private Button btnDodajNovost;
         private Button btnDodajSliku;
+        private ErrorProvider errorProvider;
     }
 }

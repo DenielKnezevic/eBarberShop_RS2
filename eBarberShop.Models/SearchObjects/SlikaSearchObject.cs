@@ -4,10 +4,8 @@ using System.Text;
 
 namespace eBarberShop.Models.SearchObjects
 {
-    public class TerminSearchObject : BaseSearchObject
+    public class SlikaSearchObject : BaseSearchObject
     {
         public int? KorisnikID { get; set; }
-        public DateTime? DatumOd { get; set; }
-        public DateTime? DatumDo { get; set; }
     }
 }

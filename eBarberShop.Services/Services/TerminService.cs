@@ -32,9 +32,14 @@ namespace eBarberShop.Services.Services
                 entity = entity.Where(x => x.KorisnikID == obj.KorisnikID);
             }
 
-            if(obj.DatumTermina.HasValue)
+            if(obj.DatumOd.HasValue)
             {
-                entity = entity.Where(x => x.DatumTermina == obj.DatumTermina);
+                entity = entity.Where(x => x.DatumTermina.Date >= obj.DatumOd.Value);
+            }
+
+            if (obj.DatumDo.HasValue)
+            {
+                entity = entity.Where(x => x.DatumTermina <= obj.DatumDo.Value);
             }
 
             return entity;

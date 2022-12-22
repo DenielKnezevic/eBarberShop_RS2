@@ -64,7 +64,8 @@ namespace eBarberShop.WinUI
             if (Convert.ToInt32(cmbUposlenici.SelectedValue) > 0)
                 search.KorisnikID = Convert.ToInt32(cmbUposlenici.SelectedValue);
 
-            search.DatumTermina = dtpDatum.Value.Date;
+            search.DatumOd = dtpDatumOd.Value.Date;
+            search.DatumDo = dtpDatumDo.Value.Date;
             await LoadData(search);
         }
 

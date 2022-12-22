@@ -61,12 +61,17 @@ namespace eBarberShop.Services.Services
                 entity = entity.Where(x => x.KorisnikID == obj.KorisnikID);
             }
 
-            if(obj.DatumNarudzbe.HasValue)
+            if(obj.DatumOd.HasValue)
             {
-                entity = entity.Where(x => x.DatumNarudzbe.Date == obj.DatumNarudzbe);
+                entity = entity.Where(x => x.DatumNarudzbe.Date >= obj.DatumOd.Value);
             }
 
-            if(obj.IsShipped == true)
+            if (obj.DatumDo.HasValue)
+            {
+                entity = entity.Where(x => x.DatumNarudzbe.Date <= obj.DatumDo.Value);
+            }
+
+            if (obj.IsShipped == true)
             {
                 entity = entity.Where(x => x.IsShipped == obj.IsShipped);
             }

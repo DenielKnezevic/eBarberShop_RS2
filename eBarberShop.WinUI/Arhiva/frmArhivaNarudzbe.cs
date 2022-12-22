@@ -55,8 +55,8 @@ namespace eBarberShop.WinUI.Arhiva
         {
             NarudzbaSearchObject search = new NarudzbaSearchObject();
 
-            search.DatumNarudzbe = dtpDatum.Value.Date;
-
+            search.DatumDo = dtpDatumDo.Value.Date;
+            search.DatumOd = dtpDatumOd.Value.Date;
             search.BrojNarudzbe = txtArhivaSearch.Text;
             search.IsShipped = true;
 

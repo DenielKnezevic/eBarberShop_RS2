@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnDodajProizvod = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,8 +40,10 @@
             this.txtCijena = new System.Windows.Forms.TextBox();
             this.txtNaziv = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -105,6 +108,7 @@
             this.cmbVrstaProizvoda.Name = "cmbVrstaProizvoda";
             this.cmbVrstaProizvoda.Size = new System.Drawing.Size(194, 28);
             this.cmbVrstaProizvoda.TabIndex = 1;
+            this.cmbVrstaProizvoda.Validating += new System.ComponentModel.CancelEventHandler(this.cmbVrstaProizvoda_Validating);
             // 
             // btnDodajSliku
             // 
@@ -131,6 +135,8 @@
             this.txtCijena.Name = "txtCijena";
             this.txtCijena.Size = new System.Drawing.Size(192, 27);
             this.txtCijena.TabIndex = 1;
+            this.txtCijena.TextChanged += new System.EventHandler(this.txtCijena_TextChanged);
+            this.txtCijena.Validating += new System.ComponentModel.CancelEventHandler(this.txtCijena_Validating);
             // 
             // txtNaziv
             // 
@@ -138,10 +144,15 @@
             this.txtNaziv.Name = "txtNaziv";
             this.txtNaziv.Size = new System.Drawing.Size(194, 27);
             this.txtNaziv.TabIndex = 0;
+            this.txtNaziv.Validating += new System.ComponentModel.CancelEventHandler(this.txtNaziv_Validating);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog";
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // frmProizvodDodaj
             // 
@@ -155,6 +166,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -172,5 +184,6 @@
         private Button btnDodajSliku;
         private OpenFileDialog openFileDialog1;
         private Button btnDodajProizvod;
+        private ErrorProvider errorProvider;
     }
 }

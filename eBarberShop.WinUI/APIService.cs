@@ -14,7 +14,7 @@ namespace eBarberShop.WinUI
         public static string Username = null;
         public static string Password = null;
         public static Korisnik Korisnik = null;
-        public string Endpoint = Resources.LocalAPI;
+        public string Endpoint = Resources.API;
         public string Resource;
 
         public APIService(string resource)
@@ -24,49 +24,151 @@ namespace eBarberShop.WinUI
 
         public async Task<T> GetAll<T>(object search = null)
         {
-            var Query = "";
+            try
+            {
+                var Query = "";
 
-            if (search != null)
-                Query = await search.ToQueryString();
+                if (search != null)
+                    Query = await search.ToQueryString();
 
-            var result = await $"{Endpoint}{Resource}?{Query}".WithBasicAuth(Username,Password).GetJsonAsync<T>();
+                var result = await $"{Endpoint}{Resource}?{Query}".WithBasicAuth(Username, Password).GetJsonAsync<T>();
 
-            return result;
+                return result;
+            }
+
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return default(T);
+            }
         }
 
         public async Task<T> Add<T>(object entity)
         {
-            var result = await $"{Endpoint}{Resource}".WithBasicAuth(Username, Password).PostJsonAsync(entity).ReceiveJson<T>();
+            try
+            {
+                var result = await $"{Endpoint}{Resource}".WithBasicAuth(Username, Password).PostJsonAsync(entity).ReceiveJson<T>();
 
-            return result;
+                return result;
+            }
+
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return default(T);
+            }
         }
 
         public async Task<T> Update<T>(int id,object entity)
         {
-            var result = await $"{Endpoint}{Resource}/{id}".WithBasicAuth(Username, Password).PutJsonAsync(entity).ReceiveJson<T>();
+            try
+            {
+                var result = await $"{Endpoint}{Resource}/{id}".WithBasicAuth(Username, Password).PutJsonAsync(entity).ReceiveJson<T>();
 
-            return result;
+                return result;
+            }
+
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return default(T);
+            }
         }
 
         public async Task<Models.Korisnik> AddUloga(int id, object request)
         {
-            var result = await $"{Endpoint}{Resource}/{id}/AddUloga".WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<Models.Korisnik>();
+            try
+            {
+                var result = await $"{Endpoint}{Resource}/{id}/AddUloga".WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<Models.Korisnik>();
 
-            return result;
+                return result;
+            }
+
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return default(Models.Korisnik);
+            }
         }
 
         public async Task<Models.Korisnik> DeleteUloga(int id, object request)
         {
-            var result = await $"{Endpoint}{Resource}/{id}/DeleteUloga".WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<Models.Korisnik>();
+            try
+            {
+                var result = await $"{Endpoint}{Resource}/{id}/DeleteUloga".WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<Models.Korisnik>();
 
-            return result;
+                return result;
+            }
+
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return default(Models.Korisnik);
+            }
         }
 
         public async Task<Models.Korisnik> Authenticate()
         {
-            var result = await $"{Endpoint}{Resource}/Authenticate".WithBasicAuth(Username, Password).GetJsonAsync<Models.Korisnik>();
+            try
+            {
+                var result = await $"{Endpoint}{Resource}/Authenticate".WithBasicAuth(Username, Password).GetJsonAsync<Models.Korisnik>();
 
-            return result;
+                return result;
+            }
+
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return default(Models.Korisnik);
+            }
         }
     }
 }

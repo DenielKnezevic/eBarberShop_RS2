@@ -46,22 +46,56 @@ namespace eBarberShop.WinUI
 
         private async void Dodaj_Click(object sender, EventArgs e)
         {
-            if(_slika != null)
+           if(ValidateChildren())
             {
-                SlikaUpdateRequest update = new SlikaUpdateRequest();
-                update.SlikaByte = ImageHelper.FromImageToByte(pbSlika.Image);
-                update.Opis = rtbOpis.Text;
+                if(pbSlika.Image == null)
+                {
+                    MessageBox.Show("Slika je obavezna", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-                var request = await service.Update<Slika>(_slika.SlikaID, update);
+                if (_slika != null)
+                {
+                    SlikaUpdateRequest update = new SlikaUpdateRequest();
+                    update.SlikaByte = ImageHelper.FromImageToByte(pbSlika.Image);
+                    update.Opis = rtbOpis.Text;
+
+                    var request = await service.Update<Slika>(_slika.SlikaID, update);
+
+                    MessageBox.Show("Uspjesno ste uredili sliku");
+                }
+                else
+                {
+                    SlikaInsertRequest insert = new SlikaInsertRequest();
+                    insert.SlikaByte = ImageHelper.FromImageToByte(pbSlika.Image);
+                    insert.Opis = rtbOpis.Text;
+                    insert.KorisnikID = APIService.Korisnik.KorisnikID;
+
+                    var request = await service.Add<Slika>(insert);
+
+                    MessageBox.Show("Uspjesno ste dodali sliku");
+                }
+            }
+        }
+
+        private void rtbOpis_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(rtbOpis.Text))
+            {
+                e.Cancel = true;
+                rtbOpis.Focus();
+                errorProvider.SetError(rtbOpis, "Opis ne moze ostati prazno polje");
+            }
+            else if (rtbOpis.Text.Length < 10)
+            {
+                e.Cancel = true;
+                rtbOpis.Focus();
+                errorProvider.SetError(rtbOpis, "Opis ne moze da sadrzi manje od 4 karaktera");
             }
             else
-            { 
-                SlikaInsertRequest insert = new SlikaInsertRequest();
-                insert.SlikaByte = ImageHelper.FromImageToByte(pbSlika.Image);
-                insert.Opis = rtbOpis.Text;
-                insert.KorisnikID = APIService.Korisnik.KorisnikID;
-
-                var request = await service.Add<Slika>(insert);
+            {
+                e.Cancel = false;
+                errorProvider.SetError(rtbOpis, "");
             }
         }
     }

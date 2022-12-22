@@ -28,15 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnDodaj = new System.Windows.Forms.Button();
             this.txtVrijeme = new System.Windows.Forms.TextBox();
             this.cmbUposlenici = new System.Windows.Forms.ComboBox();
             this.dtpDatum = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -54,6 +57,24 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Termin";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(106, 206);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(114, 20);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Vrijeme termina";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(106, 129);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(74, 20);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Uposlenik";
             // 
             // label1
             // 
@@ -81,6 +102,7 @@
             this.txtVrijeme.Size = new System.Drawing.Size(250, 27);
             this.txtVrijeme.TabIndex = 2;
             this.txtVrijeme.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtVrijeme.Validating += new System.ComponentModel.CancelEventHandler(this.txtVrijeme_Validating);
             // 
             // cmbUposlenici
             // 
@@ -90,6 +112,8 @@
             this.cmbUposlenici.Size = new System.Drawing.Size(250, 28);
             this.cmbUposlenici.TabIndex = 1;
             this.cmbUposlenici.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cmbUposlenici.Validating += new System.ComponentModel.CancelEventHandler(this.cmbUposlenici_Validating);
+            this.cmbUposlenici.Validated += new System.EventHandler(this.cmbUposlenici_Validated);
             // 
             // dtpDatum
             // 
@@ -98,24 +122,11 @@
             this.dtpDatum.Size = new System.Drawing.Size(250, 27);
             this.dtpDatum.TabIndex = 0;
             this.dtpDatum.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.dtpDatum.Validating += new System.ComponentModel.CancelEventHandler(this.dtpDatum_Validating);
             // 
-            // label2
+            // errorProvider
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(106, 129);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 20);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Uposlenik";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(106, 206);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 20);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Vrijeme termina";
+            this.errorProvider.ContainerControl = this;
             // 
             // frmTerminDodaj
             // 
@@ -128,6 +139,7 @@
             this.Load += new System.EventHandler(this.frmTerminDodaj_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -142,5 +154,6 @@
         private DateTimePicker dtpDatum;
         private Label label3;
         private Label label2;
+        private ErrorProvider errorProvider;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Dodaj = new System.Windows.Forms.Button();
@@ -35,8 +36,10 @@
             this.pbSlika = new System.Windows.Forms.PictureBox();
             this.rtbOpis = new System.Windows.Forms.RichTextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -98,10 +101,15 @@
             this.rtbOpis.Size = new System.Drawing.Size(199, 150);
             this.rtbOpis.TabIndex = 0;
             this.rtbOpis.Text = "";
+            this.rtbOpis.Validating += new System.ComponentModel.CancelEventHandler(this.rtbOpis_Validating);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog";
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // frmSlikaDodaj
             // 
@@ -115,6 +123,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -128,5 +137,6 @@
         private PictureBox pbSlika;
         private RichTextBox rtbOpis;
         private OpenFileDialog openFileDialog1;
+        private ErrorProvider errorProvider;
     }
 }
