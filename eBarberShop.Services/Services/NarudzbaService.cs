@@ -71,12 +71,7 @@ namespace eBarberShop.Services.Services
                 entity = entity.Where(x => x.DatumNarudzbe.Date <= obj.DatumDo.Value);
             }
 
-            if (obj.IsShipped == true)
-            {
-                entity = entity.Where(x => x.IsShipped == obj.IsShipped);
-            }
-
-            if (obj.IsShipped == false)
+            if (obj.IsShipped.HasValue)
             {
                 entity = entity.Where(x => x.IsShipped == obj.IsShipped);
             }

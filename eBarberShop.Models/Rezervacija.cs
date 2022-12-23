@@ -22,7 +22,7 @@ namespace eBarberShop.Models
         [DisplayName("Datum rezervacija")]
         public DateTime DatumRezervacije { get; set; }
         [DisplayName("Vrsta usluge")]
-        public string VrstaUsluge => Usluga.Naziv;
+        public string VrstaUsluge => Usluga?.Naziv;
         [DisplayName("Termin kod uposlenika")]
         public string TerminKodUposlenika => $"{Termin?.Korisnik?.Ime} {Termin?.Korisnik?.Prezime}";
         [DisplayName("Otkazano")]

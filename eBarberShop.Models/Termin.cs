@@ -18,6 +18,8 @@ namespace eBarberShop.Models
         [DisplayName("Satnica")]
         public string VrijemeTermina { get; set; }
         [Browsable(false)]
+        public bool IsBooked { get; set; }
+        [Browsable(false)]
         public int KorisnikID { get; set; }
         [Browsable(false)]
         public Korisnik Korisnik { get; set; }

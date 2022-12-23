@@ -31,7 +31,10 @@ namespace eBarberShop.WinUI
         }
 
         public async Task LoadData(TerminSearchObject search = null)
-        { 
+        {
+            if(search == null)
+                search = new TerminSearchObject();
+            search.IsBooked = false;
             dgvTermini.DataSource = await service.GetAll<List<Models.Termin>>(search);
         }
 

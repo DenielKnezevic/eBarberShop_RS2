@@ -80,6 +80,8 @@ namespace eBarberShop.WinUI
 
                     var result = await service.Update<Narudzba>(narudzba.NarudzbaID, request);
 
+                    MessageBox.Show("Uspjesno ste isporucili narudzbu");
+
                     await LoadData();
 
             }

@@ -109,7 +109,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 20);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Uposlenik;";
+            this.label3.Text = "Uposlenik:";
             // 
             // frmTermin
             // 

@@ -80,7 +80,7 @@ namespace eBarberShop.WinUI
             {
                 var item = dgvRezervacija.SelectedRows[0].DataBoundItem as Rezervacija;
 
-                if (grid.Columns[e.ColumnIndex].Index == 5)
+                if (grid.Columns[e.ColumnIndex].Index == 7)
                 {
                     RezervacijaUpsertRequest request = new RezervacijaUpsertRequest();
                     request.IsArchived = true;
@@ -92,10 +92,12 @@ namespace eBarberShop.WinUI
 
                     var result = await service.Update<Rezervacija>(item.RezervacijaID, request);
 
+                    MessageBox.Show("Uspjesno ste arhivirali rezervaciju");
+
                     await LoadData();
 
                 }
-                else if(grid.Columns[e.ColumnIndex].Index == 6)
+                else if(grid.Columns[e.ColumnIndex].Index == 8)
                 {
                     RezervacijaUpsertRequest request = new RezervacijaUpsertRequest();
                     request.IsArchived = false;
@@ -106,6 +108,8 @@ namespace eBarberShop.WinUI
                     request.KorisnikID = item.KorisnikID;
 
                     var result = await service.Update<Rezervacija>(item.RezervacijaID, request);
+
+                    MessageBox.Show("Uspjesno ste otkazali rezervaciju");
 
                     await LoadData();
                 }

@@ -42,6 +42,11 @@ namespace eBarberShop.Services.Services
                 entity = entity.Where(x => x.DatumTermina <= obj.DatumDo.Value);
             }
 
+            if(obj.IsBooked.HasValue)
+            {
+                entity = entity.Where(x => x.IsBooked == obj.IsBooked);
+            }
+
             return entity;
         }
     }

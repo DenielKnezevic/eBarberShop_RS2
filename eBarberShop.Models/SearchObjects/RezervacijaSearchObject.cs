@@ -9,6 +9,6 @@ namespace eBarberShop.Models.SearchObjects
         public int? KorisnikID { get; set; }
         public DateTime? DatumOd { get; set; }
         public DateTime? DatumDo { get; set; }
-        public bool IsArchived { get; set; }
+        public bool? IsArchived { get; set; }
     }
 }

@@ -18,6 +18,15 @@ namespace eBarberShop.Services.Services
 
         }
 
+        public override Models.Rezervacija Insert(RezervacijaUpsertRequest request)
+        {
+            var entity = base.Insert(request);
+            var termin = _db.Termins.Find(entity.TerminID);
+            termin.IsBooked = true;
+            _db.SaveChanges();
+            return entity;
+        }
+
         public override IQueryable<Rezervacija> AddInclude(IQueryable<Rezervacija> entity)
         {
             entity = entity.Include(x => x.Termin).ThenInclude(x => x.Korisnik).Include(y => y.Korisnik).Include(x => x.Usluga); 
@@ -42,14 +51,9 @@ namespace eBarberShop.Services.Services
                 entity = entity.Where(x => x.KorisnikID == obj.KorisnikID);
             }
 
-            if(obj.IsArchived == true)
+            if(obj.IsArchived.HasValue)
             {
                 entity = entity.Where(x =>x.IsArchived == obj.IsArchived);
-            }
-
-            if (obj.IsArchived == false)
-            {
-                entity = entity.Where(x => x.IsArchived == obj.IsArchived);
             }
 
             return entity;
