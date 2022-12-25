@@ -1,7 +1,12 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last
 import 'package:ebarbershop_mobile/providers/korisnik-provider.dart';
 import 'package:ebarbershop_mobile/providers/novosti-provider.dart';
+import 'package:ebarbershop_mobile/providers/proizvod-provider.dart';
+import 'package:ebarbershop_mobile/providers/recenzija-provider.dart';
 import 'package:ebarbershop_mobile/providers/slika-provider.dart';
+import 'package:ebarbershop_mobile/providers/termin-provider.dart';
+import 'package:ebarbershop_mobile/providers/usluga-provider.dart';
+import 'package:ebarbershop_mobile/screens/home_screen.dart';
 import 'package:ebarbershop_mobile/screens/novosti_list_screen.dart';
 import 'package:ebarbershop_mobile/screens/slika_list_screen.dart';
 import 'package:ebarbershop_mobile/utils/util.dart';
@@ -13,7 +18,10 @@ void main() {
     providers: [
       ChangeNotifierProvider(create: (_) => NovostiProvider()),
       ChangeNotifierProvider(create: (_) => KorisnikProvider()),
-      ChangeNotifierProvider(create: (_) => SlikaProvider())
+      ChangeNotifierProvider(create: (_) => ProizvodProvider()),
+      ChangeNotifierProvider(create: (_) => RecenzijaProvider()),
+      ChangeNotifierProvider(create: (_) => TerminProvider()),
+      ChangeNotifierProvider(create: (_) => UslugaProvider())
     ],
     child: MaterialApp(
       theme: ThemeData(primaryColor: Colors.grey[800]),
@@ -25,6 +33,9 @@ void main() {
         }
         if(settings.name == SlikaListScreen.routeName){
           return MaterialPageRoute(builder: ((context) => SlikaListScreen()));
+        }
+         if(settings.name == HomeScreen.routeName){
+          return MaterialPageRoute(builder: ((context) => HomeScreen()));
         }
       },
     ),
@@ -89,7 +100,7 @@ class Home extends StatelessWidget {
 
                     Authorization.korisnik = await _korisnikProvider.Authenticate();
                     
-                    Navigator.pushNamed(context, NovostListScreen.routeName);
+                    Navigator.of(context).pushNamedAndRemoveUntil(HomeScreen.routeName, (route) => false);
                   },
                   child: Container(
                     height: 40,

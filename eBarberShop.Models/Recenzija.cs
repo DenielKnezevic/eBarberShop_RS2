@@ -11,5 +11,6 @@ namespace eBarberShop.Models
         public int Ocjena { get; set; }
         public DateTime DatumKreiranja { get; set; }
         public int KorisnikID { get; set; }
+        public virtual Korisnik Korisnik { get; set; }
     }
 }

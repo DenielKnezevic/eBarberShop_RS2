@@ -1,17 +1,15 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'novost.dart';
+part of 'recenzija.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Novost _$NovostFromJson(Map<String, dynamic> json) => Novost()
-  ..novostID = json['novostID'] as int?
-  ..naslov = json['naslov'] as String?
-  ..sadrzaj = json['sadrzaj'] as String?
-  ..thumbnail = json['thumbnail'] as String?
-  ..opis = json['opis'] as String?
+Recenzija _$RecenzijaFromJson(Map<String, dynamic> json) => Recenzija()
+  ..recenzijaID = json['recenzijaID'] as int?
+  ..sadrzajRecenzije = json['sadrzajRecenzije'] as String?
+  ..ocjena = json['ocjena'] as int?
   ..datumKreiranja = json['datumKreiranja'] == null
       ? null
       : DateTime.parse(json['datumKreiranja'] as String)
@@ -20,12 +18,10 @@ Novost _$NovostFromJson(Map<String, dynamic> json) => Novost()
       ? null
       : Korisnik.fromJson(json['korisnik'] as Map<String, dynamic>);
 
-Map<String, dynamic> _$NovostToJson(Novost instance) => <String, dynamic>{
-      'novostID': instance.novostID,
-      'naslov': instance.naslov,
-      'sadrzaj': instance.sadrzaj,
-      'thumbnail': instance.thumbnail,
-      'opis': instance.opis,
+Map<String, dynamic> _$RecenzijaToJson(Recenzija instance) => <String, dynamic>{
+      'recenzijaID': instance.recenzijaID,
+      'sadrzajRecenzije': instance.sadrzajRecenzije,
+      'ocjena': instance.ocjena,
       'datumKreiranja': instance.datumKreiranja?.toIso8601String(),
       'korisnikID': instance.korisnikID,
       'korisnik': instance.korisnik,

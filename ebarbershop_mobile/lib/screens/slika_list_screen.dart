@@ -38,15 +38,17 @@ class _SlikaListScreenState extends State<SlikaListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("eBarberShop"),backgroundColor: Colors.grey[800],),
+      appBar: AppBar(title: Text("eBarberShop galerija"),backgroundColor: Colors.grey[900],),
       body: SafeArea(child: 
       Container(
         height: 700,
         child: 
       Column(children: [
           buildHeader(),
-          Expanded(child: GridView.count(crossAxisCount: 2,
-          childAspectRatio: 3/2,
+          Expanded(child: GridView.count(
+          crossAxisCount: 3,
+          mainAxisSpacing:8,
+          crossAxisSpacing:8,
           children: _buildGallery(),))
       ]),)),
     );
@@ -58,7 +60,7 @@ class _SlikaListScreenState extends State<SlikaListScreen> {
       child: Text(
         "Galerija",
         style: TextStyle(
-            color: Colors.grey[800], fontSize: 40, fontWeight: FontWeight.w600),
+            color: Colors.grey[900], fontSize: 40, fontWeight: FontWeight.w600),
       ),
     );
   }
@@ -67,15 +69,14 @@ class _SlikaListScreenState extends State<SlikaListScreen> {
   {
     var list = data.map((e) => 
           Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                  Container(
+            child:Padding(padding: EdgeInsets.all(4),
+            child: Container(
                     width: 180,
-                    child: imageFromBase64String(e.slikaByte!),)
-            ]),
-          )).cast<Widget>().toList();
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image(image:imageFromBase64String(e.slikaByte!).image,fit:BoxFit.cover)),)
+            ),)
+          ).cast<Widget>().toList();
 
           return list;
   }

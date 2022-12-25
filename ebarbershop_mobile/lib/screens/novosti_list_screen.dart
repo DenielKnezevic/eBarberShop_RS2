@@ -64,11 +64,19 @@ class _NovostListScreenState extends State<NovostListScreen> {
   Widget buildHeader() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      child: Text(
+      child: Column(children: [
+        Text(
         "Novosti",
         style: TextStyle(
             color: Colors.grey[800], fontSize: 40, fontWeight: FontWeight.w600),
       ),
+      SizedBox(height: 20,),
+      Text(
+        "Welcome ${Authorization.Username} !",
+        style: TextStyle(
+            color: Colors.grey[800], fontSize: 24, fontWeight: FontWeight.w600,),
+      ),
+      ],)
     );
   }
 
@@ -85,11 +93,15 @@ class _NovostListScreenState extends State<NovostListScreen> {
         .map((e) => Column(children: [
           Container(
               height: 100,
-              decoration: BoxDecoration(border: Border.all(color: Colors.black , width: 1) ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.grey[300], ),
               child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                 Container(
-                  child: imageFromBase64String(e.thumbnail!),
-                  width: 173,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: imageFromBase64String(e.thumbnail!)),
+                  width: 170,
                 ),
                 Padding(
                   padding: EdgeInsets.all(8),

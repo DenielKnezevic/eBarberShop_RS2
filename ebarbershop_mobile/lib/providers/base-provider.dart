@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 
 class BaseProvider<T> with ChangeNotifier {
 
-  static String? _endpoint;
+  String? _endpoint;
   static String? _baseUrl;
 
   HttpClient client = HttpClient();
