@@ -43,6 +43,11 @@ namespace eBarberShop.Services.Services
             return entity;
         }
 
+        public override void BeforeInsert(ProizvodInsertRequest insert, Proizvod entity)
+        {
+            entity.Sifra = Guid.NewGuid().ToString();
+        }
+
         static object isLocked = new object();
         static MLContext mlContext = null;
         static ITransformer model = null;

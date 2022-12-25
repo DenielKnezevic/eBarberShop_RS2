@@ -21,7 +21,8 @@ void main() {
       ChangeNotifierProvider(create: (_) => ProizvodProvider()),
       ChangeNotifierProvider(create: (_) => RecenzijaProvider()),
       ChangeNotifierProvider(create: (_) => TerminProvider()),
-      ChangeNotifierProvider(create: (_) => UslugaProvider())
+      ChangeNotifierProvider(create: (_) => UslugaProvider()),
+      ChangeNotifierProvider(create: (_) => SlikaProvider())
     ],
     child: MaterialApp(
       theme: ThemeData(primaryColor: Colors.grey[800]),

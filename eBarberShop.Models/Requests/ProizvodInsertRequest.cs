@@ -9,8 +9,6 @@ namespace eBarberShop.Models.Requests
     {
         [Required(AllowEmptyStrings = false, ErrorMessage = "Naziv ne smije ostati prazno polje")]
         public string Naziv { get; set; }
-        [Required]
-        public string Sifra { get; set; }
         [Required(ErrorMessage = "Cijena ne smije ostati prazno polje")]
         public decimal Cijena { get; set; }
         [Required(ErrorMessage = "Slika je obavezna")]

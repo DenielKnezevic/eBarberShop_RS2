@@ -46,6 +46,10 @@ class _TerminiScreenState extends State<TerminiScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: () {
+   },
+   backgroundColor: Colors.grey[800],
+   child: const Icon(Icons.calendar_month),),
       body: SafeArea(child: SingleChildScrollView(
       child: Container(
         child: Column(
