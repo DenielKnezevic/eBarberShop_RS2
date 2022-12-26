@@ -8,6 +8,7 @@ import 'package:ebarbershop_mobile/providers/termin-provider.dart';
 import 'package:ebarbershop_mobile/providers/usluga-provider.dart';
 import 'package:ebarbershop_mobile/screens/home_screen.dart';
 import 'package:ebarbershop_mobile/screens/novosti_list_screen.dart';
+import 'package:ebarbershop_mobile/screens/product_detail_screen.dart';
 import 'package:ebarbershop_mobile/screens/slika_list_screen.dart';
 import 'package:ebarbershop_mobile/utils/util.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +39,13 @@ void main() {
          if(settings.name == HomeScreen.routeName){
           return MaterialPageRoute(builder: ((context) => HomeScreen()));
         }
+
+         var uri = Uri.parse(settings.name!);
+          if (uri.pathSegments.length == 2 &&
+              "/${uri.pathSegments.first}" == ProductDetailsScreen.routeName) {
+            var id = uri.pathSegments[1];
+            return MaterialPageRoute(builder: (context) => ProductDetailsScreen(id));
+          }
       },
     ),
   ));
@@ -55,7 +63,7 @@ class Home extends StatelessWidget {
     return Scaffold(
             body: SafeArea(
           child: SingleChildScrollView(child: Container(
-            height: 700,
+            height: 800,
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage("assets/images/eBarber.png"),
@@ -63,7 +71,7 @@ class Home extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(
-                  height: 320,
+                  height: 350,
                 ),
                 Padding(
                   padding: EdgeInsets.all(40),

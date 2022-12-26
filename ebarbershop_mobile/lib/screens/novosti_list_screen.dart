@@ -91,23 +91,23 @@ class _NovostListScreenState extends State<NovostListScreen> {
 
     List<Widget> list = data
         .map((e) => Column(children: [
-          Container(
-              height: 100,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.grey[300], ),
+          Card(
+              elevation: 4,
               child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-                Container(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: imageFromBase64String(e.thumbnail!)),
-                  width: 170,
-                ),
-                Padding(
-                  padding: EdgeInsets.all(8),
+                Expanded(
                   child: Container(
-                    width:200,
-                    child: Text(e.sadrzaj!)),
+                    child: ClipRRect(
+                      child: imageFromBase64String(e.thumbnail!)),
+                    width: 170,
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Container(
+                      child: Text(e.sadrzaj!,
+                      overflow: TextOverflow.ellipsis)),
+                  ),
                 ),
               ]),
             ),

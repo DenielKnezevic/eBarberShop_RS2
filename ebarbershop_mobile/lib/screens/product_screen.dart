@@ -1,5 +1,6 @@
 import 'package:ebarbershop_mobile/models/proizvod.dart';
 import 'package:ebarbershop_mobile/providers/proizvod-provider.dart';
+import 'package:ebarbershop_mobile/screens/product_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -71,10 +72,17 @@ class _ProductScreenState extends State<ProductScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    decoration: BoxDecoration( borderRadius: BorderRadius.circular(10)),
-                    width: 170,
-                    child: imageFromBase64String(e.slika!),
+                  Expanded(
+                    child: InkWell(
+                      onTap: (){
+                        Navigator.pushNamed(context, "${ProductDetailsScreen.routeName}/${e.proizvodID}");
+                      },
+                      child: 
+                    Container(
+                      decoration: BoxDecoration( borderRadius: BorderRadius.circular(10)),
+                      width: 170,
+                      child: imageFromBase64String(e.slika!),
+                    )),
                   ),
                   SizedBox(height: 10,),
                   Text(
