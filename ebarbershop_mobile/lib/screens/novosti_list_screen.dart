@@ -7,6 +7,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 
 import '../models/novost.dart';
+import 'novosti_details_screen.dart';
 
 class NovostListScreen extends StatefulWidget {
   const NovostListScreen({Key? key}) : super(key: key);
@@ -91,7 +92,11 @@ class _NovostListScreenState extends State<NovostListScreen> {
 
     List<Widget> list = data
         .map((e) => Column(children: [
-          Card(
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, "${NovostiDetailsScreen.routeName}/${e.novostID}");
+            },
+            child: Card(
               elevation: 4,
               child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                 Expanded(
@@ -105,12 +110,13 @@ class _NovostListScreenState extends State<NovostListScreen> {
                   child: Padding(
                     padding: EdgeInsets.all(8),
                     child: Container(
-                      child: Text(e.sadrzaj!,
+                      child: Text(e.naslov!,
                       overflow: TextOverflow.ellipsis)),
                   ),
                 ),
               ]),
             ),
+          ),
             SizedBox(height: 10,)
         ],))
         .cast<Widget>()

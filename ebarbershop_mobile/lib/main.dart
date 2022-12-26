@@ -7,6 +7,7 @@ import 'package:ebarbershop_mobile/providers/slika-provider.dart';
 import 'package:ebarbershop_mobile/providers/termin-provider.dart';
 import 'package:ebarbershop_mobile/providers/usluga-provider.dart';
 import 'package:ebarbershop_mobile/screens/home_screen.dart';
+import 'package:ebarbershop_mobile/screens/novosti_details_screen.dart';
 import 'package:ebarbershop_mobile/screens/novosti_list_screen.dart';
 import 'package:ebarbershop_mobile/screens/product_detail_screen.dart';
 import 'package:ebarbershop_mobile/screens/slika_list_screen.dart';
@@ -45,6 +46,11 @@ void main() {
               "/${uri.pathSegments.first}" == ProductDetailsScreen.routeName) {
             var id = uri.pathSegments[1];
             return MaterialPageRoute(builder: (context) => ProductDetailsScreen(id));
+          }
+          else if (uri.pathSegments.length == 2 &&
+              "/${uri.pathSegments.first}" == NovostiDetailsScreen.routeName) {
+            var id = uri.pathSegments[1];
+            return MaterialPageRoute(builder: (context) => NovostiDetailsScreen(id));
           }
       },
     ),

@@ -95,27 +95,28 @@ class _TerminiScreenState extends State<TerminiScreen> {
         .map((e) => Column(children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
-            child: Container(
-                height: 100,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.grey[200], ),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, crossAxisAlignment: CrossAxisAlignment.center, children: [
-                  Text(e.vrijemeTermina!),
-                  DropdownButton<Usluga>(
-                    value: _selectedItem,
-                    items: usluga.map((e) => DropdownMenuItem(child: Text(e.naziv!),value: e,)).toList(), 
-                    onChanged: (val){
-                      setState(() {
-                        _selectedItem = val as Usluga;
-                      });
-                    } ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.amber[400]
-                    ),
-                    onPressed: (){},child: Text("Rezervisi"),)
-                ]),
+            child: Card(
+              elevation: 6,
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, crossAxisAlignment: CrossAxisAlignment.center, children: [
+                    Text(e.vrijemeTermina!),
+                    DropdownButton<Usluga>(
+                      underline: SizedBox(),
+                      value: _selectedItem,
+                      items: usluga.map((e) => DropdownMenuItem(child: Text(e.naziv!),value: e,)).toList(), 
+                      onChanged: (val){
+                        setState(() {
+                          _selectedItem = val as Usluga;
+                        });
+                      } ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          primary: Colors.amber[400]
+                      ),
+                      onPressed: (){},child: Text("Rezervisi"),)
+                  ]),
+                ),
               ),
           ),
         SizedBox(height:10)

@@ -43,12 +43,15 @@ class _ProductScreenState extends State<ProductScreen> {
         child: Column(children: [
           buildHeader(),
           Expanded(
-              child: GridView.count(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: GridView.count(
             crossAxisCount: 2,
-            mainAxisSpacing: 2,
-            crossAxisSpacing: 2,
+            mainAxisSpacing: 8,
+            crossAxisSpacing: 8,
             children: _buildProducts(),
-          ))
+          ),
+              ))
         ]),
       )),
     );
