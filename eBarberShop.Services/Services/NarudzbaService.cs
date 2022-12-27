@@ -32,6 +32,8 @@ namespace eBarberShop.Services.Services
                 _db.Add(Proizvod);
             }
 
+            entity.DatumNarudzbe = DateTime.Now;
+
             _db.SaveChanges();
 
             return entity;

@@ -1,15 +1,24 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last
+import 'package:ebarbershop_mobile/providers/cart-provider.dart';
+import 'package:ebarbershop_mobile/providers/drzava-provider.dart';
+import 'package:ebarbershop_mobile/providers/grad-provider.dart';
 import 'package:ebarbershop_mobile/providers/korisnik-provider.dart';
 import 'package:ebarbershop_mobile/providers/novosti-provider.dart';
 import 'package:ebarbershop_mobile/providers/proizvod-provider.dart';
 import 'package:ebarbershop_mobile/providers/recenzija-provider.dart';
+import 'package:ebarbershop_mobile/providers/rezervacija-provider.dart';
 import 'package:ebarbershop_mobile/providers/slika-provider.dart';
 import 'package:ebarbershop_mobile/providers/termin-provider.dart';
 import 'package:ebarbershop_mobile/providers/usluga-provider.dart';
+import 'package:ebarbershop_mobile/screens/cart_screen.dart';
 import 'package:ebarbershop_mobile/screens/home_screen.dart';
 import 'package:ebarbershop_mobile/screens/novosti_details_screen.dart';
 import 'package:ebarbershop_mobile/screens/novosti_list_screen.dart';
 import 'package:ebarbershop_mobile/screens/product_detail_screen.dart';
+import 'package:ebarbershop_mobile/screens/profile_modify_screen.dart';
+import 'package:ebarbershop_mobile/screens/recenzija_dodaj_screen.dart';
+import 'package:ebarbershop_mobile/screens/recenzija_screen.dart';
+import 'package:ebarbershop_mobile/screens/rezervacija_screen.dart';
 import 'package:ebarbershop_mobile/screens/slika_list_screen.dart';
 import 'package:ebarbershop_mobile/utils/util.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +33,11 @@ void main() {
       ChangeNotifierProvider(create: (_) => RecenzijaProvider()),
       ChangeNotifierProvider(create: (_) => TerminProvider()),
       ChangeNotifierProvider(create: (_) => UslugaProvider()),
-      ChangeNotifierProvider(create: (_) => SlikaProvider())
+      ChangeNotifierProvider(create: (_) => SlikaProvider()),
+      ChangeNotifierProvider(create: (_) => RezervacijaProvider()),
+      ChangeNotifierProvider(create: (_) => GradProvider()),
+      ChangeNotifierProvider(create: (_) => DrzavaProvider()),
+      ChangeNotifierProvider(create: (_) => CartProvider())
     ],
     child: MaterialApp(
       theme: ThemeData(primaryColor: Colors.grey[800]),
@@ -40,6 +53,18 @@ void main() {
          if(settings.name == HomeScreen.routeName){
           return MaterialPageRoute(builder: ((context) => HomeScreen()));
         }
+        if(settings.name == RezervacijaScreen.routeName){
+          return MaterialPageRoute(builder: ((context) => RezervacijaScreen()));
+        }
+        if(settings.name == RecenzijaScreen.routeName){
+          return MaterialPageRoute(builder: ((context) => RecenzijaScreen()));
+        }
+        if(settings.name == RecenzijaDodajScreen.routeName){
+          return MaterialPageRoute(builder: ((context) => RecenzijaDodajScreen()));
+        }
+        if(settings.name == CartScreen.routeName){
+          return MaterialPageRoute(builder: ((context) => CartScreen()));
+        }
 
          var uri = Uri.parse(settings.name!);
           if (uri.pathSegments.length == 2 &&
@@ -51,6 +76,11 @@ void main() {
               "/${uri.pathSegments.first}" == NovostiDetailsScreen.routeName) {
             var id = uri.pathSegments[1];
             return MaterialPageRoute(builder: (context) => NovostiDetailsScreen(id));
+          }
+          else if (uri.pathSegments.length == 2 &&
+              "/${uri.pathSegments.first}" == ProfileModifyScreen.routeName) {
+            var id = uri.pathSegments[1];
+            return MaterialPageRoute(builder: (context) => ProfileModifyScreen(id));
           }
       },
     ),

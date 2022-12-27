@@ -81,7 +81,7 @@ class _NovostiDetailsScreenState extends State<NovostiDetailsScreen> {
                    Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Expanded(child: Text("Napisao: ${_novost!.korisnik!.ime} , Datum: ${_novost!.datumKreiranja}")),
+                        Expanded(child: Text("Napisao: ${_novost!.korisnik!.ime} , Datum: ${formatDate(_novost!.datumKreiranja!)}")),
                       ],
                     ),
                   SizedBox(height:15),

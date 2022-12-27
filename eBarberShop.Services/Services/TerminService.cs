@@ -18,6 +18,11 @@ namespace eBarberShop.Services.Services
 
         }
 
+        public override void BeforeInsert(TerminUpsertRequest insert, Termin entity)
+        {
+            entity.DatumKreiranja = DateTime.Now;
+        }
+
         public override IQueryable<Termin> AddInclude(IQueryable<Termin> entity)
         {
             entity = entity.Include(x => x.Korisnik);

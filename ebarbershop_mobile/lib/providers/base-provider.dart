@@ -29,9 +29,14 @@ class BaseProvider<T> with ChangeNotifier {
     http = IOClient(client);
   }
 
-  Future<List<T>> Get() async {
+  Future<List<T>> Get([dynamic search]) async {
 
     var url = "${_baseUrl}${_endpoint}";
+
+       if (search != null) {
+      String queryString = getQueryString(search);
+      url = url + "?" + queryString;
+    }
 
     var uri = Uri.parse(url);
 

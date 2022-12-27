@@ -17,13 +17,13 @@ namespace eBarberShop.Controllers
             _service = service;
         }
         [HttpGet]
-        public IEnumerable<T> Get([FromQuery]TSearch obj = null)
+        public virtual IEnumerable<T> Get([FromQuery]TSearch obj = null)
         {
             return _service.GetAll(obj);
         }
 
         [HttpGet("{id}")]
-        public T GetById(int id)
+        public virtual T GetById(int id)
         {
             return _service.GetById(id);
         }

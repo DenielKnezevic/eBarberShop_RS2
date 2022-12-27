@@ -12,5 +12,11 @@ namespace eBarberShop.Controllers
         {
 
         }
+
+        [HttpGet("{id}/Recommended")]
+        public List<Models.Proizvod> Recommend(int id)
+        {
+            return ((IProizvodService)_service).Recommend(id);
+        }
     }
 }

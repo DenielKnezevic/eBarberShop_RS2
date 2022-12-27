@@ -23,6 +23,7 @@ namespace eBarberShop.Services.Services
             var entity = base.Insert(request);
             var termin = _db.Termins.Find(entity.TerminID);
             termin.IsBooked = true;
+            entity.DatumRezervacije = DateTime.Now;
             _db.SaveChanges();
             return entity;
         }
@@ -51,7 +52,12 @@ namespace eBarberShop.Services.Services
                 entity = entity.Where(x => x.KorisnikID == obj.KorisnikID);
             }
 
-            if(obj.IsArchived.HasValue)
+            if (obj.IsCanceled.HasValue)
+            {
+                entity = entity.Where(x => x.IsCanceled == obj.IsCanceled);
+            }
+
+            if (obj.IsArchived.HasValue)
             {
                 entity = entity.Where(x =>x.IsArchived == obj.IsArchived);
             }

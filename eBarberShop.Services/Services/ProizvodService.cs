@@ -64,7 +64,10 @@ namespace eBarberShop.Services.Services
                 }
             }
 
-            id = products.Last();
+            var list = products.Distinct();
+            Random rand = new Random();
+            int r = rand.Next(list.Count() - 1);
+            id = products.ElementAt(r);
 
             lock (isLocked)
             {

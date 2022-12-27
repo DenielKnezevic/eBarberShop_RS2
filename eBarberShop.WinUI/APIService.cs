@@ -99,6 +99,30 @@ namespace eBarberShop.WinUI
             }
         }
 
+        public async Task<T> Delete<T>(int id)
+        {
+            try
+            {
+                var result = await $"{Endpoint}{Resource}/{id}".WithBasicAuth(Username, Password).DeleteAsync().ReceiveJson<T>();
+
+                return result;
+            }
+
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return default(T);
+            }
+        }
+
         public async Task<Models.Korisnik> AddUloga(int id, object request)
         {
             try

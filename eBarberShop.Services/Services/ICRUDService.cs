@@ -10,5 +10,6 @@ namespace eBarberShop.Services.Services
     {
         T Insert(TInsertRequest request);
         T Update(TUpdateRequest request, int id);
+        T Delete(int id);
     }
 }

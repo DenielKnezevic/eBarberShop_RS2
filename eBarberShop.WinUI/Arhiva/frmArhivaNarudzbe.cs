@@ -33,6 +33,7 @@ namespace eBarberShop.WinUI.Arhiva
             {
                 search = new NarudzbaSearchObject();
                 search.IsShipped = true;
+                search.IsCanceled = false;
                 var list = await service.GetAll<List<Narudzba>>(search);
 
                 dgvArhiva.DataSource = list;
@@ -59,6 +60,7 @@ namespace eBarberShop.WinUI.Arhiva
             search.DatumOd = dtpDatumOd.Value.Date;
             search.BrojNarudzbe = txtArhivaSearch.Text;
             search.IsShipped = true;
+            search.IsCanceled = false;
 
             await LoadData(search);
         }

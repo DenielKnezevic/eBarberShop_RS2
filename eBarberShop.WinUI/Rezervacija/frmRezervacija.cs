@@ -29,6 +29,7 @@ namespace eBarberShop.WinUI
             search.DatumOd = dtpDatumOd.Value.Date;
             search.DatumDo = dtpDatumDo.Value.Date;
             search.IsArchived = false;
+            search.IsCanceled = false;
 
             await LoadData(search);
         }
@@ -60,6 +61,7 @@ namespace eBarberShop.WinUI
             {
                 search = new RezervacijaSearchObject();
                 search.IsArchived=false;
+                search.IsCanceled = false;
                 var list = await service.GetAll<List<Rezervacija>>(search);
 
                 dgvRezervacija.DataSource = list;

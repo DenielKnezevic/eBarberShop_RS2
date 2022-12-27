@@ -10,5 +10,6 @@ namespace eBarberShop.Services.Services
 {
     public interface IProizvodService : ICRUDService<Models.Proizvod, ProizvodSearchObject, ProizvodInsertRequest , ProizvodUpdateRequest>
     {
+        List<Models.Proizvod> Recommend(int korisnikID);
     }
 }

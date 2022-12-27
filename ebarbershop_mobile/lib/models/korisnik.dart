@@ -1,5 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'drzava.dart';
+import 'grad.dart';
+
 part 'korisnik.g.dart';
 
 @JsonSerializable()
@@ -12,6 +15,10 @@ class Korisnik{
   String? email;
   String? telefon;
   String? lokacija;
+  int? gradID;
+  int? drzavaID;
+  Grad? grad;
+  Drzava? drzava;
 
   Korisnik();
 

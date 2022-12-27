@@ -24,5 +24,11 @@ namespace eBarberShop.Controllers
         {
             return ((ICRUDService<T, TSearch, TInsertRequest, TUpdateRequest>)_service).Update(request,id);
         }
+
+        [HttpDelete("{id}")]
+        public T Delete(int id)
+        {
+            return ((ICRUDService<T, TSearch, TInsertRequest, TUpdateRequest>)_service).Delete(id);
+        }
     }
 }

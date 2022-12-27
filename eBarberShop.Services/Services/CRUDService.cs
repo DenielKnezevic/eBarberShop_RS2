@@ -43,6 +43,23 @@ namespace eBarberShop.Services.Services
             return _mapper.Map<T>(entity);
         }
 
+        public T Delete(int id)
+        {
+            var set = _db.Set<TDb>();
+
+            var entity = set.Find(id);
+
+            var tmp = entity;
+
+            if(entity != null)
+                _db.Remove(entity);
+
+            _db.SaveChanges();
+
+            return _mapper.Map<T>(tmp) ;
+
+        }
+
         public virtual void BeforeInsert(TInsertRequest insert, TDb entity)
         {
 

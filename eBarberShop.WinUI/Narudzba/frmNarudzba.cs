@@ -43,6 +43,8 @@ namespace eBarberShop.WinUI
             search.DatumDo = dtpDatumDo.Value.Date;
             search.DatumOd = dtpDatumOd.Value.Date;
             search.BrojNarudzbe = txtNarudzbaSearch.Text;
+            search.IsShipped = false;
+            search.IsCanceled = false;
 
             await LoadData(search);
 
@@ -55,6 +57,7 @@ namespace eBarberShop.WinUI
             {
                 search = new NarudzbaSearchObject();
                 search.IsShipped = false;
+                search.IsCanceled = false;
                 var list = await service.GetAll<List<Narudzba>>(search);
 
                 dgvNarudzba.DataSource = list;

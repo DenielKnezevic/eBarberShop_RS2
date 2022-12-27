@@ -1,6 +1,7 @@
 import 'package:ebarbershop_mobile/screens/novosti_list_screen.dart';
 import 'package:ebarbershop_mobile/screens/product_screen.dart';
 import 'package:ebarbershop_mobile/screens/profile_screen.dart';
+import 'package:ebarbershop_mobile/screens/recenzija_screen.dart';
 import 'package:ebarbershop_mobile/screens/termini_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -20,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     NovostListScreen(),
     TerminiScreen(),
     ProductScreen(),
-    Center(child: Text("Recenzije")),
+    RecenzijaScreen(),
     ProfileScreen()];
   int _currentIndex = 0;
   void _onItemTapped(int index) {

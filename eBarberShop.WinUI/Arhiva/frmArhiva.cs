@@ -31,6 +31,7 @@ namespace eBarberShop.WinUI
             search.IsArchived = true;
             search.DatumOd = dtpDatumOd.Value.Date;
             search.DatumDo = dtpDatumDo.Value.Date;
+            search.IsCanceled = false;
 
             if (Convert.ToInt32(cmbUposlenik.SelectedValue) > 0)
             {
@@ -52,6 +53,7 @@ namespace eBarberShop.WinUI
             { 
                 search = new RezervacijaSearchObject();
                 search.IsArchived=true;
+                search.IsCanceled = false;
 
                 var list = await service.GetAll<List<Rezervacija>>(search);
                 dgvArhiva.DataSource = list;
