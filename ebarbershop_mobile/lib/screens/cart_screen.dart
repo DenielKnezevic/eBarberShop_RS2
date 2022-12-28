@@ -62,7 +62,7 @@ class _CartScreenState extends State<CartScreen> {
       leading: imageFromBase64String(item.product.slika!),
       title: Text(item.product.naziv ?? ""),
       subtitle: Text(item.product.cijena.toString()),
-      trailing: Icon(Icons.delete, size: 30, color: Colors.red,),
+      trailing: Text(item.count.toString()),
     );
   }
 }

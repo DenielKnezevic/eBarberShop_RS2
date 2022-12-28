@@ -21,7 +21,7 @@ namespace eBarberShop.Models
         [DisplayName("Kupljeni proizvodi")]
         public string NarudzbaProizvodi => string.Join(", ", NarudzbaProizvodis?.Select(x => x.Proizvod?.Naziv)?.ToList());
         [DisplayName("Ukupna cijena")]
-        public decimal UkupnaCijena => NarudzbaProizvodis.Sum(x => x.Proizvod.Cijena);
+        public decimal UkupnaCijena => NarudzbaProizvodis.Sum(x => x.Proizvod.Cijena * x.Kolicina);
         [DisplayName("Otkazano")]
         public bool IsCanceled { get; set; } = false;
         [DisplayName("Isporuceno")]

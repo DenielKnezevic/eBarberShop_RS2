@@ -5,6 +5,7 @@ class Cart {
 }
 
 class CartItem {
-  CartItem(this.product);
+  CartItem(this.product,this.count);
   late Proizvod product;
+  late int count;
 }

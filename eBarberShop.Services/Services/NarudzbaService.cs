@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace eBarberShop.Services.Services
 {
-    public class NarudzbaService : CRUDService<Models.Narudzba , Narudzba , NarudzbaSearchObject, NarudzbaInsertRequest , NarudzbaUpdateRequest> , INarudzbaService
+    public class NarudzbaService : CRUDService<Models.Narudzba, Narudzba, NarudzbaSearchObject, NarudzbaInsertRequest, NarudzbaUpdateRequest>, INarudzbaService
     {
-        public NarudzbaService(eBarberShopContext db , IMapper mapper):base(db , mapper)
+        public NarudzbaService(eBarberShopContext db, IMapper mapper) : base(db, mapper)
         {
 
         }
@@ -22,17 +22,16 @@ namespace eBarberShop.Services.Services
         {
             var entity = base.Insert(request);
 
-            foreach (var proizvod in request.ProizvodiID)
+            foreach (var proizvod in request.ListaProizvoda)
             {
                 Database.NarudzbaProizvodi Proizvod = new Database.NarudzbaProizvodi();
 
-                Proizvod.ProizvodID = proizvod;
+                Proizvod.ProizvodID = proizvod.ProizvodID;
+                Proizvod.Kolicina = proizvod.Kolicina;
                 Proizvod.NarudzbaID = entity.NarudzbaID;
 
                 _db.Add(Proizvod);
             }
-
-            entity.DatumNarudzbe = DateTime.Now;
 
             _db.SaveChanges();
 
@@ -49,21 +48,25 @@ namespace eBarberShop.Services.Services
         public override void BeforeInsert(NarudzbaInsertRequest insert, Narudzba entity)
         {
             entity.BrojNarudzbe = Guid.NewGuid().ToString();
+            entity.IsCanceled = false;
+            entity.IsShipped = false;
+            entity.KorisnikID = insert.KorisnikID;
+            entity.DatumNarudzbe = DateTime.Now;
         }
 
         public override IQueryable<Narudzba> AddFilter(IQueryable<Narudzba> entity, NarudzbaSearchObject obj)
         {
-            if(!string.IsNullOrWhiteSpace(obj.BrojNarudzbe))
+            if (!string.IsNullOrWhiteSpace(obj.BrojNarudzbe))
             {
                 entity = entity.Where(x => x.BrojNarudzbe.StartsWith(obj.BrojNarudzbe));
             }
 
-            if(obj.KorisnikID.HasValue)
+            if (obj.KorisnikID.HasValue)
             {
                 entity = entity.Where(x => x.KorisnikID == obj.KorisnikID);
             }
 
-            if(obj.DatumOd.HasValue)
+            if (obj.DatumOd.HasValue)
             {
                 entity = entity.Where(x => x.DatumNarudzbe.Date >= obj.DatumOd.Value);
             }

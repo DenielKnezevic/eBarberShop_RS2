@@ -8,7 +8,11 @@ import '../models/cart.dart';
 class CartProvider with ChangeNotifier {
   Cart cart = Cart();
   addToCart(Proizvod product) {
-      cart.items.add(CartItem(product));
+    if (findInCart(product) != null) {
+      findInCart(product)?.count++;
+    } else {
+      cart.items.add(CartItem(product, 1));
+    }
     
     notifyListeners();
   }

@@ -70,7 +70,6 @@ namespace eBarberShop.WinUI
                     ProizvodInsertRequest insert = new ProizvodInsertRequest();
                     insert.Cijena = Decimal.Parse(txtCijena.Text);
                     insert.Naziv = txtNaziv.Text;
-                    insert.Sifra = Guid.NewGuid().ToString();
                     insert.Slika = ImageHelper.FromImageToByte(pbSlika.Image);
                     insert.VrstaProizvodaID = Convert.ToInt32(cmbVrstaProizvoda.SelectedValue);
 
