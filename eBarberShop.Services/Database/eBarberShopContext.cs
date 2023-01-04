@@ -94,22 +94,30 @@ namespace eBarberShop.Services.Database
                 new Proizvod { ProizvodID = 3, Cijena = 40, Naziv = "Ovnak fen", VrstaProizvodaID = 4, Sifra = Guid.NewGuid().ToString() , Slika = Convert.FromBase64String(Images.Images.Slike[2]) }
                 );
 
-            modelBuilder.Entity<Novost>().HasData(
-                new Novost { NovostID = 1, DatumKreiranja = DateTime.Now, KorisnikID = 1, Naslov = "Prvi naslov", Sadrzaj = "Ovo je sadrzaj prve novosti" },
-                new Novost { NovostID = 2, DatumKreiranja = DateTime.Now, KorisnikID = 1, Naslov = "Drugi naslov", Sadrzaj = "Ovo je sadrzaj druge novosti" },
-                new Novost { NovostID = 3, DatumKreiranja = DateTime.Now, KorisnikID = 1, Naslov = "Treci naslov", Sadrzaj = "Ovo je sadrzaj trece novosti" }
-                );
-
-            modelBuilder.Entity<Slika>().HasData(
-                new Slika { SlikaID = 1, KorisnikID = 1, Opis = "Prva slika" },
-                new Slika { SlikaID = 2, KorisnikID = 1, Opis = "Druga slika" },
-                new Slika { SlikaID = 3, KorisnikID = 1, Opis = "Treca slika" }
-                );
-
             modelBuilder.Entity<Termin>().HasData(
                 new Termin { TerminID = 1, KorisnikID = 1, DatumKreiranja = DateTime.Now, DatumTermina = DateTime.Parse("12/12/2023"), VrijemeTermina = "12:00" },
                 new Termin { TerminID = 2, KorisnikID = 1, DatumKreiranja = DateTime.Now, DatumTermina = DateTime.Parse("12/12/2023"), VrijemeTermina = "13:00" },
                 new Termin { TerminID = 3, KorisnikID = 2, DatumKreiranja = DateTime.Now, DatumTermina = DateTime.Parse("12/12/2023"), VrijemeTermina = "14:00" }
+                );
+
+            modelBuilder.Entity<Novost>().HasData(
+                new Novost { NovostID = 1, DatumKreiranja = DateTime.Now, KorisnikID = 1, Naslov = "Novost 1", Sadrzaj = "Ovo je sadrzaj prve novosti", Thumbnail = Convert.FromBase64String(Images.Images.Slike2[0]) },
+                new Novost { NovostID = 2, DatumKreiranja = DateTime.Now, KorisnikID = 1, Naslov = "Novost 2", Sadrzaj = "Ovo je sadrzaj druge novosti", Thumbnail = Convert.FromBase64String(Images.Images.Slike2[0]) },
+                new Novost { NovostID = 3, DatumKreiranja = DateTime.Now, KorisnikID = 1, Naslov = "Novost 3", Sadrzaj = "Ovo je sadrzaj trece novosti", Thumbnail = Convert.FromBase64String(Images.Images.Slike2[0]) }
+                );
+
+            modelBuilder.Entity<Slika>().HasData(
+                new Slika { SlikaID = 1, KorisnikID = 1, Opis = "Slika 1", SlikaByte = Convert.FromBase64String(Images.Images.Slike2[0]) },
+                new Slika { SlikaID = 2, KorisnikID = 1, Opis = "Slika 2", SlikaByte = Convert.FromBase64String(Images.Images.Slike2[0]) },
+                new Slika { SlikaID = 3, KorisnikID = 1, Opis = "Slika 3", SlikaByte = Convert.FromBase64String(Images.Images.Slike2[0]) },
+                new Slika { SlikaID = 4, KorisnikID = 1, Opis = "Slika 4", SlikaByte = Convert.FromBase64String(Images.Images.Slike2[0]) }
+                );
+
+            modelBuilder.Entity<Usluga>().HasData(
+                new Usluga { UslugaID = 1, Naziv = "Sisanje", Opis = "Sisanje" },
+                new Usluga { UslugaID = 2, Naziv = "Sisanje", Opis = "Pranje kose" },
+                new Usluga { UslugaID = 3, Naziv = "Sisanje", Opis = "Feniranje" },
+                new Usluga { UslugaID = 4, Naziv = "Sisanje", Opis = "Brijanje" }
                 );
         }
 
