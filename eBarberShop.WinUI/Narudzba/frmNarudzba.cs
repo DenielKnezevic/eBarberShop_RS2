@@ -33,7 +33,14 @@ namespace eBarberShop.WinUI
             btn.HeaderText = "Akcija";
             btn.UseColumnTextForButtonValue = true;
 
+            DataGridViewButtonColumn btn2 = new DataGridViewButtonColumn();
+            btn2.Text = "Obrisi";
+            btn2.DataPropertyName = "Obrisi";
+            btn2.HeaderText = "Akcija";
+            btn2.UseColumnTextForButtonValue = true;
+
             dgvNarudzba.Columns.Add(btn);
+            dgvNarudzba.Columns.Add(btn2);
         }
 
         private async void btnPrikazi_Click(object sender, EventArgs e)
@@ -79,13 +86,27 @@ namespace eBarberShop.WinUI
             {
                 var narudzba = dgvNarudzba.SelectedRows[0].DataBoundItem as Narudzba;
 
-                NarudzbaUpdateRequest request = new NarudzbaUpdateRequest() { IsShipped = true };
+                if (grid.Columns[e.ColumnIndex].Index == 7)
+                {
+                    NarudzbaUpdateRequest request = new NarudzbaUpdateRequest() { IsShipped = true };
 
                     var result = await service.Update<Narudzba>(narudzba.NarudzbaID, request);
 
                     MessageBox.Show("Uspjesno ste isporucili narudzbu");
 
                     await LoadData();
+                }
+                else if (grid.Columns[e.ColumnIndex].Index == 8)
+                {
+                    if (MessageBox.Show($"Jeste li sigurni da zelite obrisati ovu narudzbu?", $"Message for user - {APIService.Username}", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    {
+                        var result = await service.Delete<Rezervacija>(narudzba.NarudzbaID);
+
+                        await LoadData();
+
+                        MessageBox.Show("Uspjesno ste obrisali narudzbu");
+                    }
+                }
 
             }
         }

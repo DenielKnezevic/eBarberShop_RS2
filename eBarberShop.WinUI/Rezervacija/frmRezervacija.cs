@@ -50,9 +50,16 @@ namespace eBarberShop.WinUI
             btn1.HeaderText = "Akcija";
             btn1.UseColumnTextForButtonValue = true;
 
+            DataGridViewButtonColumn btn2 = new DataGridViewButtonColumn();
+            btn2.Text = "Obrisi";
+            btn2.DataPropertyName = "Obrisi";
+            btn2.HeaderText = "Akcija";
+            btn2.UseColumnTextForButtonValue = true;
+
 
             dgvRezervacija.Columns.Add(btn);
             dgvRezervacija.Columns.Add(btn1);
+            dgvRezervacija.Columns.Add(btn2);
         }
 
         public async Task LoadData(RezervacijaSearchObject search = null)
@@ -114,6 +121,18 @@ namespace eBarberShop.WinUI
                     MessageBox.Show("Uspjesno ste otkazali rezervaciju");
 
                     await LoadData();
+                }
+                else if(grid.Columns[e.ColumnIndex].Index == 9)
+                {
+                        if (MessageBox.Show($"Jeste li sigurni da zelite obrisati ovu rezervaciju?", $"Message for user - {APIService.Username}", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                        {
+                            var result = await service.Delete<Rezervacija>(item.RezervacijaID);
+
+                            await LoadData();
+
+                            MessageBox.Show("Uspjesno ste obrisali rezervaciju");
+                        }
+                    
                 }
             }
         }

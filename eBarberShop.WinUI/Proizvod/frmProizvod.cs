@@ -38,8 +38,16 @@ namespace eBarberShop.WinUI
         private async void frmProizvod_Load(object sender, EventArgs e)
         {
            await UcitajComboBox();
-            await LoadData();
-           
+           await LoadData();
+
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            btn.Text = "Obrisi";
+            btn.DataPropertyName = "Obrisi";
+            btn.HeaderText = "Akcija";
+            btn.UseColumnTextForButtonValue = true;
+
+            dgvProizvod.Columns.Add(btn);
+
         }
 
         private async Task UcitajComboBox()
@@ -59,12 +67,29 @@ namespace eBarberShop.WinUI
             dgvProizvod.DataSource = list;
         }
 
-        private void dgvProizvod_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvProizvod_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var proizvod = dgvProizvod.SelectedRows[0].DataBoundItem as Proizvod;
 
-            frmProizvodDodaj frmProizvodDodaj = new frmProizvodDodaj(proizvod);
-            frmProizvodDodaj.ShowDialog();
+            var grid = (DataGridView)sender;
+
+            if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                if (MessageBox.Show($"Jeste li sigurni da zelite obrisati ovaj proizvod?", $"Message for user - {APIService.Username}", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    var result = await service.Delete<Proizvod>(proizvod.ProizvodID);
+
+                    await LoadData();
+
+                    MessageBox.Show("Uspjesno ste obrisali proizvod");
+                }
+            }
+            else
+            {
+                frmProizvodDodaj frmProizvodDodaj = new frmProizvodDodaj(proizvod);
+                frmProizvodDodaj.ShowDialog();
+            }
+            
         }
     }
 }

@@ -31,17 +31,41 @@ namespace eBarberShop.WinUI
             await LoadData(search);
         }
 
-        private void dgvSlika_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvSlika_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var item = dgvSlika.SelectedRows[0].DataBoundItem as Slika;
-            frmSlikaDodaj frmSlikaDodaj = new frmSlikaDodaj(item);
-            frmSlikaDodaj.Show();
+            var grid = (DataGridView)sender;
+
+            if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                if (MessageBox.Show($"Jeste li sigurni da zelite obrisati ovu sliku?", $"Message for user - {APIService.Username}", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    var result = await service.Delete<Slika>(item.SlikaID);
+
+                    await LoadData();
+
+                    MessageBox.Show("Uspjesno ste obrisali sliku");
+                }
+            }
+            else
+            {
+                frmSlikaDodaj frmSlikaDodaj = new frmSlikaDodaj(item);
+                frmSlikaDodaj.Show();
+            }
         }
 
         private async void frmSlika_Load(object sender, EventArgs e)
         {
             await LoadData();
             await LoadUposlenici();
+
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            btn.Text = "Obrisi";
+            btn.DataPropertyName = "Obrisi";
+            btn.HeaderText = "Akcija";
+            btn.UseColumnTextForButtonValue = true;
+
+            dgvSlika.Columns.Add(btn);
         }
 
         public async Task LoadUposlenici()

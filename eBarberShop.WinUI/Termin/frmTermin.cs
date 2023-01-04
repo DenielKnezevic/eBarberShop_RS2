@@ -28,6 +28,13 @@ namespace eBarberShop.WinUI
         {
             await LoadData();
             await LoadUposlenici();
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            btn.Text = "Obrisi";
+            btn.DataPropertyName = "Obrisi";
+            btn.HeaderText = "Akcija";
+            btn.UseColumnTextForButtonValue = true;
+
+            dgvTermini.Columns.Add(btn);
         }
 
         public async Task LoadData(TerminSearchObject search = null)
@@ -72,12 +79,29 @@ namespace eBarberShop.WinUI
             await LoadData(search);
         }
 
-        private void dgvTermini_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvTermini_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var item = dgvTermini.SelectedRows[0].DataBoundItem as Models.Termin;
 
-            frmTerminDodaj frm = new frmTerminDodaj(item);
-            frm.Show();
+            var grid = (DataGridView)sender;
+
+            if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                if (MessageBox.Show($"Jeste li sigurni da zelite obrisati ovaj termin?", $"Message for user - {APIService.Username}", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    var result = await service.Delete<Proizvod>(item.TerminID);
+
+                    await LoadData();
+
+                    MessageBox.Show("Uspjesno ste obrisali termin");
+                }
+            }
+
+            else
+            {
+                frmTerminDodaj frm = new frmTerminDodaj(item);
+                frm.Show();
+            }
         }
     }
 }

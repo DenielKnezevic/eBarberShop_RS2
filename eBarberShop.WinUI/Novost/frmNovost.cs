@@ -33,11 +33,28 @@ namespace eBarberShop.WinUI
             await LoadData(search);
         }
 
-        private void dgvNovost_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvNovost_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var item = dgvNovost.SelectedRows[0].DataBoundItem as Novost;
-            frmNovostiDodaj frmNovostiDodaj = new frmNovostiDodaj(item);
-            frmNovostiDodaj.Show();
+
+            var grid = (DataGridView)sender;
+
+            if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                if (MessageBox.Show($"Jeste li sigurni da zelite obrisati ovu novost?", $"Message for user - {APIService.Username}", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    var result = await service.Delete<Novost>(item.NovostID);
+
+                    await LoadData();
+
+                    MessageBox.Show("Uspjesno ste obrisali novost");
+                }
+            }
+            else
+            {
+                frmNovostiDodaj frmNovostiDodaj = new frmNovostiDodaj(item);
+                frmNovostiDodaj.Show();
+            }
         }
 
         public async Task LoadData(NovostSearchObject search = null)
@@ -83,6 +100,14 @@ namespace eBarberShop.WinUI
         {
             await LoadData();
             await LoadUposlenici();
+
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            btn.Text = "Obrisi";
+            btn.DataPropertyName = "Obrisi";
+            btn.HeaderText = "Akcija";
+            btn.UseColumnTextForButtonValue = true;
+
+            dgvNovost.Columns.Add(btn);
         }
     }
 }
