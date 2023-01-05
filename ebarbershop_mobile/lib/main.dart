@@ -16,6 +16,7 @@ import 'package:ebarbershop_mobile/screens/novosti_details_screen.dart';
 import 'package:ebarbershop_mobile/screens/novosti_list_screen.dart';
 import 'package:ebarbershop_mobile/screens/product_detail_screen.dart';
 import 'package:ebarbershop_mobile/screens/profile_modify_screen.dart';
+import 'package:ebarbershop_mobile/screens/recenzija_detail_screen.dart';
 import 'package:ebarbershop_mobile/screens/recenzija_dodaj_screen.dart';
 import 'package:ebarbershop_mobile/screens/recenzija_screen.dart';
 import 'package:ebarbershop_mobile/screens/rezervacija_screen.dart';
@@ -82,6 +83,11 @@ void main() {
             var id = uri.pathSegments[1];
             return MaterialPageRoute(builder: (context) => ProfileModifyScreen(id));
           }
+          else if (uri.pathSegments.length == 2 &&
+              "/${uri.pathSegments.first}" == RecenzijaDetailScreen.routeName) {
+            var id = uri.pathSegments[1];
+            return MaterialPageRoute(builder: (context) => RecenzijaDetailScreen(id));
+          }
       },
     ),
   ));
@@ -99,11 +105,11 @@ class Home extends StatelessWidget {
     return Scaffold(
             body: SafeArea(
           child: SingleChildScrollView(child: Container(
-            height: 800,
+            height:800,
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage("assets/images/eBarber.png"),
-                    fit: BoxFit.fill)),
+                    fit: BoxFit.cover)),
             child: Column(
               children: [
                 SizedBox(

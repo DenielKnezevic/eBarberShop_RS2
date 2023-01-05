@@ -42,7 +42,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       body: Container(
         width: 600,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
           ProizvodDetalji()
@@ -59,22 +58,25 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     }
 
     else{
-      return Card(
-        elevation: 6,
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                Text(_proizvod?.naziv! ?? "N/A", style: TextStyle(fontSize: 42 , fontWeight: FontWeight.bold),),
-                SizedBox(height:15),
-                Container(
-                  child: imageFromBase64String(_proizvod!.slika!),
-                  width:300
-                ),
-                SizedBox(height:15),
-                Text("Cijena proizvoda: ${_proizvod?.cijena!.toString()}" , style: TextStyle(fontSize: 20),)]),
-            ));
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Card(
+          elevation: 6,
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                  Text(_proizvod?.naziv! ?? "N/A", style: TextStyle(fontSize: 36 , fontWeight: FontWeight.bold),),
+                  SizedBox(height:15),
+                  Container(
+                    child: imageFromBase64String(_proizvod!.slika!),
+                    width:300
+                  ),
+                  SizedBox(height:15),
+                  Text("Cijena proizvoda: ${_proizvod?.cijena!.toString()}" , style: TextStyle(fontSize: 20),)]),
+              )),
+      );
     }
   }
 }

@@ -51,8 +51,8 @@ class _ProductScreenState extends State<ProductScreen> {
               padding: const EdgeInsets.all(8.0),
               child: GridView.count(
                 crossAxisCount: 2,
-                mainAxisSpacing: 8,
-                crossAxisSpacing: 8,
+                mainAxisSpacing: 4,
+                crossAxisSpacing: 4,
                 children: _buildProducts(),
               ),
             ))
@@ -94,9 +94,6 @@ class _ProductScreenState extends State<ProductScreen> {
                                 "${ProductDetailsScreen.routeName}/${e.proizvodID}");
                           },
                           child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10)),
-                            width: 180,
                             child: imageFromBase64String(e.slika!),
                           )),
                     ),
@@ -105,8 +102,9 @@ class _ProductScreenState extends State<ProductScreen> {
                     ),
                     Text(
                       e.naziv!,
-                      style: Theme.of(context).textTheme.headline6,
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
+                    SizedBox(height: 5,),
                     Text(
                       '\$${e.cijena!}',
                       style: Theme.of(context).textTheme.subtitle2,

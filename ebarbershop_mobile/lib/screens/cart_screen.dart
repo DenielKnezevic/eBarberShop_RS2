@@ -60,9 +60,11 @@ class _CartScreenState extends State<CartScreen> {
   Widget _buildProductCard(CartItem item) {
     return ListTile(
       leading: imageFromBase64String(item.product.slika!),
-      title: Text(item.product.naziv ?? ""),
-      subtitle: Text(item.product.cijena.toString()),
-      trailing: Text(item.count.toString()),
+      title: Text("${item.product.naziv} | Kolicina: ${item.count.toString()}"),
+      subtitle: Text("Cijena ${item.product.cijena} | Ukupno: ${item.product.cijena! * item.count}"),
+      trailing: IconButton(onPressed: (){
+        _cartProvider.removeFromCart(item.product);
+      }, icon: Icon(Icons.delete_forever), iconSize: 30.0, color: Colors.red,),
     );
   }
 }

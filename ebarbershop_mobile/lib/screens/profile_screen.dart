@@ -54,7 +54,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                FlatButton(onPressed: (){ Navigator.pushNamed(context, "${ProfileModifyScreen.routeName}/${Authorization.korisnik!.korisnikID}");}, child: Text("Edit profile" ,style: TextStyle(color: Colors.white),), color:Colors.grey[900],shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
+                FlatButton(
+                  onPressed: () async{
+                   var refresh = await Navigator.pushNamed(context, "${ProfileModifyScreen.routeName}/${Authorization.korisnik!.korisnikID}");
+                   if(refresh == true)
+                   {
+                      await loadData();
+                   }
+                   }, child: Text("Edit profile" ,style: TextStyle(color: Colors.white),), color:Colors.grey[900],shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
+                   FlatButton(onPressed: () async{
+
+                    
+                   }, child: Text("Narudzbe lista" ,style: TextStyle(color: Colors.white),), color:Colors.grey[900],shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)))
               ],)
 
       ]),),)
@@ -165,7 +176,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 4),
-                child: Text('${Authorization.korisnik!.telefon}', style: TextStyle(fontSize: 18))))
+                child: Text('${korisnik!.telefon}', style: TextStyle(fontSize: 18))))
           ],
         );
     }

@@ -1,5 +1,6 @@
 import 'package:ebarbershop_mobile/models/recenzija.dart';
 import 'package:ebarbershop_mobile/providers/recenzija-provider.dart';
+import 'package:ebarbershop_mobile/screens/recenzija_detail_screen.dart';
 import 'package:ebarbershop_mobile/screens/recenzija_dodaj_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -57,8 +58,12 @@ RecenzijaProvider? _recenzijaProvider = null;
           ]),
         )),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.pushNamed(context, RecenzijaDodajScreen.routeName);
+          onPressed: () async {
+            var refresh = await Navigator.pushNamed(context, RecenzijaDodajScreen.routeName);
+            if(refresh == true)
+            {
+              await loadData();
+            }
           },
           backgroundColor: Colors.grey[800],
           child: const Icon(Icons.book),
@@ -79,7 +84,12 @@ RecenzijaProvider? _recenzijaProvider = null;
 
   List<Widget> _buildRecenzije(){
     var list = data
-        .map((e) => Card(
+        .map((e) => InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, "${RecenzijaDetailScreen.routeName}/${e.recenzijaID}");
+          },
+          child: 
+        Card(
               elevation: 4,
               child: Padding(
                 padding: EdgeInsets.all(8),
@@ -106,7 +116,7 @@ RecenzijaProvider? _recenzijaProvider = null;
                   ],
                 ),
               ),
-            ))
+            )),)
         .cast<Widget>()
         .toList();
 

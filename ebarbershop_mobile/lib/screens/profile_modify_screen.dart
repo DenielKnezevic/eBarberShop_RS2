@@ -94,7 +94,7 @@ class _ProfileModifyScreenState extends State<ProfileModifyScreen> {
                       "drzavaID" : _selectedItemDrzava!.drzavaID
                     };
                     await _korisnikProvider!.update(Authorization.korisnik!.korisnikID, user);
-                    Navigator.pop(context);
+                    Navigator.pop(context,true);
                   }, child: Text("Save changes" ,style: TextStyle(color: Colors.white),), color:Colors.grey[900],shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
                 ],)
       
@@ -182,6 +182,7 @@ class _ProfileModifyScreenState extends State<ProfileModifyScreen> {
                      children: [
                        Expanded(
                          child: DropdownButton<Drzava>(
+                              isExpanded: true,
                               underline: SizedBox(),
                               value: _selectedItemDrzava,
                               items: drzava.map((e) => DropdownMenuItem(child: Text(e.naziv!),value: e,)).toList(), 
@@ -193,6 +194,7 @@ class _ProfileModifyScreenState extends State<ProfileModifyScreen> {
                        ),
                             Expanded(
                               child: DropdownButton<Grad>(
+                              isExpanded: true,
                               underline: SizedBox(),
                               value: _selectedItemGrad,
                               items: grad.map((e) => DropdownMenuItem(child: Text(e.naziv!),value: e,)).toList(), 

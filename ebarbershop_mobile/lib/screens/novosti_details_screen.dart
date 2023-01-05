@@ -42,7 +42,6 @@ class _NovostiDetailsScreenState extends State<NovostiDetailsScreen> {
       appBar: AppBar(title: Text("eBarberShop - Proizvod detalji"),backgroundColor: Colors.grey[900],),
       body: SingleChildScrollView(
         child: Container(
-          width: 600,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
