@@ -10,6 +10,8 @@ namespace eBarberShop.Models.Requests
         [Required]
         public int KorisnikID { get; set; }
         [Required]
+        public int UplataID { get; set; }
+        [Required]
         public List<NarudzbaProizvodiInsertRequest> ListaProizvoda { get; set; }
     }
 }

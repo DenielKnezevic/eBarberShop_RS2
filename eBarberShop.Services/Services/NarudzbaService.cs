@@ -40,7 +40,7 @@ namespace eBarberShop.Services.Services
 
         public override IQueryable<Narudzba> AddInclude(IQueryable<Narudzba> entity)
         {
-            entity = entity.Include(x => x.Korisnik).Include(x => x.NarudzbaProizvodis).ThenInclude(x => x.Proizvod).ThenInclude(x => x.VrstaProizvoda);
+            entity = entity.Include(x => x.Korisnik).Include(x => x.NarudzbaProizvodis).ThenInclude(x => x.Proizvod).ThenInclude(x => x.VrstaProizvoda).Include(x => x.Uplata);
 
             return entity;
         }
@@ -52,6 +52,7 @@ namespace eBarberShop.Services.Services
             entity.IsShipped = false;
             entity.KorisnikID = insert.KorisnikID;
             entity.DatumNarudzbe = DateTime.Now;
+            entity.UplataID = insert.UplataID;
         }
 
         public override IQueryable<Narudzba> AddFilter(IQueryable<Narudzba> entity, NarudzbaSearchObject obj)

@@ -3,12 +3,14 @@ import 'package:ebarbershop_mobile/providers/cart-provider.dart';
 import 'package:ebarbershop_mobile/providers/drzava-provider.dart';
 import 'package:ebarbershop_mobile/providers/grad-provider.dart';
 import 'package:ebarbershop_mobile/providers/korisnik-provider.dart';
+import 'package:ebarbershop_mobile/providers/narudzba-provider.dart';
 import 'package:ebarbershop_mobile/providers/novosti-provider.dart';
 import 'package:ebarbershop_mobile/providers/proizvod-provider.dart';
 import 'package:ebarbershop_mobile/providers/recenzija-provider.dart';
 import 'package:ebarbershop_mobile/providers/rezervacija-provider.dart';
 import 'package:ebarbershop_mobile/providers/slika-provider.dart';
 import 'package:ebarbershop_mobile/providers/termin-provider.dart';
+import 'package:ebarbershop_mobile/providers/uplata-provider.dart';
 import 'package:ebarbershop_mobile/providers/usluga-provider.dart';
 import 'package:ebarbershop_mobile/screens/cart_screen.dart';
 import 'package:ebarbershop_mobile/screens/home_screen.dart';
@@ -23,9 +25,12 @@ import 'package:ebarbershop_mobile/screens/rezervacija_screen.dart';
 import 'package:ebarbershop_mobile/screens/slika_list_screen.dart';
 import 'package:ebarbershop_mobile/utils/util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+   Stripe.publishableKey =
+      "pk_test_51MJfv3ANnFXjgSPxUlW7LiytL0Y30aS9Ul9fh8cvUmXtPTfIsszqtHPethre4CRYHQENylOrTXpUsyhabTUvENDp00pZ63bpSK";
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => NovostiProvider()),
@@ -38,7 +43,9 @@ void main() {
       ChangeNotifierProvider(create: (_) => RezervacijaProvider()),
       ChangeNotifierProvider(create: (_) => GradProvider()),
       ChangeNotifierProvider(create: (_) => DrzavaProvider()),
-      ChangeNotifierProvider(create: (_) => CartProvider())
+      ChangeNotifierProvider(create: (_) => CartProvider()),
+      ChangeNotifierProvider(create: (_) => UplataProvider()),
+      ChangeNotifierProvider(create: (_) => NarudzbaProvider())
     ],
     child: MaterialApp(
       theme: ThemeData(primaryColor: Colors.grey[800]),

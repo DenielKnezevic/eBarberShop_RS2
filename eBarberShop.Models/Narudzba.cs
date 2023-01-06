@@ -14,6 +14,8 @@ namespace eBarberShop.Models
         public string BrojNarudzbe { get; set; }
         [Browsable(false)]
         public int KorisnikID { get; set; }
+        [Browsable(false)]
+        public int UplataID { get; set; }
         [DisplayName("Narucio korisnik")]
         public string KorisnikIme => $"{Korisnik?.Ime} {Korisnik?.Prezime}";
         [DisplayName("Datum narudzbe")]
@@ -28,6 +30,8 @@ namespace eBarberShop.Models
         public bool IsShipped { get; set; } = false;
         [Browsable(false)]
         public virtual Korisnik Korisnik { get; set; }
+        [Browsable(false)]
+        public virtual Uplata Uplata { get; set; }
         [Browsable(false)]
 
         public virtual ICollection<NarudzbaProizvodi> NarudzbaProizvodis { get; set; }

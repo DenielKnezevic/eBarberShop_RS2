@@ -33,6 +33,7 @@ namespace eBarberShop.Services.Database
         public virtual DbSet<Uloga> Ulogas { get; set; } = null!;
         public virtual DbSet<Usluga> Uslugas { get; set; } = null!;
         public virtual DbSet<VrstaProizvoda> VrstaProizvodas { get; set; } = null!;
+        public virtual DbSet<Uplata> Uplatas { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -66,7 +67,7 @@ namespace eBarberShop.Services.Database
                 );
 
             modelBuilder.Entity<Korisnik>().HasData(
-                new Korisnik { KorisnikID = 1, Ime = "Admin", Prezime = "Admin", DatumRodjenja = DateTime.Now, DrzavaID = 1, GradID = 1, Email = "admin@gmail.com", KorisnickoIme = "admin", Telefon = "000000000" , LozinkaSalt = saltAdmin , LozinkaHash = KorisnikService.GenerateHash(saltAdmin , "admin")  },
+                new Korisnik { KorisnikID = 1, Ime = "Admin", Prezime = "Admin", DatumRodjenja = DateTime.Now, DrzavaID = 1, GradID = 1, Email = "admin@gmail.com", KorisnickoIme = "admin", Telefon = "000000000", LozinkaSalt = saltAdmin, LozinkaHash = KorisnikService.GenerateHash(saltAdmin, "admin") },
                 new Korisnik { KorisnikID = 2, Ime = "Uposlenik", Prezime = "Uposlenik", DatumRodjenja = DateTime.Now, DrzavaID = 2, GradID = 2, Email = "uposlenik@gmail.com", KorisnickoIme = "uposlenik", Telefon = "000000001", LozinkaSalt = saltUposlenik, LozinkaHash = KorisnikService.GenerateHash(saltUposlenik, "uposlenik") },
                 new Korisnik { KorisnikID = 3, Ime = "User", Prezime = "User", DatumRodjenja = DateTime.Now, DrzavaID = 3, GradID = 3, Email = "user@gmail.com", KorisnickoIme = "user", Telefon = "000000002", LozinkaSalt = saltUser, LozinkaHash = KorisnikService.GenerateHash(saltUser, "user") }
                 );
@@ -89,9 +90,9 @@ namespace eBarberShop.Services.Database
                 );
 
             modelBuilder.Entity<Proizvod>().HasData(
-                new Proizvod { ProizvodID = 1, Cijena = 8, Naziv = "Head & Shoulders", VrstaProizvodaID = 2, Sifra = Guid.NewGuid().ToString() , Slika = Convert.FromBase64String(Images.Images.Slike[0])},
-                new Proizvod { ProizvodID = 2, Cijena = 50, Naziv = "Frizerland masinica", VrstaProizvodaID = 1, Sifra = Guid.NewGuid().ToString() , Slika = Convert.FromBase64String(Images.Images.Slike[1]) },
-                new Proizvod { ProizvodID = 3, Cijena = 40, Naziv = "Ovnak fen", VrstaProizvodaID = 4, Sifra = Guid.NewGuid().ToString() , Slika = Convert.FromBase64String(Images.Images.Slike[2]) }
+                new Proizvod { ProizvodID = 1, Cijena = 8, Naziv = "Head & Shoulders", VrstaProizvodaID = 2, Sifra = Guid.NewGuid().ToString(), Slika = Convert.FromBase64String(Images.Images.Slike[0]) },
+                new Proizvod { ProizvodID = 2, Cijena = 50, Naziv = "Frizerland masinica", VrstaProizvodaID = 1, Sifra = Guid.NewGuid().ToString(), Slika = Convert.FromBase64String(Images.Images.Slike[1]) },
+                new Proizvod { ProizvodID = 3, Cijena = 40, Naziv = "Ovnak fen", VrstaProizvodaID = 4, Sifra = Guid.NewGuid().ToString(), Slika = Convert.FromBase64String(Images.Images.Slike[2]) }
                 );
 
             modelBuilder.Entity<Termin>().HasData(
@@ -115,9 +116,9 @@ namespace eBarberShop.Services.Database
 
             modelBuilder.Entity<Usluga>().HasData(
                 new Usluga { UslugaID = 1, Naziv = "Sisanje", Opis = "Sisanje" },
-                new Usluga { UslugaID = 2, Naziv = "Sisanje", Opis = "Pranje kose" },
-                new Usluga { UslugaID = 3, Naziv = "Sisanje", Opis = "Feniranje" },
-                new Usluga { UslugaID = 4, Naziv = "Sisanje", Opis = "Brijanje" }
+                new Usluga { UslugaID = 2, Naziv = "Pranje kose", Opis = "Pranje kose" },
+                new Usluga { UslugaID = 3, Naziv = "Feniranje", Opis = "Feniranje" },
+                new Usluga { UslugaID = 4, Naziv = "Brijanje", Opis = "Brijanje" }
                 );
         }
 

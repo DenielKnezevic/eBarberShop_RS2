@@ -28,8 +28,10 @@ namespace eBarberShop.Services.Mapper
             CreateMap<Database.Novost, Novost>();
             CreateMap<Database.Narudzba, Narudzba>();
             CreateMap<Database.NarudzbaProizvodi, NarudzbaProizvodi>();
+            CreateMap<Database.Uplata, Uplata>();
 
             CreateMap<DrzavaUpsertRequest, Database.Drzava>();
+            CreateMap<UplataUpsertRequest, Database.Uplata>();
             CreateMap<GradUpsertRequest, Database.Grad>();
             CreateMap<UlogaUpsertRequest, Database.Uloga>();
             CreateMap<UslugaUpsertRequest, Database.Usluga>();

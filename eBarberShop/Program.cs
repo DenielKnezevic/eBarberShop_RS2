@@ -48,6 +48,7 @@ builder.Services.AddTransient<INovostService, NovostService>();
 builder.Services.AddTransient<IProizvodService, ProizvodService>();
 builder.Services.AddTransient<INarudzbaService,NarudzbaService>();
 builder.Services.AddTransient<IRezervacijaService, RezervacijaService>();
+builder.Services.AddTransient<IUplataService, UplataService>();
 builder.Services.AddAutoMapper(typeof(IDrzavaService));
 
 var app = builder.Build();
