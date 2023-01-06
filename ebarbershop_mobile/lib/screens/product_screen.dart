@@ -18,6 +18,7 @@ class ProductScreen extends StatefulWidget {
 }
 
 class _ProductScreenState extends State<ProductScreen> {
+  TextEditingController _searchController = TextEditingController();
   ProizvodProvider? _proizvodProvider = null;
   CartProvider? _cartProvider = null;
   List<Proizvod> data = [];
@@ -43,9 +44,10 @@ class _ProductScreenState extends State<ProductScreen> {
     return Scaffold(
         body: SafeArea(
             child: Container(
-          height: 700,
+          height: MediaQuery.of(context).size.height - 100,
           child: Column(children: [
             buildHeader(),
+            _buildProductSearch(),
             Expanded(
                 child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -53,8 +55,9 @@ class _ProductScreenState extends State<ProductScreen> {
                 crossAxisCount: 2,
                 mainAxisSpacing: 4,
                 crossAxisSpacing: 4,
-                children: _buildProducts(),
-              ),
+                children: 
+                _buildProducts(),
+          ),
             ))
           ]),
         )),
@@ -75,6 +78,46 @@ class _ProductScreenState extends State<ProductScreen> {
         style: TextStyle(
             color: Colors.grey[900], fontSize: 40, fontWeight: FontWeight.w600),
       ),
+    );
+  }
+
+   Widget _buildProductSearch() {
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: TextField(
+              controller: _searchController,
+              decoration: InputDecoration(
+                  hintText: "Search",
+                  prefixIcon: Icon(Icons.search , color: Colors.grey,),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.amber),
+                    borderRadius: BorderRadius.circular(10)
+                  ),
+                  focusedBorder:OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.amber),
+                    borderRadius: BorderRadius.circular(10)) ,
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.amber))),
+            ),
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: IconButton(
+            icon: Icon(Icons.search_rounded, color: Colors.grey,),
+            onPressed: () async {
+                var tmpData = await _proizvodProvider?.Get({'naziv': _searchController.text});
+                setState(() {
+                  data = tmpData!;
+                });
+            },
+          ),
+        )
+      ],
     );
   }
 

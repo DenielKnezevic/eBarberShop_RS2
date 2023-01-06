@@ -40,7 +40,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     return Scaffold(
       appBar: AppBar(title: Text("eBarberShop - Proizvod detalji"),backgroundColor: Colors.grey[900],),
       body: Container(
-        width: 600,
+        width: MediaQuery.of(context).size.width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

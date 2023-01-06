@@ -36,8 +36,8 @@ class _RecenzijaDodajScreenState extends State<RecenzijaDodajScreen> {
       body: SafeArea(
           child: SingleChildScrollView(
         child: Container(
-          height: 700,
-          width: 600,
+          height:MediaQuery.of(context).size.height - 100,
+          width: MediaQuery.of(context).size.width,
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
             buildHeader(),

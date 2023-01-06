@@ -16,7 +16,6 @@ class RezervacijaScreen extends StatefulWidget {
 }
 
 class _RezervacijaScreenState extends State<RezervacijaScreen> {
-
   RezervacijaProvider? _rezervacijaProvider = null;
   List<Rezervacija> list = [];
 
@@ -29,7 +28,10 @@ class _RezervacijaScreenState extends State<RezervacijaScreen> {
   }
 
   Future loadData() async {
-    var tmpData = await _rezervacijaProvider!.Get({'korisnikID' : Authorization.korisnik!.korisnikID , 'isCanceled' : false});
+    var tmpData = await _rezervacijaProvider!.Get({
+      'korisnikID': Authorization.korisnik!.korisnikID,
+      'isCanceled': false
+    });
     setState(() {
       list = tmpData;
     });
@@ -38,18 +40,27 @@ class _RezervacijaScreenState extends State<RezervacijaScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("eBarberShop - Rezervacije"),backgroundColor: Colors.grey[900],),
+      appBar: AppBar(
+        title: Text("eBarberShop - Rezervacije"),
+        backgroundColor: Colors.grey[900],
+      ),
       body: SafeArea(
-        child:
-      Column(children:[
-        Expanded(child: 
-        _buildRezervacije(),)
-      ])
-      ,),
+        child: Column(children: [
+          Expanded(
+            child: _buildRezervacije(),
+          )
+        ]),
+      ),
     );
   }
 
-    Widget _buildRezervacije() {
+  Widget _buildRezervacije() {
+    if (list.isEmpty) {
+      return Center(
+        child: Text("Trenutno nemate aktivnih rezervacija"),
+      );
+    }
+
     return Container(
       child: ListView.builder(
         itemCount: list.length,
@@ -60,24 +71,29 @@ class _RezervacijaScreenState extends State<RezervacijaScreen> {
     );
   }
 
-    Widget _buildRezervacijeCard(Rezervacija item) {
+  Widget _buildRezervacijeCard(Rezervacija item) {
     return ListTile(
-      leading: IconButton(onPressed: () async {
-         Map update = {
-          "korisnikID" : item.korisnikID,
-          "terminID" : item.terminID,
-          "uslugaID" : item.uslugaID,
-          "isCanceled" : true,
-          "isArchived" :false
+      leading: IconButton(
+        onPressed: () async {
+          Map update = {
+            "korisnikID": item.korisnikID,
+            "terminID": item.terminID,
+            "uslugaID": item.uslugaID,
+            "isCanceled": true,
+            "isArchived": false
           };
 
           await _rezervacijaProvider!.update(item.rezervacijaID, update);
           loadData();
-      } , icon: Icon(Icons.delete_forever) , iconSize: 40, color: Colors.red,),
+        },
+        icon: Icon(Icons.delete_forever),
+        iconSize: 40,
+        color: Colors.red,
+      ),
       title: Text("${formatDate(item.termin!.datumTermina!)}"),
-      subtitle: Text("Termin kod ${item.termin!.korisnik!.ime} ${item.termin!.korisnik!.prezime}"),
+      subtitle: Text(
+          "Termin kod ${item.termin!.korisnik!.ime} ${item.termin!.korisnik!.prezime}"),
       trailing: Text("${item.termin!.vrijemeTermina}"),
     );
   }
-
 }

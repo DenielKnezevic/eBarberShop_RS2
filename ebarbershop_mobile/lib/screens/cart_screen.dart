@@ -18,12 +18,11 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   late CartProvider _cartProvider;
   //late OrderProvider _orderProvider;
-  
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    
   }
 
   @override
@@ -37,16 +36,27 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("eBarberShop korpa"),backgroundColor: Colors.grey[900],),
-        body: Column(
-          children: [
-            Expanded(child:_buildProductCardList()),
-          ],
-        ),
-      );
+      appBar: AppBar(
+        title: Text("eBarberShop korpa"),
+        backgroundColor: Colors.grey[900],
+      ),
+      body: Column(
+        children: [
+          Expanded(child: _buildProductCardList()),
+          if (_cartProvider.cart.items.isNotEmpty)
+            TextButton(onPressed: () {}, child: Text("Kupi" , style: TextStyle(color: Colors.black , fontSize: 18),)),
+        ],
+      ),
+    );
   }
 
   Widget _buildProductCardList() {
+    if (_cartProvider.cart.items.isEmpty) {
+      return Center(
+        child: Text("Korpa je trenutno prazna"),
+      );
+    }
+
     return Container(
       child: ListView.builder(
         itemCount: _cartProvider.cart.items.length,
@@ -61,10 +71,16 @@ class _CartScreenState extends State<CartScreen> {
     return ListTile(
       leading: imageFromBase64String(item.product.slika!),
       title: Text("${item.product.naziv} | Kolicina: ${item.count.toString()}"),
-      subtitle: Text("Cijena ${item.product.cijena} | Ukupno: ${item.product.cijena! * item.count}"),
-      trailing: IconButton(onPressed: (){
-        _cartProvider.removeFromCart(item.product);
-      }, icon: Icon(Icons.delete_forever), iconSize: 30.0, color: Colors.red,),
+      subtitle: Text(
+          "Cijena ${item.product.cijena} | Ukupno: ${item.product.cijena! * item.count}"),
+      trailing: IconButton(
+        onPressed: () {
+          _cartProvider.removeFromCart(item.product);
+        },
+        icon: Icon(Icons.delete_forever),
+        iconSize: 30.0,
+        color: Colors.red,
+      ),
     );
   }
 }

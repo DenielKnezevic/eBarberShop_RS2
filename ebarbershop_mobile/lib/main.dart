@@ -105,7 +105,7 @@ class Home extends StatelessWidget {
     return Scaffold(
             body: SafeArea(
           child: SingleChildScrollView(child: Container(
-            height:800,
+            height:MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage("assets/images/eBarber.png"),

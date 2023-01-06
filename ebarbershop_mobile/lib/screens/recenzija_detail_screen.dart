@@ -5,7 +5,9 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 
+import '../models/korisnik.dart';
 import '../models/recenzija.dart';
+import '../providers/korisnik-provider.dart';
 
 class RecenzijaDetailScreen extends StatefulWidget {
   static const String routeName = "/recenzija_detail";
@@ -19,6 +21,8 @@ class RecenzijaDetailScreen extends StatefulWidget {
 class _RecenzijaDetailScreenState extends State<RecenzijaDetailScreen> {
 
   RecenzijaProvider? _recenzijaProvider = null;
+  KorisnikProvider? _korisnikProvider = null;
+  Korisnik? korisnik = null;
   Recenzija? recenzija = null;
 
   @override
@@ -26,13 +30,16 @@ class _RecenzijaDetailScreenState extends State<RecenzijaDetailScreen> {
     // TODO: implement initState
     super.initState();
     _recenzijaProvider = context.read<RecenzijaProvider>();
+    _korisnikProvider = context.read<KorisnikProvider>();
     loadData();
   }
 
   Future loadData() async {
     var tmp = await _recenzijaProvider!.getById(int.parse(this.widget.id));
+    var tmpKorisnik = await _korisnikProvider!.getById(tmp.korisnikID!);
     setState(() {
       recenzija = tmp;
+      korisnik = tmpKorisnik;
     });
   }
 
@@ -44,6 +51,7 @@ class _RecenzijaDetailScreenState extends State<RecenzijaDetailScreen> {
       body: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height - 100,
+          width: MediaQuery.of(context).size.width,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -74,7 +82,7 @@ class _RecenzijaDetailScreenState extends State<RecenzijaDetailScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                      Icon(Icons.account_circle , size:150),
-                     Text("Test ime", style: TextStyle(fontSize: 28 , fontWeight: FontWeight.bold)),
+                     Text("${korisnik!.ime} ${korisnik!.prezime}", style: TextStyle(fontSize: 28 , fontWeight: FontWeight.bold)),
                    RatingBar(
                       ignoreGestures: true,
                       itemSize:40,

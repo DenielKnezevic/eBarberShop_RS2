@@ -42,7 +42,7 @@ RecenzijaProvider? _recenzijaProvider = null;
     return Scaffold(
       body: SafeArea(
             child: Container(
-          height: 700,
+          height: MediaQuery.of(context).size.height - 100,
           child: Column(children: [
             buildHeader(),
             Expanded(
