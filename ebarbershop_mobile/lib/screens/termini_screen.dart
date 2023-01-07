@@ -141,6 +141,8 @@ class _TerminiScreenState extends State<TerminiScreen> {
                             
                             await _rezervacijaProvider!.insert(item);
                             loadData();
+                            ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Rezervacija termina uspjesna")));
                           },child: Text("Rezervisi"),)
                       ]),
                     ],

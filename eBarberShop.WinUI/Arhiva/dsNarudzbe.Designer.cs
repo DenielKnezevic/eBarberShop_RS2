@@ -291,6 +291,8 @@ namespace eBarberShop.WinUI.Arhiva {
             
             private global::System.Data.DataColumn columnBrojNarudzbe;
             
+            private global::System.Data.DataColumn columnUplata;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public NarudzbeDataTable() {
@@ -374,6 +376,14 @@ namespace eBarberShop.WinUI.Arhiva {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn UplataColumn {
+                get {
+                    return this.columnUplata;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -409,7 +419,7 @@ namespace eBarberShop.WinUI.Arhiva {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public NarudzbeRow AddNarudzbeRow(string Rb, string Kupac, string Proizvodi, string UkupnaCijena, string DatumNarudzbe, string BrojNarudzbe) {
+            public NarudzbeRow AddNarudzbeRow(string Rb, string Kupac, string Proizvodi, string UkupnaCijena, string DatumNarudzbe, string BrojNarudzbe, string Uplata) {
                 NarudzbeRow rowNarudzbeRow = ((NarudzbeRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Rb,
@@ -417,7 +427,8 @@ namespace eBarberShop.WinUI.Arhiva {
                         Proizvodi,
                         UkupnaCijena,
                         DatumNarudzbe,
-                        BrojNarudzbe};
+                        BrojNarudzbe,
+                        Uplata};
                 rowNarudzbeRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowNarudzbeRow);
                 return rowNarudzbeRow;
@@ -446,6 +457,7 @@ namespace eBarberShop.WinUI.Arhiva {
                 this.columnUkupnaCijena = base.Columns["UkupnaCijena"];
                 this.columnDatumNarudzbe = base.Columns["DatumNarudzbe"];
                 this.columnBrojNarudzbe = base.Columns["BrojNarudzbe"];
+                this.columnUplata = base.Columns["Uplata"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -463,6 +475,8 @@ namespace eBarberShop.WinUI.Arhiva {
                 base.Columns.Add(this.columnDatumNarudzbe);
                 this.columnBrojNarudzbe = new global::System.Data.DataColumn("BrojNarudzbe", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBrojNarudzbe);
+                this.columnUplata = new global::System.Data.DataColumn("Uplata", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUplata);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -701,6 +715,22 @@ namespace eBarberShop.WinUI.Arhiva {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Uplata {
+                get {
+                    try {
+                        return ((string)(this[this.tableNarudzbe.UplataColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Uplata\' in table \'Narudzbe\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNarudzbe.UplataColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsRbNull() {
                 return this.IsNull(this.tableNarudzbe.RbColumn);
             }
@@ -769,6 +799,18 @@ namespace eBarberShop.WinUI.Arhiva {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetBrojNarudzbeNull() {
                 this[this.tableNarudzbe.BrojNarudzbeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsUplataNull() {
+                return this.IsNull(this.tableNarudzbe.UplataColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetUplataNull() {
+                this[this.tableNarudzbe.UplataColumn] = global::System.Convert.DBNull;
             }
         }
         

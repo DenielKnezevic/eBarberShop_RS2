@@ -86,6 +86,8 @@ class _RezervacijaScreenState extends State<RezervacijaScreen> {
 
           await _rezervacijaProvider!.update(item.rezervacijaID, update);
           loadData();
+          ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Rezervacija otkazana")));
         },
         icon: Icon(Icons.delete_forever),
         iconSize: 40,

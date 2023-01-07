@@ -95,6 +95,8 @@ class _ProfileModifyScreenState extends State<ProfileModifyScreen> {
                     };
                     await _korisnikProvider!.update(Authorization.korisnik!.korisnikID, user);
                     Navigator.pop(context,true);
+                    ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Profil uspjesno uredjen")));
                   }, child: Text("Save changes" ,style: TextStyle(color: Colors.white),), color:Colors.grey[900],shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
                 ],)
       

@@ -93,7 +93,7 @@ namespace eBarberShop.WinUI
             {
                 var narudzba = dgvNarudzba.SelectedRows[0].DataBoundItem as Narudzba;
 
-                if (grid.Columns[e.ColumnIndex].Index == 7)
+                if (grid.Columns[e.ColumnIndex].DataPropertyName == "Isporuci")
                 {
                     NarudzbaUpdateRequest request = new NarudzbaUpdateRequest() { IsShipped = true, IsCanceled = false };
 
@@ -103,7 +103,7 @@ namespace eBarberShop.WinUI
 
                     await LoadData();
                 }
-                if (grid.Columns[e.ColumnIndex].Index == 8)
+                if (grid.Columns[e.ColumnIndex].DataPropertyName == "Otkazi")
                 {
                     NarudzbaUpdateRequest request = new NarudzbaUpdateRequest() { IsShipped = false, IsCanceled = true };
 
@@ -113,7 +113,7 @@ namespace eBarberShop.WinUI
 
                     await LoadData();
                 }
-                else if (grid.Columns[e.ColumnIndex].Index == 9)
+                else if (grid.Columns[e.ColumnIndex].DataPropertyName == "Obrisi")
                 {
                     if (MessageBox.Show($"Jeste li sigurni da zelite obrisati ovu narudzbu?", $"Message for user - {APIService.Username}", MessageBoxButtons.OKCancel) == DialogResult.OK)
                     {

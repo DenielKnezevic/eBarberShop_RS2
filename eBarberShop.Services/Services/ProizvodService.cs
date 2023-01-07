@@ -55,7 +55,7 @@ namespace eBarberShop.Services.Services
         {
             var narudzbeProizvodi = _db.Narudzbas.Include(x => x.NarudzbaProizvodis).ThenInclude(x => x.Proizvod).Where(x => x.KorisnikID == korisnikID).ToList();
             if (narudzbeProizvodi.Count == 0)
-                return null;
+                return new List<Models.Proizvod>();
             int id;
             List<int> products = new List<int>();
             foreach (var item in narudzbeProizvodi)
@@ -67,7 +67,7 @@ namespace eBarberShop.Services.Services
             }
 
             if (products.Distinct().Count() < 2)
-                return null;
+                return new List<Models.Proizvod>();
             var list = products.Distinct();
             Random rand = new Random();
             int r = rand.Next(list.Count() - 1);
@@ -109,8 +109,6 @@ namespace eBarberShop.Services.Services
                     var traindata = mlContext.Data.LoadFromEnumerable(data);
 
 
-                    //STEP 3: Your data is already encoded so all you need to do is specify options for MatrxiFactorizationTrainer with a few extra hyperparameters
-                    //        LossFunction, Alpa, Lambda and a few others like K and C as shown below and call the trainer.
                     MatrixFactorizationTrainer.Options options = new MatrixFactorizationTrainer.Options();
                     options.MatrixColumnIndexColumnName = nameof(ProductEntry.ProductID);
                     options.MatrixRowIndexColumnName = nameof(ProductEntry.CoPurchaseProductID);
@@ -118,7 +116,6 @@ namespace eBarberShop.Services.Services
                     options.LossFunction = MatrixFactorizationTrainer.LossFunctionType.SquareLossOneClass;
                     options.Alpha = 0.01;
                     options.Lambda = 0.025;
-                    // For better results use the following parameters
                     options.NumberOfIterations = 100;
                     options.C = 0.00001;
 

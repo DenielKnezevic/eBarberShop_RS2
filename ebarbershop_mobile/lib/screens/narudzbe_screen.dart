@@ -86,6 +86,8 @@ class _NarudzbeScreenState extends State<NarudzbeScreen> {
 
           await _narudzbaProvider!.update(item.narudzbaID, update);
           loadData();
+          ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Narudzba otkazana")));
         },
         icon: Icon(Icons.delete_forever),
         iconSize: 40,

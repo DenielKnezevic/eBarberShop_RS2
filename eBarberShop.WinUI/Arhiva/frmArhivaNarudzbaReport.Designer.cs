@@ -37,14 +37,15 @@
             this.rptArhiva.Location = new System.Drawing.Point(0, 0);
             this.rptArhiva.Name = "ReportViewer";
             this.rptArhiva.ServerReport.BearerToken = null;
-            this.rptArhiva.Size = new System.Drawing.Size(800, 450);
+            this.rptArhiva.Size = new System.Drawing.Size(1495, 745);
             this.rptArhiva.TabIndex = 0;
+            this.rptArhiva.Load += new System.EventHandler(this.rptArhiva_Load);
             // 
             // frmArhivaNarudzbaReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1495, 745);
             this.Controls.Add(this.rptArhiva);
             this.Name = "frmArhivaNarudzbaReport";
             this.Text = "frmArhivaNarudzbaReport";

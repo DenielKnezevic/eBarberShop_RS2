@@ -89,7 +89,7 @@ namespace eBarberShop.WinUI
             {
                 var item = dgvRezervacija.SelectedRows[0].DataBoundItem as Rezervacija;
 
-                if (grid.Columns[e.ColumnIndex].Index == 7)
+                if (grid.Columns[e.ColumnIndex].DataPropertyName == "Arhiviraj")
                 {
                     RezervacijaUpsertRequest request = new RezervacijaUpsertRequest();
                     request.IsArchived = true;
@@ -106,7 +106,7 @@ namespace eBarberShop.WinUI
                     await LoadData();
 
                 }
-                else if(grid.Columns[e.ColumnIndex].Index == 8)
+                else if(grid.Columns[e.ColumnIndex].DataPropertyName == "Otkazi")
                 {
                     RezervacijaUpsertRequest request = new RezervacijaUpsertRequest();
                     request.IsArchived = false;
@@ -122,7 +122,7 @@ namespace eBarberShop.WinUI
 
                     await LoadData();
                 }
-                else if(grid.Columns[e.ColumnIndex].Index == 9)
+                else if(grid.Columns[e.ColumnIndex].DataPropertyName == "Obrisi")
                 {
                         if (MessageBox.Show($"Jeste li sigurni da zelite obrisati ovu rezervaciju?", $"Message for user - {APIService.Username}", MessageBoxButtons.OKCancel) == DialogResult.OK)
                         {

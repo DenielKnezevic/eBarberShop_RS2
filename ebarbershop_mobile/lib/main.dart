@@ -131,6 +131,7 @@ class Home extends StatelessWidget {
                   child: Column(children: [
                     Container(
                       child: TextField(
+                        style:TextStyle(color: Colors.amber[200]),
                         controller: _username,
                         decoration: InputDecoration(
                             fillColor: Colors.white.withOpacity(0.3),
@@ -144,6 +145,8 @@ class Home extends StatelessWidget {
                     ),
                     Container(
                       child: TextField(
+                        obscureText: true,
+                        style:TextStyle(color: Colors.amber[200]),
                         controller: _password,
                         decoration: InputDecoration(
                             fillColor: Colors.white.withOpacity(0.3),

@@ -21,7 +21,7 @@ namespace eBarberShop.Models
         [DisplayName("Datum narudzbe")]
         public DateTime DatumNarudzbe { get; set; }
         [DisplayName("Kupljeni proizvodi")]
-        public string NarudzbaProizvodi => string.Join(", ", NarudzbaProizvodis?.Select(x => x.Proizvod?.Naziv)?.ToList());
+        public string NarudzbaProizvodi => string.Join(", ", NarudzbaProizvodis?.Select(x => $"{x.Proizvod?.Naziv} x{x.Kolicina}")?.ToList());
         [DisplayName("Ukupna cijena")]
         public decimal UkupnaCijena => NarudzbaProizvodis.Sum(x => x.Proizvod.Cijena * x.Kolicina);
         [DisplayName("Otkazano")]

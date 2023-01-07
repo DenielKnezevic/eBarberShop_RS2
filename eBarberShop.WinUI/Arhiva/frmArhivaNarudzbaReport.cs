@@ -35,6 +35,7 @@ namespace eBarberShop.WinUI.Arhiva
                 red.Proizvodi = $"{list[i].NarudzbaProizvodi}";
                 red.UkupnaCijena = $"{list[i].UkupnaCijena.ToString()}";
                 red.BrojNarudzbe = $"{list[i].BrojNarudzbe}";
+                red.Uplata = $"{list[i].Uplata.BrojTransakcije}";
                 tbl.AddNarudzbeRow(red);
             }
 
@@ -45,6 +46,11 @@ namespace eBarberShop.WinUI.Arhiva
             this.rptArhiva.LocalReport.DataSources.Add(dataSource);
             rptArhiva.LocalReport.ReportEmbeddedResource = "eBarberShop.WinUI.Arhiva.NarudzbeReport.rdlc";
             rptArhiva.RefreshReport();
+        }
+
+        private void rptArhiva_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

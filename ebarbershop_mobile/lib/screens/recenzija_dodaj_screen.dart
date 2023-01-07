@@ -104,6 +104,8 @@ class _RecenzijaDodajScreenState extends State<RecenzijaDodajScreen> {
 
                     await _recenzijaProvider!.insert(recenzija);
                     Navigator.pop(context,true);
+                    ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Recenzija uspjesno dodana")));
 
                   }, child: Text("Dodaj recenziju" ,style: TextStyle(color: Colors.white),), color:Colors.grey[900],shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
                 ],)
