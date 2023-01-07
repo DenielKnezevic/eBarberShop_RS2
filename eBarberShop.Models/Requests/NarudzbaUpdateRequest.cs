@@ -9,5 +9,7 @@ namespace eBarberShop.Models.Requests
     {
         [Required]
         public bool IsShipped { get; set; }
+        [Required]
+        public bool IsCanceled { get; set; }
     }
 }

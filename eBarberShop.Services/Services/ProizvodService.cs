@@ -54,6 +54,8 @@ namespace eBarberShop.Services.Services
         public List<Models.Proizvod> Recommend(int korisnikID)
         {
             var narudzbeProizvodi = _db.Narudzbas.Include(x => x.NarudzbaProizvodis).ThenInclude(x => x.Proizvod).Where(x => x.KorisnikID == korisnikID).ToList();
+            if (narudzbeProizvodi.Count == 0)
+                return null;
             int id;
             List<int> products = new List<int>();
             foreach (var item in narudzbeProizvodi)
@@ -64,6 +66,8 @@ namespace eBarberShop.Services.Services
                 }
             }
 
+            if (products.Distinct().Count() < 2)
+                return null;
             var list = products.Distinct();
             Random rand = new Random();
             int r = rand.Next(list.Count() - 1);

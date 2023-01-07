@@ -14,6 +14,7 @@ import 'package:ebarbershop_mobile/providers/uplata-provider.dart';
 import 'package:ebarbershop_mobile/providers/usluga-provider.dart';
 import 'package:ebarbershop_mobile/screens/cart_screen.dart';
 import 'package:ebarbershop_mobile/screens/home_screen.dart';
+import 'package:ebarbershop_mobile/screens/narudzbe_screen.dart';
 import 'package:ebarbershop_mobile/screens/novosti_details_screen.dart';
 import 'package:ebarbershop_mobile/screens/novosti_list_screen.dart';
 import 'package:ebarbershop_mobile/screens/product_detail_screen.dart';
@@ -72,6 +73,9 @@ void main() {
         }
         if(settings.name == CartScreen.routeName){
           return MaterialPageRoute(builder: ((context) => CartScreen()));
+        }
+        if(settings.name == NarudzbeScreen.routeName){
+          return MaterialPageRoute(builder: ((context) => NarudzbeScreen()));
         }
 
          var uri = Uri.parse(settings.name!);

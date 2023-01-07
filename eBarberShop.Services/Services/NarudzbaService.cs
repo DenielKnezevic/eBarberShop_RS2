@@ -82,6 +82,11 @@ namespace eBarberShop.Services.Services
                 entity = entity.Where(x => x.IsShipped == obj.IsShipped);
             }
 
+            if(obj.IsCanceled.HasValue)
+            {
+                entity = entity.Where(x => x.IsCanceled == obj.IsCanceled);
+            }
+
             return entity;
         }
     }

@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../models/korisnik.dart';
 import '../utils/util.dart';
+import 'narudzbe_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -63,8 +64,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                    }
                    }, child: Text("Edit profile" ,style: TextStyle(color: Colors.white),), color:Colors.grey[900],shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
                    FlatButton(onPressed: () async{
-
-                    
+                    Navigator.pushNamed(context, NarudzbeScreen.routeName);
                    }, child: Text("Narudzbe lista" ,style: TextStyle(color: Colors.white),), color:Colors.grey[900],shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)))
               ],)
 

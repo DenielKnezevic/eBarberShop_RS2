@@ -30,7 +30,8 @@ class _RezervacijaScreenState extends State<RezervacijaScreen> {
   Future loadData() async {
     var tmpData = await _rezervacijaProvider!.Get({
       'korisnikID': Authorization.korisnik!.korisnikID,
-      'isCanceled': false
+      'isCanceled': false,
+      'isArchived':false
     });
     setState(() {
       list = tmpData;

@@ -33,6 +33,12 @@ namespace eBarberShop.WinUI
             btn.HeaderText = "Akcija";
             btn.UseColumnTextForButtonValue = true;
 
+            DataGridViewButtonColumn btn1 = new DataGridViewButtonColumn();
+            btn1.Text = "Otkazi";
+            btn1.DataPropertyName = "Otkazi";
+            btn1.HeaderText = "Akcija";
+            btn1.UseColumnTextForButtonValue = true;
+
             DataGridViewButtonColumn btn2 = new DataGridViewButtonColumn();
             btn2.Text = "Obrisi";
             btn2.DataPropertyName = "Obrisi";
@@ -40,6 +46,7 @@ namespace eBarberShop.WinUI
             btn2.UseColumnTextForButtonValue = true;
 
             dgvNarudzba.Columns.Add(btn);
+            dgvNarudzba.Columns.Add(btn1);
             dgvNarudzba.Columns.Add(btn2);
         }
 
@@ -88,7 +95,7 @@ namespace eBarberShop.WinUI
 
                 if (grid.Columns[e.ColumnIndex].Index == 7)
                 {
-                    NarudzbaUpdateRequest request = new NarudzbaUpdateRequest() { IsShipped = true };
+                    NarudzbaUpdateRequest request = new NarudzbaUpdateRequest() { IsShipped = true, IsCanceled = false };
 
                     var result = await service.Update<Narudzba>(narudzba.NarudzbaID, request);
 
@@ -96,7 +103,17 @@ namespace eBarberShop.WinUI
 
                     await LoadData();
                 }
-                else if (grid.Columns[e.ColumnIndex].Index == 8)
+                if (grid.Columns[e.ColumnIndex].Index == 8)
+                {
+                    NarudzbaUpdateRequest request = new NarudzbaUpdateRequest() { IsShipped = false, IsCanceled = true };
+
+                    var result = await service.Update<Narudzba>(narudzba.NarudzbaID, request);
+
+                    MessageBox.Show("Uspjesno ste otkazali narudzbu");
+
+                    await LoadData();
+                }
+                else if (grid.Columns[e.ColumnIndex].Index == 9)
                 {
                     if (MessageBox.Show($"Jeste li sigurni da zelite obrisati ovu narudzbu?", $"Message for user - {APIService.Username}", MessageBoxButtons.OKCancel) == DialogResult.OK)
                     {

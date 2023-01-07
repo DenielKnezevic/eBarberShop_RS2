@@ -13,6 +13,7 @@ class BaseProvider<T> with ChangeNotifier {
 
   String? _endpoint;
   static String? _baseUrl;
+  String? fullUrl;
 
   HttpClient client = HttpClient();
   IOClient? http;
@@ -27,6 +28,7 @@ class BaseProvider<T> with ChangeNotifier {
 
     client.badCertificateCallback =(cert, host, port) => true;
     http = IOClient(client);
+    fullUrl = "$_baseUrl$_endpoint";
   }
 
   Future<List<T>> Get([dynamic search]) async {
@@ -107,23 +109,6 @@ class BaseProvider<T> with ChangeNotifier {
       return null;
     }
 
-  }
-
-   Future <T> Authenticate() async
-  {
-    var url = "${_baseUrl}${_endpoint}/Authenticate";
-    var uri = Uri.parse(url);
-
-    var headers = getHeaders();
-    var response = await http!.get(uri , headers: headers);
-    if(isValidResponseCode(response)){
-      var data = jsonDecode(response.body);
-      T user = fromJson(data) as T;
-      return user;
-    }
-    else{
-      throw Exception("Wrong username or password");
-    }
   }
 
   T fromJson(x){
