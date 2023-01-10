@@ -47,10 +47,5 @@ namespace eBarberShop.WinUI.Arhiva
             rptArhiva.LocalReport.ReportEmbeddedResource = "eBarberShop.WinUI.Arhiva.NarudzbeReport.rdlc";
             rptArhiva.RefreshReport();
         }
-
-        private void rptArhiva_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

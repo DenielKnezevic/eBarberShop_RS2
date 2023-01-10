@@ -39,7 +39,6 @@
             this.rptRezervacija.ServerReport.BearerToken = null;
             this.rptRezervacija.Size = new System.Drawing.Size(1068, 768);
             this.rptRezervacija.TabIndex = 0;
-            this.rptRezervacija.Load += new System.EventHandler(this.rptRezervacija_Load);
             // 
             // frmArhivaRezervacijaReport
             // 

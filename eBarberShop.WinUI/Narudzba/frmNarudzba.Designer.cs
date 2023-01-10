@@ -67,7 +67,6 @@
             this.dtpDatumDo.Name = "dtpDatumDo";
             this.dtpDatumDo.Size = new System.Drawing.Size(243, 27);
             this.dtpDatumDo.TabIndex = 2;
-            this.dtpDatumDo.ValueChanged += new System.EventHandler(this.dtpDatum_ValueChanged);
             // 
             // txtNarudzbaSearch
             // 
@@ -75,7 +74,6 @@
             this.txtNarudzbaSearch.Name = "txtNarudzbaSearch";
             this.txtNarudzbaSearch.Size = new System.Drawing.Size(172, 27);
             this.txtNarudzbaSearch.TabIndex = 3;
-            this.txtNarudzbaSearch.TextChanged += new System.EventHandler(this.txtNarudzbaSearch_TextChanged);
             // 
             // dtpDatumOd
             // 

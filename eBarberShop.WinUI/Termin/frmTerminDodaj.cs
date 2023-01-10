@@ -26,21 +26,6 @@ namespace eBarberShop.WinUI.Termin
             _termin = termin;
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private async void frmTerminDodaj_Load(object sender, EventArgs e)
         {
             await LoadUposlenici();

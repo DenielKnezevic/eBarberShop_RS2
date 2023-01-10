@@ -36,6 +36,7 @@ class _ProfileModifyScreenState extends State<ProfileModifyScreen> {
   TextEditingController _PrezimeController = TextEditingController();
   TextEditingController _EmailController = TextEditingController();
   TextEditingController _TelefonController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -85,7 +86,9 @@ class _ProfileModifyScreenState extends State<ProfileModifyScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                   FlatButton(onPressed: () async {
-                    Map user = {
+                    if(_formKey.currentState!.validate())
+                    {
+                      Map user = {
                       "ime" : _ImeController.text,
                       "prezime" : _PrezimeController.text,
                       "email" : _EmailController.text,
@@ -97,6 +100,7 @@ class _ProfileModifyScreenState extends State<ProfileModifyScreen> {
                     Navigator.pop(context,true);
                     ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text("Profil uspjesno uredjen")));
+                    }
                   }, child: Text("Save changes" ,style: TextStyle(color: Colors.white),), color:Colors.grey[900],shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
                 ],)
       
@@ -113,103 +117,138 @@ class _ProfileModifyScreenState extends State<ProfileModifyScreen> {
 
     else{
 
-      return  Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 0 , horizontal: 20),
-            child: Row(
-              children: [
-                Text('Ime:', style: Theme.of(context).textTheme.headline6),
-              ],
-            ),
-          ),
-          SizedBox(height: 8),
-            Container(
-              width: 320,
-               child: Padding(
-                padding: const EdgeInsets.only(bottom: 4),
-                child: TextField(controller:_ImeController, style: TextStyle(fontSize: 18)))
-            ),
-            SizedBox(height: 16),
+      return  Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 0 , horizontal: 20),
               child: Row(
                 children: [
-                  Text('Prezime:', style: Theme.of(context).textTheme.headline6),
+                  Text('Ime:', style: Theme.of(context).textTheme.headline6),
                 ],
               ),
             ),
             SizedBox(height: 8),
-            Container(
-              width: 320,
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 4),
-                child: TextField(controller: _PrezimeController, style: TextStyle(fontSize: 18)))
-            ),
-            SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 0 , horizontal: 20),
-              child: Row(
-                children: [
-                  Text('Email:', style: Theme.of(context).textTheme.headline6),
-                ],
+              Container(
+                width: 320,
+                 child: Padding(
+                  padding: const EdgeInsets.only(bottom: 4),
+                  child: TextFormField(
+                    validator: (value) {
+                      if(value!.isEmpty || value == null)
+                      {
+                        return "Ime ne smije ostati prazno polje";
+                      }
+                      else if(value.length < 3)
+                      {
+                        return "Ime ne smije sadrzavati manje od 3 slova";
+                      }
+                      return null;
+                    },
+                    controller:_ImeController, style: TextStyle(fontSize: 18)))
               ),
-            ),
-            SizedBox(height: 8),
-            Container(
-              width: 320,
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 4),
-                child: TextField(controller: _EmailController, style: TextStyle(fontSize: 18)))
-            ),
-            SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 0 , horizontal: 20),
-              child: Row(
-                children: [
-                  Text('Broj telefona:', style: Theme.of(context).textTheme.headline6),
-                ],
+              SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 0 , horizontal: 20),
+                child: Row(
+                  children: [
+                    Text('Prezime:', style: Theme.of(context).textTheme.headline6),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: 8),
-            Container(
-              width: 320,
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 4),
-                child: TextField(controller: _TelefonController, style: TextStyle(fontSize: 18)))),
-                 Padding(
-                   padding: const EdgeInsets.all(20.0),
-                   child: Row(
-                     children: [
-                       Expanded(
-                         child: DropdownButton<Drzava>(
-                              isExpanded: true,
-                              underline: SizedBox(),
-                              value: _selectedItemDrzava,
-                              items: drzava.map((e) => DropdownMenuItem(child: Text(e.naziv!),value: e,)).toList(), 
-                              onChanged: (val){
-                                setState(() {
-                                  _selectedItemDrzava = val as Drzava;
-                                });
-                              } ),
-                       ),
-                            Expanded(
-                              child: DropdownButton<Grad>(
-                              isExpanded: true,
-                              underline: SizedBox(),
-                              value: _selectedItemGrad,
-                              items: grad.map((e) => DropdownMenuItem(child: Text(e.naziv!),value: e,)).toList(), 
-                              onChanged: (val){
-                                setState(() {
-                                  _selectedItemGrad = val as Grad;
-                                });
-                              } ),
-                            ),
-                     ],
-                   ),
-                 )
-        ],
+              SizedBox(height: 8),
+              Container(
+                width: 320,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 4),
+                  child: TextFormField(
+                    validator: (value) {
+                      if(value!.isEmpty || value == null)
+                      {
+                        return "Prezime ne smije ostati prazno polje";
+                      }
+                      else if(value.length < 3)
+                      {
+                        return "Prezime ne smije sadrzavati manje od 3 slova";
+                      }
+                      return null;
+                    },
+                    controller: _PrezimeController, style: TextStyle(fontSize: 18)))
+              ),
+              SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 0 , horizontal: 20),
+                child: Row(
+                  children: [
+                    Text('Email:', style: Theme.of(context).textTheme.headline6),
+                  ],
+                ),
+              ),
+              SizedBox(height: 8),
+              Container(
+                width: 320,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 4),
+                  child: TextFormField(
+                    validator: (value) {
+                      if(value!.isEmpty || value == null)
+                      {
+                        return "Email ne smije ostati prazno polje";
+                      }
+                    },
+                    controller: _EmailController, style: TextStyle(fontSize: 18)))
+              ),
+              SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 0 , horizontal: 20),
+                child: Row(
+                  children: [
+                    Text('Broj telefona:', style: Theme.of(context).textTheme.headline6),
+                  ],
+                ),
+              ),
+              SizedBox(height: 8),
+              Container(
+                width: 320,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 4),
+                  child: TextFormField(
+                    controller: _TelefonController, style: TextStyle(fontSize: 18)))),
+                   Padding(
+                     padding: const EdgeInsets.all(20.0),
+                     child: Row(
+                       children: [
+                         Expanded(
+                           child: DropdownButton<Drzava>(
+                                isExpanded: true,
+                                underline: SizedBox(),
+                                value: _selectedItemDrzava,
+                                items: drzava.map((e) => DropdownMenuItem(child: Text(e.naziv!),value: e,)).toList(), 
+                                onChanged: (val){
+                                  setState(() {
+                                    _selectedItemDrzava = val as Drzava;
+                                  });
+                                } ),
+                         ),
+                              Expanded(
+                                child: DropdownButton<Grad>(
+                                isExpanded: true,
+                                underline: SizedBox(),
+                                value: _selectedItemGrad,
+                                items: grad.map((e) => DropdownMenuItem(child: Text(e.naziv!),value: e,)).toList(), 
+                                onChanged: (val){
+                                  setState(() {
+                                    _selectedItemGrad = val as Grad;
+                                  });
+                                } ),
+                              ),
+                       ],
+                     ),
+                   )
+          ],
+        ),
       );
     }
   }

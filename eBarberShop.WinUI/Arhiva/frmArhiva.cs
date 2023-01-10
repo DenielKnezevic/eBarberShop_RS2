@@ -102,10 +102,5 @@ namespace eBarberShop.WinUI
                 MessageBox.Show("Nema podataka za izvjestaj");
             }
         }
-
-        private void cmbUposlenik_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

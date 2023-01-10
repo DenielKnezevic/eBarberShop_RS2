@@ -101,7 +101,6 @@
             this.txtVrijeme.Name = "txtVrijeme";
             this.txtVrijeme.Size = new System.Drawing.Size(250, 27);
             this.txtVrijeme.TabIndex = 2;
-            this.txtVrijeme.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.txtVrijeme.Validating += new System.ComponentModel.CancelEventHandler(this.txtVrijeme_Validating);
             // 
             // cmbUposlenici
@@ -111,7 +110,6 @@
             this.cmbUposlenici.Name = "cmbUposlenici";
             this.cmbUposlenici.Size = new System.Drawing.Size(250, 28);
             this.cmbUposlenici.TabIndex = 1;
-            this.cmbUposlenici.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.cmbUposlenici.Validating += new System.ComponentModel.CancelEventHandler(this.cmbUposlenici_Validating);
             this.cmbUposlenici.Validated += new System.EventHandler(this.cmbUposlenici_Validated);
             // 
@@ -121,7 +119,6 @@
             this.dtpDatum.Name = "dtpDatum";
             this.dtpDatum.Size = new System.Drawing.Size(250, 27);
             this.dtpDatum.TabIndex = 0;
-            this.dtpDatum.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             this.dtpDatum.Validating += new System.ComponentModel.CancelEventHandler(this.dtpDatum_Validating);
             // 
             // errorProvider

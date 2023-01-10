@@ -25,11 +25,6 @@ namespace eBarberShop.WinUI
             _novost = novost;
         }
 
-        private void pbSlika_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnDodajSliku_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -126,10 +121,6 @@ namespace eBarberShop.WinUI
                 e.Cancel = false;
                 errorProvider.SetError(rtbSadrzaj, "");
             }
-        }
-
-        private void pbSlika_Validating(object sender, CancelEventArgs e)
-        {
         }
     }
 }

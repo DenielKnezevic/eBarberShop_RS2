@@ -39,7 +39,6 @@
             this.rptArhiva.ServerReport.BearerToken = null;
             this.rptArhiva.Size = new System.Drawing.Size(1495, 745);
             this.rptArhiva.TabIndex = 0;
-            this.rptArhiva.Load += new System.EventHandler(this.rptArhiva_Load);
             // 
             // frmArhivaNarudzbaReport
             // 

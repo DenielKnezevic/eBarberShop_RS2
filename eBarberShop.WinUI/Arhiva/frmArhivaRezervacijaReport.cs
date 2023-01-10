@@ -46,9 +46,5 @@ namespace eBarberShop.WinUI.Arhiva
             rptRezervacija.RefreshReport();
         }
 
-        private void rptRezervacija_Load(object sender, EventArgs e)
-        {
-            
-        }
     }
 }

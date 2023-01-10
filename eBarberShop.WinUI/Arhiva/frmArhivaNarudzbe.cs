@@ -22,11 +22,6 @@ namespace eBarberShop.WinUI.Arhiva
             InitializeComponent();
         }
 
-        private void dgvArhiva_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         public async Task LoadData(NarudzbaSearchObject search = null)
         {
             if (search == null)

@@ -82,7 +82,6 @@
             this.cmbUposlenik.Name = "cmbUposlenik";
             this.cmbUposlenik.Size = new System.Drawing.Size(164, 28);
             this.cmbUposlenik.TabIndex = 4;
-            this.cmbUposlenik.SelectedIndexChanged += new System.EventHandler(this.cmbUposlenik_SelectedIndexChanged);
             // 
             // btnIzvjestaj
             // 

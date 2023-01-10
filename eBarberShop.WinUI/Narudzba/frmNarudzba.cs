@@ -127,15 +127,5 @@ namespace eBarberShop.WinUI
 
             }
         }
-
-        private void dtpDatum_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtNarudzbaSearch_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

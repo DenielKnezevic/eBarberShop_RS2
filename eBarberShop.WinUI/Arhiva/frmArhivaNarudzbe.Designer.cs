@@ -74,7 +74,6 @@
             this.dgvArhiva.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArhiva.Size = new System.Drawing.Size(776, 344);
             this.dgvArhiva.TabIndex = 4;
-            this.dgvArhiva.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArhiva_CellContentClick);
             // 
             // btnIzvjestaj
             // 

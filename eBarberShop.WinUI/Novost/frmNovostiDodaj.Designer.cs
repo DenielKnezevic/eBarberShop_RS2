@@ -106,8 +106,6 @@
             this.pbSlika.Size = new System.Drawing.Size(225, 231);
             this.pbSlika.TabIndex = 2;
             this.pbSlika.TabStop = false;
-            this.pbSlika.Click += new System.EventHandler(this.pbSlika_Click);
-            this.pbSlika.Validating += new System.ComponentModel.CancelEventHandler(this.pbSlika_Validating);
             // 
             // rtbSadrzaj
             // 
