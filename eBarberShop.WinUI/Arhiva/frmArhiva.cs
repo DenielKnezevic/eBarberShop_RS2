@@ -32,6 +32,9 @@ namespace eBarberShop.WinUI
             search.DatumOd = dtpDatumOd.Value.Date;
             search.DatumDo = dtpDatumDo.Value.Date;
             search.IsCanceled = false;
+            search.IncludeTermin = true;
+            search.IncludeUsluga = true;
+            search.IncludeKorisnik = true;
 
             if (Convert.ToInt32(cmbUposlenik.SelectedValue) > 0)
             {
@@ -54,6 +57,9 @@ namespace eBarberShop.WinUI
                 search = new RezervacijaSearchObject();
                 search.IsArchived=true;
                 search.IsCanceled = false;
+                search.IncludeTermin = true;
+                search.IncludeUsluga = true;
+                search.IncludeKorisnik = true;
 
                 var list = await service.GetAll<List<Rezervacija>>(search);
                 dgvArhiva.DataSource = list;
@@ -67,7 +73,12 @@ namespace eBarberShop.WinUI
 
         public async Task LoadUposlenike()
         {
-            var list = await serviceUposlenici.GetAll<List<Korisnik>>();
+            KorisnikSearchObject search = new KorisnikSearchObject();
+            search.IncludeDrzava = true;
+            search.IncludeGrad = true;
+            search.IncludeUloge = true;
+
+            var list = await serviceUposlenici.GetAll<List<Korisnik>>(search);
 
             List<Korisnik> konacnaLista = new List<Korisnik>();
 

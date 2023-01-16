@@ -8,5 +8,6 @@ namespace eBarberShop.Models.SearchObjects
     {
         public int? VrstaProizvodaID { get; set; }
         public string Naziv { get; set; }
+        public bool? IncludeVrstaProizvoda { get; set; }
     }
 }

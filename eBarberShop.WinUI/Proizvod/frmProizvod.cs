@@ -27,6 +27,7 @@ namespace eBarberShop.WinUI
             ProizvodSearchObject proizvodSeachObject = new ProizvodSearchObject();
 
             proizvodSeachObject.Naziv = txtProizvodiSearch.Text;
+            proizvodSeachObject.IncludeVrstaProizvoda = true;
 
             if (Convert.ToInt32(cmbVrstaProizvod.SelectedValue) > 0)
                 proizvodSeachObject.VrstaProizvodaID = Convert.ToInt32(cmbVrstaProizvod.SelectedValue);
@@ -62,6 +63,12 @@ namespace eBarberShop.WinUI
         
         public async Task LoadData(ProizvodSearchObject search = null)
         {
+            if (search == null)
+            {
+                search = new ProizvodSearchObject();
+                search.IncludeVrstaProizvoda = true;
+            }
+
             var list = await service.GetAll<List<Proizvod>>(search);
 
             dgvProizvod.DataSource = list;

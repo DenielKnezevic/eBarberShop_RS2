@@ -30,6 +30,9 @@ namespace eBarberShop.WinUI
             search.DatumDo = dtpDatumDo.Value.Date;
             search.IsArchived = false;
             search.IsCanceled = false;
+            search.IncludeTermin = true;
+            search.IncludeUsluga = true;
+            search.IncludeKorisnik = true;
 
             await LoadData(search);
         }
@@ -69,6 +72,10 @@ namespace eBarberShop.WinUI
                 search = new RezervacijaSearchObject();
                 search.IsArchived=false;
                 search.IsCanceled = false;
+                search.IncludeTermin = true;
+                search.IncludeUsluga = true;
+                search.IncludeKorisnik = true;
+
                 var list = await service.GetAll<List<Rezervacija>>(search);
 
                 dgvRezervacija.DataSource = list;

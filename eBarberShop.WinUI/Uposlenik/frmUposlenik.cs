@@ -45,6 +45,9 @@ namespace eBarberShop.WinUI
             KorisnikSearchObject search = new KorisnikSearchObject();
             search.Prezime = txtPrezime.Text;
             search.Ime = txtIme.Text;
+            search.IncludeDrzava = true;
+            search.IncludeGrad = true;
+            search.IncludeUloge = true;
 
             var list = await service.GetAll<List<Korisnik>>(search);
 

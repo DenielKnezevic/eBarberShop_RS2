@@ -42,12 +42,18 @@ namespace eBarberShop.WinUI
             if(search == null)
                 search = new TerminSearchObject();
             search.IsBooked = false;
+            search.IncludeKorisnik = true;
             dgvTermini.DataSource = await service.GetAll<List<Models.Termin>>(search);
         }
 
         public async Task LoadUposlenici()
         {
-            var list = await serviceUposlenici.GetAll<List<Korisnik>>();
+            KorisnikSearchObject search = new KorisnikSearchObject();
+            search.IncludeDrzava = true;
+            search.IncludeGrad = true;
+            search.IncludeUloge = true;
+
+            var list = await serviceUposlenici.GetAll<List<Korisnik>>(search);
 
             List<Korisnik> konacnaLista = new List<Korisnik>();
 
@@ -76,6 +82,8 @@ namespace eBarberShop.WinUI
 
             search.DatumOd = dtpDatumOd.Value.Date;
             search.DatumDo = dtpDatumDo.Value.Date;
+            search.IncludeKorisnik = true;
+            search.IsBooked = false;
             await LoadData(search);
         }
 

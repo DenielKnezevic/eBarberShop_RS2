@@ -28,9 +28,22 @@ namespace eBarberShop.Services.Services
             return entity;
         }
 
-        public override IQueryable<Rezervacija> AddInclude(IQueryable<Rezervacija> entity)
+        public override IQueryable<Rezervacija> AddInclude(IQueryable<Rezervacija> entity, RezervacijaSearchObject obj)
         {
-            entity = entity.Include(x => x.Termin).ThenInclude(x => x.Korisnik).Include(y => y.Korisnik).Include(x => x.Usluga); 
+            if(obj.IncludeTermin.HasValue)
+            {
+                entity = entity.Include(x => x.Termin).ThenInclude(x => x.Korisnik);
+            }
+
+            if(obj.IncludeKorisnik.HasValue)
+            {
+                entity = entity.Include(y => y.Korisnik);
+            }
+
+            if(obj.IncludeUsluga.HasValue)
+            {
+                entity = entity.Include(y => y.Usluga);
+            }
 
             return entity;
         }

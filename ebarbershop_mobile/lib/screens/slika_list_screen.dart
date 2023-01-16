@@ -29,7 +29,7 @@ class _SlikaListScreenState extends State<SlikaListScreen> {
   }
 
    Future loadData() async {
-    var tmpData = await _slikaProvider!.Get();
+    var tmpData = await _slikaProvider!.Get({'includeKorisnik':true});
     setState(() {
       data = tmpData;
     });

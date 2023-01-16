@@ -4,9 +4,8 @@ using System.Text;
 
 namespace eBarberShop.Models.SearchObjects
 {
-    public class SlikaSearchObject : BaseSearchObject
+    public class RecenzijeSearchObject : BaseSearchObject
     {
-        public int? KorisnikID { get; set; }
         public bool? IncludeKorisnik { get; set; }
     }
 }

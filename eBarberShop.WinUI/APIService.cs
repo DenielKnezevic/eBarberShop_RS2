@@ -14,7 +14,7 @@ namespace eBarberShop.WinUI
         public static string Username = null;
         public static string Password = null;
         public static Korisnik Korisnik = null;
-        public string Endpoint = Resources.API;
+        public string Endpoint = Resources.LocalAPI;
         public string Resource;
 
         public APIService(string resource)

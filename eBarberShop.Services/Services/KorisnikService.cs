@@ -38,9 +38,22 @@ namespace eBarberShop.Services.Services
             return entity;
         }
 
-        public override IQueryable<Korisnik> AddInclude(IQueryable<Korisnik> entity)
+        public override IQueryable<Korisnik> AddInclude(IQueryable<Korisnik> entity, KorisnikSearchObject obj)
         {
-            entity = entity.Include("KorisnikUlogas.Uloga").Include(x => x.Grad).Include(x => x.Drzava);
+            if(obj.IncludeUloge.HasValue)
+            {
+                entity = entity.Include("KorisnikUlogas.Uloga");
+            }
+
+            if(obj.IncludeGrad.HasValue)
+            {
+                entity = entity.Include(x => x.Grad);
+            }
+
+            if (obj.IncludeDrzava.HasValue)
+            {
+                entity = entity.Include(x => x.Drzava);
+            }
 
             return entity;
         }

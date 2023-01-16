@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using eBarberShop.Models.Requests;
+using eBarberShop.Models.SearchObjects;
 using eBarberShop.Services.Database;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,16 +11,19 @@ using System.Threading.Tasks;
 
 namespace eBarberShop.Services.Services
 {
-    public class RecenzijaService : CRUDService<Models.Recenzija,Recenzija,object,RecenzijaInsertRequest,RecenzijaUpdateRequest> , IRecenzijaService
+    public class RecenzijaService : CRUDService<Models.Recenzija,Recenzija, RecenzijeSearchObject, RecenzijaInsertRequest,RecenzijaUpdateRequest> , IRecenzijaService
     {
         public RecenzijaService(eBarberShopContext db , IMapper mapper):base(db ,mapper)
         {
 
         }
 
-        public override IQueryable<Recenzija> AddInclude(IQueryable<Recenzija> entity)
+        public override IQueryable<Recenzija> AddInclude(IQueryable<Recenzija> entity, RecenzijeSearchObject obj)
         {
-            entity = entity.Include(x => x.Korisnik);
+            if(obj.IncludeKorisnik.HasValue)
+            {
+                entity = entity.Include(x => x.Korisnik);
+            }
 
             return entity;
         }

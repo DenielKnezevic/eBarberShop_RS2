@@ -11,5 +11,8 @@ namespace eBarberShop.Models.SearchObjects
         public DateTime? DatumDo { get; set; }
         public bool? IsCanceled { get; set; }
         public bool? IsArchived { get; set; }
+        public bool? IncludeTermin { get; set; }
+        public bool? IncludeKorisnik { get; set; }
+        public bool? IncludeUsluga { get; set; }
     }
 }

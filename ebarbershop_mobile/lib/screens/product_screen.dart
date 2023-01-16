@@ -37,14 +37,18 @@ class _ProductScreenState extends State<ProductScreen> {
   }
 
   Future loadData() async {
-    var narudzbe = await _narudzbaProvider!.Get();
+    var narudzbe = await _narudzbaProvider!.Get({
+      'includeKorisnik':true,
+      'includeNarudzbaProizvodi':true,
+      'includeUplata':true
+    });
     List<Proizvod> tmpData = [];
     if(narudzbe.length >= 2)
     {
       tmpData = await _proizvodProvider!.Recommend();
     }
     else{
-      tmpData = await _proizvodProvider!.Get();
+      tmpData = await _proizvodProvider!.Get({'includeVrstaProizvoda':true});
     }
     setState((){
       if(narudzbe.length >= 2)
@@ -130,7 +134,11 @@ class _ProductScreenState extends State<ProductScreen> {
             icon: Icon(Icons.search_rounded, color: Colors.grey,),
             onPressed: () async {
                 var tmpData = await _proizvodProvider?.Get({'naziv': _searchController.text});
-                var tmpNarudzbe = await _narudzbaProvider?.Get();
+                var tmpNarudzbe = await _narudzbaProvider?.Get({
+                  'includeKorisnik':true,
+                  'includeNarudzbaProizvodi':true,
+                  'includeUplata':true
+                });
                 setState(() {
                   if(_searchController.text != "")
                   {

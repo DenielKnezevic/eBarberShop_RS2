@@ -40,7 +40,10 @@ class _TerminiScreenState extends State<TerminiScreen> {
 
   Future loadData() async {
     var tmpUsluga = await _uslugaProvider?.Get();
-    var tmpData = await _terminProvider?.Get({'isBooked' : false});
+    var tmpData = await _terminProvider?.Get({
+      'isBooked' : false,
+      'includeKorisnik':true
+      });
     setState(() {
       data = tmpData!;
       usluga = tmpUsluga!;

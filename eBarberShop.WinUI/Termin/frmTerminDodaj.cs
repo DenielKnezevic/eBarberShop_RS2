@@ -1,5 +1,6 @@
 ﻿using eBarberShop.Models;
 using eBarberShop.Models.Requests;
+using eBarberShop.Models.SearchObjects;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,7 +45,12 @@ namespace eBarberShop.WinUI.Termin
 
         public async Task LoadUposlenici()
         {
-            var list = await serviceUposlenici.GetAll<List<Korisnik>>();
+            KorisnikSearchObject search = new KorisnikSearchObject();
+            search.IncludeDrzava = true;
+            search.IncludeGrad = true;
+            search.IncludeUloge = true;
+
+            var list = await serviceUposlenici.GetAll<List<Korisnik>>(search);
 
             List<Korisnik> konacnaLista = new List<Korisnik>();
 

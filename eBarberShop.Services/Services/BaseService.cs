@@ -22,7 +22,7 @@ namespace eBarberShop.Services.Services
         {
             var entity = _db.Set<TDb>().AsQueryable();
 
-            entity = AddInclude(entity);
+            entity = AddInclude(entity,obj);
 
             entity = AddFilter(entity, obj);
 
@@ -42,7 +42,7 @@ namespace eBarberShop.Services.Services
             return entity;
         }
 
-        public virtual IQueryable<TDb> AddInclude(IQueryable<TDb> entity)
+        public virtual IQueryable<TDb> AddInclude(IQueryable<TDb> entity, TSearch obj)
         {
             return entity;
         }

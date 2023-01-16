@@ -28,6 +28,7 @@ namespace eBarberShop.WinUI
             NovostSearchObject search = new NovostSearchObject();
             search.DatumOd = dtpDatumOd.Value.Date;
             search.DatumDo = dtpDatumDo.Value.Date;
+            search.IncludeKorisnik = true;
             if(Convert.ToInt32(cmbKorisnik.SelectedValue) > 0)
                 search.KorisnikID = Convert.ToInt32(cmbKorisnik.SelectedValue);
             await LoadData(search);
@@ -60,7 +61,7 @@ namespace eBarberShop.WinUI
         public async Task LoadData(NovostSearchObject search = null)
         {
             if(search != null)
-            { 
+            {
                 var lista = await service.GetAll<List<Novost>>(search);
 
                 dgvNovost.DataSource = lista;
@@ -68,7 +69,10 @@ namespace eBarberShop.WinUI
 
             else
             {
-                var lista = await service.GetAll<List<Novost>>();
+                search = new NovostSearchObject();
+                search.IncludeKorisnik = true;
+
+                var lista = await service.GetAll<List<Novost>>(search);
 
                 dgvNovost.DataSource = lista;
             }
@@ -76,7 +80,11 @@ namespace eBarberShop.WinUI
 
         public async Task LoadUposlenici()
         {
-            var list = await serviceUposlenici.GetAll<List<Korisnik>>();
+            KorisnikSearchObject search = new KorisnikSearchObject();
+            search.IncludeDrzava = true;
+            search.IncludeGrad = true;
+            search.IncludeUloge = true;
+            var list = await serviceUposlenici.GetAll<List<Korisnik>>(search);
 
             List<Korisnik> konacnaLista = new List<Korisnik>();
 

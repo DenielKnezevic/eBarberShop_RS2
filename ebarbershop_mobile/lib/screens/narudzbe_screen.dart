@@ -32,7 +32,10 @@ class _NarudzbeScreenState extends State<NarudzbeScreen> {
     var tmpData = await _narudzbaProvider!.Get({
       'korisnikID': Authorization.korisnik!.korisnikID,
       'isShipped': false,
-      'isCanceled':false
+      'isCanceled':false,
+      'includeKorisnik':true,
+      'includeNarudzbaProizvodi':true,
+      'includeUplata':true
     });
     setState(() {
       list = tmpData;

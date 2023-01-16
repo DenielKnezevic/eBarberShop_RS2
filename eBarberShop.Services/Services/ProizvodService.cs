@@ -21,9 +21,12 @@ namespace eBarberShop.Services.Services
 
         }
 
-        public override IQueryable<Proizvod> AddInclude(IQueryable<Proizvod> entity)
+        public override IQueryable<Proizvod> AddInclude(IQueryable<Proizvod> entity, ProizvodSearchObject obj)
         {
-            entity = entity.Include(x => x.VrstaProizvoda);
+            if(obj.IncludeVrstaProizvoda.HasValue)
+            {
+                entity = entity.Include(x => x.VrstaProizvoda);
+            }
 
             return entity;
         }
@@ -53,6 +56,19 @@ namespace eBarberShop.Services.Services
         static ITransformer model = null;
         public List<Models.Proizvod> Recommend(int korisnikID)
         {
+            var all = _db.Narudzbas.Include(x => x.NarudzbaProizvodis).ThenInclude(x => x.Proizvod).ToList();
+            List<int> allproducts = new List<int>();
+            foreach (var item in all)
+            {
+                foreach (var item2 in item.NarudzbaProizvodis)
+                {
+                    allproducts.Add(item2.ProizvodID);
+                }
+            }
+            if (allproducts.Distinct().Count() < 2)
+                return new List<Models.Proizvod>();
+
+
             var narudzbeProizvodi = _db.Narudzbas.Include(x => x.NarudzbaProizvodis).ThenInclude(x => x.Proizvod).Where(x => x.KorisnikID == korisnikID).ToList();
             if (narudzbeProizvodi.Count == 0)
                 return new List<Models.Proizvod>();
@@ -66,12 +82,17 @@ namespace eBarberShop.Services.Services
                 }
             }
 
-            if (products.Distinct().Count() < 2)
-                return new List<Models.Proizvod>();
-            var list = products.Distinct();
-            Random rand = new Random();
-            int r = rand.Next(list.Count() - 1);
-            id = products.ElementAt(r);
+            if (products.Distinct().Count() >= 2)
+            {
+                var list = products.Distinct();
+                Random rand = new Random();
+                int r = rand.Next(list.Count() - 1);
+                id = products.ElementAt(r);
+            }
+            else
+            {
+                id = products.ElementAt(0);
+            }
 
             lock (isLocked)
             {

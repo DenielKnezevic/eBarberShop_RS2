@@ -31,7 +31,7 @@ RecenzijaProvider? _recenzijaProvider = null;
   }
 
   Future loadData() async {
-    var tmpData = await _recenzijaProvider!.Get();
+    var tmpData = await _recenzijaProvider!.Get({'includeKorisnik':true});
     setState(() {
       data = tmpData;
     });

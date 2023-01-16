@@ -28,6 +28,7 @@ namespace eBarberShop.WinUI
             SlikaSearchObject search = new SlikaSearchObject();
             if(Convert.ToInt32(cmbKorisnik.SelectedValue) > 0)
                 search.KorisnikID = Convert.ToInt32(cmbKorisnik.SelectedValue);
+            search.IncludeKorisnik = true;
             await LoadData(search);
         }
 
@@ -70,7 +71,12 @@ namespace eBarberShop.WinUI
 
         public async Task LoadUposlenici()
         {
-            var list = await serviceUposlenici.GetAll<List<Korisnik>>();
+            KorisnikSearchObject search = new KorisnikSearchObject();
+            search.IncludeDrzava = true;
+            search.IncludeGrad = true;
+            search.IncludeUloge = true;
+
+            var list = await serviceUposlenici.GetAll<List<Korisnik>>(search);
 
             List<Korisnik> konacnaLista = new List<Korisnik>();
 
@@ -101,7 +107,10 @@ namespace eBarberShop.WinUI
 
             else
             {
-                var list = await service.GetAll<List<Slika>>();
+                search = new SlikaSearchObject();
+                search.IncludeKorisnik = true;
+
+                var list = await service.GetAll<List<Slika>>(search);
 
                 dgvSlika.DataSource = list;
             }

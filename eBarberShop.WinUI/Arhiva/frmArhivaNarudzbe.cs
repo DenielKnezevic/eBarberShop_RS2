@@ -29,6 +29,9 @@ namespace eBarberShop.WinUI.Arhiva
                 search = new NarudzbaSearchObject();
                 search.IsShipped = true;
                 search.IsCanceled = false;
+                search.IncludeUplata = true;
+                search.IncludeKorisnik = true;
+                search.IncludeNarudzbaProizvodi = true;
                 var list = await service.GetAll<List<Narudzba>>(search);
 
                 dgvArhiva.DataSource = list;
@@ -56,6 +59,9 @@ namespace eBarberShop.WinUI.Arhiva
             search.BrojNarudzbe = txtArhivaSearch.Text;
             search.IsShipped = true;
             search.IsCanceled = false;
+            search.IncludeUplata = true;
+            search.IncludeKorisnik = true;
+            search.IncludeNarudzbaProizvodi = true;
 
             await LoadData(search);
         }

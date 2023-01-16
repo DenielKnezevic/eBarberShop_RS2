@@ -30,7 +30,7 @@ class _NovostListScreenState extends State<NovostListScreen> {
   }
 
   Future loadData() async {
-    var tmpData = await _novostiProvider!.Get();
+    var tmpData = await _novostiProvider!.Get({'includeKorisnik':true});
     setState(() {
       data = tmpData;
     });

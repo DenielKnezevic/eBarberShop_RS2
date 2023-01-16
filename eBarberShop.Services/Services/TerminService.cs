@@ -23,9 +23,12 @@ namespace eBarberShop.Services.Services
             entity.DatumKreiranja = DateTime.Now;
         }
 
-        public override IQueryable<Termin> AddInclude(IQueryable<Termin> entity)
+        public override IQueryable<Termin> AddInclude(IQueryable<Termin> entity, TerminSearchObject obj)
         {
-            entity = entity.Include(x => x.Korisnik);
+            if(obj.IncludeKorisnik.HasValue)
+            {
+                entity = entity.Include(x => x.Korisnik);
+            }
 
             return entity;
         }
@@ -37,14 +40,19 @@ namespace eBarberShop.Services.Services
                 entity = entity.Where(x => x.KorisnikID == obj.KorisnikID);
             }
 
-            if(obj.DatumOd.HasValue)
+            if (obj.Datum.HasValue)
+            {
+                entity = entity.Where(x => x.DatumTermina.Date == obj.Datum.Value);
+            }
+
+            if (obj.DatumOd.HasValue)
             {
                 entity = entity.Where(x => x.DatumTermina.Date >= obj.DatumOd.Value);
             }
 
             if (obj.DatumDo.HasValue)
             {
-                entity = entity.Where(x => x.DatumTermina <= obj.DatumDo.Value);
+                entity = entity.Where(x => x.DatumTermina.Date <= obj.DatumDo.Value);
             }
 
             if(obj.IsBooked.HasValue)
