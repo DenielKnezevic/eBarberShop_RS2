@@ -56,6 +56,7 @@ namespace eBarberShop.WinUI
             btn.UseColumnTextForButtonValue = true;
 
             dgvKorisnici.Columns.Add(btn);
+            dgvKorisnici.Columns["KorisnikID"].Visible = false;
 
         }
 

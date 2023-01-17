@@ -19,13 +19,14 @@ class TerminiScreen extends StatefulWidget {
 }
 
 class _TerminiScreenState extends State<TerminiScreen> {
-
   TerminProvider? _terminProvider = null;
   UslugaProvider? _uslugaProvider = null;
   RezervacijaProvider? _rezervacijaProvider = null;
   List<Termin> data = [];
   List<Usluga> usluga = [];
   Usluga? _selectedItem = null;
+  TextEditingController dateController = TextEditingController();
+  DateTime date = DateTime.now();
 
   @override
   void initState() {
@@ -35,15 +36,12 @@ class _TerminiScreenState extends State<TerminiScreen> {
     _terminProvider = context.read<TerminProvider>();
     _rezervacijaProvider = context.read<RezervacijaProvider>();
     loadData();
-    
   }
 
   Future loadData() async {
     var tmpUsluga = await _uslugaProvider?.Get();
-    var tmpData = await _terminProvider?.Get({
-      'isBooked' : false,
-      'includeKorisnik':true
-      });
+    var tmpData = await _terminProvider?.Get(
+        {'isBooked': false, 'includeKorisnik': true});
     setState(() {
       data = tmpData!;
       usluga = tmpUsluga!;
@@ -54,41 +52,79 @@ class _TerminiScreenState extends State<TerminiScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        Navigator.pushNamed(context, RezervacijaScreen.routeName);
-   },
-   backgroundColor: Colors.grey[800],
-   child: const Icon(Icons.calendar_month),),
-      body: SafeArea(child: SingleChildScrollView(
-      child: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-          buildHeader(),
-          Padding(padding: EdgeInsets.symmetric(vertical: 20,horizontal: 10),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, RezervacijaScreen.routeName);
+        },
+        backgroundColor: Colors.grey[800],
+        child: const Icon(Icons.calendar_month),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Container(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: _buildTermini(),),
-          ),)
-        ]),
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  buildHeader(),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+                    child: TextField(
+                        controller: dateController,
+                        decoration: const InputDecoration(
+                            icon: Icon(Icons.calendar_today),
+                            labelText: "Enter Date"),
+                        readOnly: true,
+                        onTap: () async {
+                          DateTime? pickedDate = await showDatePicker(
+                              context: context,
+                              initialDate: date,
+                              firstDate: DateTime.now(),
+                              lastDate: DateTime(2101));
+                              var tmpData = await _terminProvider!.Get({
+                            'isBooked': false,
+                            'includeKorisnik': true,
+                            'datum': pickedDate
+                          });
+                          if (pickedDate != null) {
+                            setState(() {
+                              date = pickedDate;
+                              dateController.text = formatDate(pickedDate);
+                              data = tmpData;
+                            });
+                          }
+                        }),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                    child: Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: _buildTermini(),
+                      ),
+                    ),
+                  )
+                ]),
+          ),
+        ),
       ),
-    ),),
     );
   }
 
   Widget buildHeader() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      child: Column(children: [
-        Text(
-        "Rezervacije",
-        style: TextStyle(
-            color: Colors.grey[800], fontSize: 40, fontWeight: FontWeight.w600),
-      )
-      ],)
-    );
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        child: Column(
+          children: [
+            Text(
+              "Rezervacije",
+              style: TextStyle(
+                  color: Colors.grey[800],
+                  fontSize: 40,
+                  fontWeight: FontWeight.w600),
+            )
+          ],
+        ));
   }
 
   List<Widget> _buildTermini() {
@@ -101,60 +137,76 @@ class _TerminiScreenState extends State<TerminiScreen> {
     }
 
     List<Widget> list = data
-        .map((e) => Column(children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
-            child: Card(
-              elevation: 6,
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                          Text("Termin kod ${e.korisnik!.ime} ${e.korisnik!.prezime} , ${formatDate(e.datumTermina!)}")
-                        ],),
-                      ),
-                      Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, crossAxisAlignment: CrossAxisAlignment.center, children: [
-                        Text(e.vrijemeTermina!),
-                        DropdownButton<Usluga>(
-                          underline: SizedBox(),
-                          value: _selectedItem,
-                          items: usluga.map((e) => DropdownMenuItem(child: Text(e.naziv!),value: e,)).toList(), 
-                          onChanged: (val){
-                            setState(() {
-                              _selectedItem = val as Usluga;
-                            });
-                          } ),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              primary: Colors.amber[400]
+        .map((e) => Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
+                  child: Card(
+                    elevation: 6,
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                    "Termin kod ${e.korisnik!.ime} ${e.korisnik!.prezime} , ${formatDate(e.datumTermina!)}")
+                              ],
+                            ),
                           ),
-                          onPressed: () async{
-                            Map item = {
-                              "korisnikID": Authorization.korisnik!.korisnikID,
-                              "terminID": e.terminID,
-                              "uslugaID": _selectedItem!.uslugaID,
-                              "isCanceled":false,
-                              "isArchived":false
-                            };
-                            
-                            await _rezervacijaProvider!.insert(item);
-                            loadData();
-                            ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text("Rezervacija termina uspjesna")));
-                          },child: Text("Rezervisi"),)
-                      ]),
-                    ],
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(e.vrijemeTermina!),
+                                DropdownButton<Usluga>(
+                                    underline: SizedBox(),
+                                    value: _selectedItem,
+                                    items: usluga
+                                        .map((e) => DropdownMenuItem(
+                                              child: Text(e.naziv!),
+                                              value: e,
+                                            ))
+                                        .toList(),
+                                    onChanged: (val) {
+                                      setState(() {
+                                        _selectedItem = val as Usluga;
+                                      });
+                                    }),
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      primary: Colors.amber[400]),
+                                  onPressed: () async {
+                                    Map item = {
+                                      "korisnikID":
+                                          Authorization.korisnik!.korisnikID,
+                                      "terminID": e.terminID,
+                                      "uslugaID": _selectedItem!.uslugaID,
+                                      "isCanceled": false,
+                                      "isArchived": false
+                                    };
+
+                                    await _rezervacijaProvider!.insert(item);
+                                    loadData();
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        const SnackBar(
+                                            content: Text(
+                                                "Rezervacija termina uspjesna")));
+                                  },
+                                  child: Text("Rezervisi"),
+                                )
+                              ]),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
-              ),
-          ),
-        SizedBox(height:10)
-        ],))
+                SizedBox(height: 10)
+              ],
+            ))
         .cast<Widget>()
         .toList();
 
