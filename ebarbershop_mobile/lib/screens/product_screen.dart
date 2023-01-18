@@ -42,8 +42,13 @@ class _ProductScreenState extends State<ProductScreen> {
       'includeNarudzbaProizvodi':true,
       'includeUplata':true
     });
+    var korisnikNarudzbe = await _narudzbaProvider!.Get({
+      'korisnikID':Authorization.korisnik!.korisnikID,
+      'includeKorisnik':true,
+      'includeNarudzbaProizvodi':true,
+      'includeUplata':true});
     List<Proizvod> tmpData = [];
-    if(narudzbe.length >= 2)
+    if(korisnikNarudzbe.length >= 1 && narudzbe.length >= 2)
     {
       tmpData = await _proizvodProvider!.Recommend();
     }
@@ -51,7 +56,7 @@ class _ProductScreenState extends State<ProductScreen> {
       tmpData = await _proizvodProvider!.Get({'includeVrstaProizvoda':true});
     }
     setState((){
-      if(narudzbe.length >= 2)
+      if(korisnikNarudzbe.length >= 1 && narudzbe.length >= 2)
       {
         recommendedData = tmpData;
       }

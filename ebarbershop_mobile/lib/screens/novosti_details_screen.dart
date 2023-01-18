@@ -4,7 +4,9 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 
+import '../models/korisnik.dart';
 import '../models/novost.dart';
+import '../providers/korisnik-provider.dart';
 import '../utils/util.dart';
 
 class NovostiDetailsScreen extends StatefulWidget {
@@ -19,27 +21,32 @@ class NovostiDetailsScreen extends StatefulWidget {
 class _NovostiDetailsScreenState extends State<NovostiDetailsScreen> {
 
   NovostiProvider? _novostiProvider = null;
+  KorisnikProvider? _korisnikProvider = null;
   Novost? _novost = null;
+  Korisnik? _korisnik = null;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _novostiProvider = context.read<NovostiProvider>();
+    _korisnikProvider = context.read<KorisnikProvider>();
     loadData();
   }
 
   Future loadData() async{
     var tmpData = await _novostiProvider!.getById(int.parse(this.widget.id));
+    var tmpKorisnik = await _korisnikProvider!.getById(tmpData.korisnikID!);
     setState(() {
       _novost = tmpData;
+      _korisnik = tmpKorisnik;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("eBarberShop - Proizvod detalji"),backgroundColor: Colors.grey[900],),
+      appBar: AppBar(title: Text("eBarberShop - Novost detalji"),backgroundColor: Colors.grey[900],),
       body: SingleChildScrollView(
         child: Container(
           child: Column(
@@ -80,7 +87,7 @@ class _NovostiDetailsScreenState extends State<NovostiDetailsScreen> {
                    Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Expanded(child: Text("Napisao: ${_novost!.korisnik!.ime} , Datum: ${formatDate(_novost!.datumKreiranja!)}")),
+                        Expanded(child: Text("Napisao: ${_korisnik!.ime} ${_korisnik!.prezime} , Datum: ${formatDate(_novost!.datumKreiranja!)}")),
                       ],
                     ),
                   SizedBox(height:15),
