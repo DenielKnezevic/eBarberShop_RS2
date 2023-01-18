@@ -18,6 +18,7 @@ namespace eBarberShop.Services.Database
         public string? Sifra { get; set; }
         public decimal Cijena { get; set; }
         public byte[]? Slika { get; set; }
+        public string? Opis { get; set; }
         public int VrstaProizvodaID { get; set; }
 
         public virtual VrstaProizvoda VrstaProizvoda { get; set; } = null!;

@@ -197,7 +197,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     ),
                     SizedBox(height: 5,),
                     Text(
-                      '\BAM ${e.cijena!}',
+                      '${formatNumber(e.cijena)} KM',
                       style: Theme.of(context).textTheme.subtitle2,
                     ),
                     Padding(
@@ -252,7 +252,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     ),
                     SizedBox(height: 5,),
                     Text(
-                      '\$${e.cijena!}',
+                      '${formatNumber(e.cijena)} KM',
                       style: Theme.of(context).textTheme.subtitle2,
                     ),
                     Padding(

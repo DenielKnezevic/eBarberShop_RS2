@@ -41,6 +41,8 @@
             this.txtNaziv = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.rtbOpis = new System.Windows.Forms.RichTextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -48,6 +50,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.rtbOpis);
             this.groupBox1.Controls.Add(this.btnDodajProizvod);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
@@ -57,9 +61,9 @@
             this.groupBox1.Controls.Add(this.pbSlika);
             this.groupBox1.Controls.Add(this.txtCijena);
             this.groupBox1.Controls.Add(this.txtNaziv);
-            this.groupBox1.Location = new System.Drawing.Point(124, 28);
+            this.groupBox1.Location = new System.Drawing.Point(65, 36);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(544, 362);
+            this.groupBox1.Size = new System.Drawing.Size(664, 362);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Proizvod";
@@ -114,7 +118,7 @@
             // 
             this.btnDodajSliku.Location = new System.Drawing.Point(58, 237);
             this.btnDodajSliku.Name = "btnDodajSliku";
-            this.btnDodajSliku.Size = new System.Drawing.Size(194, 29);
+            this.btnDodajSliku.Size = new System.Drawing.Size(394, 29);
             this.btnDodajSliku.TabIndex = 1;
             this.btnDodajSliku.Text = "Dodaj sliku";
             this.btnDodajSliku.UseVisualStyleBackColor = true;
@@ -123,7 +127,7 @@
             // pbSlika
             // 
             this.pbSlika.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbSlika.Location = new System.Drawing.Point(312, 54);
+            this.pbSlika.Location = new System.Drawing.Point(463, 54);
             this.pbSlika.Name = "pbSlika";
             this.pbSlika.Size = new System.Drawing.Size(182, 212);
             this.pbSlika.TabIndex = 2;
@@ -153,6 +157,24 @@
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
+            // 
+            // rtbOpis
+            // 
+            this.rtbOpis.Location = new System.Drawing.Point(267, 54);
+            this.rtbOpis.Name = "rtbOpis";
+            this.rtbOpis.Size = new System.Drawing.Size(185, 147);
+            this.rtbOpis.TabIndex = 5;
+            this.rtbOpis.Text = "";
+            this.rtbOpis.Validating += new System.ComponentModel.CancelEventHandler(this.rtbOpis_Validating);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(267, 31);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(39, 20);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Opis";
             // 
             // frmProizvodDodaj
             // 
@@ -185,5 +207,7 @@
         private OpenFileDialog openFileDialog1;
         private Button btnDodajProizvod;
         private ErrorProvider errorProvider;
+        private Label label4;
+        private RichTextBox rtbOpis;
     }
 }

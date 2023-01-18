@@ -95,7 +95,7 @@ class _CartScreenState extends State<CartScreen> {
       leading: imageFromBase64String(item.product.slika!),
       title: Text("${item.product.naziv} | Kolicina: ${item.count.toString()}"),
       subtitle: Text(
-          "Cijena ${item.product.cijena} | Ukupno: ${item.product.cijena! * item.count}"),
+          "Cijena ${formatNumber(item.product.cijena)} KM | Ukupno: ${formatNumber(item.product.cijena! * item.count)} KM"),
       trailing: IconButton(
         onPressed: () {
           _cartProvider.removeFromCart(item.product);

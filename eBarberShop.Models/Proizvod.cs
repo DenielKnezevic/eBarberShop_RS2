@@ -12,6 +12,7 @@ namespace eBarberShop.Models
         public string Naziv { get; set; }
         public string Sifra { get; set; }
         public decimal Cijena { get; set; }
+        public string Opis { get; set; }
         public byte[] Slika { get; set; }
         [Browsable(false)]
         public int VrstaProizvodaID { get; set; }

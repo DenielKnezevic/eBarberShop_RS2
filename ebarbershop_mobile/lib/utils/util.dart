@@ -23,4 +23,13 @@ String base64String(Uint8List data) {
   return base64Encode(data);
 }
 
-String formatDate(DateTime date) => new DateFormat("MM/dd/yyyy").format(date);
+String formatDate(DateTime date) => new DateFormat("dd/MM/yyyy").format(date);
+
+String formatNumber(dynamic) {
+  var f = NumberFormat('###.00');
+  if (dynamic == null) {
+    return "";
+  }
+  
+  return f.format(dynamic);
+}

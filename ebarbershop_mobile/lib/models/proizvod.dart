@@ -11,6 +11,7 @@ class Proizvod{
   String? sifra;
   double? cijena;
   String? slika;
+  String? opis;
   int? vrstaProizvodaID;
   VrstaProizvoda? vrstaProizvoda;
 

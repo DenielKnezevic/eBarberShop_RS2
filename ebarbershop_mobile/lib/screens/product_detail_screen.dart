@@ -74,7 +74,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     width:300
                   ),
                   SizedBox(height:15),
-                  Text("Cijena proizvoda: ${_proizvod?.cijena!.toString()}" , style: TextStyle(fontSize: 20),)]),
+                  Text("Cijena proizvoda: ${formatNumber(_proizvod?.cijena!)} KM" , style: TextStyle(fontSize: 20),),
+                  SizedBox(height:15),
+                  Row(children: [
+                    Expanded(child: Container(child: Text("${_proizvod!.opis}" , style: TextStyle(fontSize: 16),)))
+                  ],)]),
               )),
       );
     }

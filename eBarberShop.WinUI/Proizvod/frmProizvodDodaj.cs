@@ -60,6 +60,7 @@ namespace eBarberShop.WinUI
                     update.Naziv = txtNaziv.Text;
                     update.Slika = ImageHelper.FromImageToByte(pbSlika.Image);
                     update.VrstaProizvodaID = Convert.ToInt32(cmbVrstaProizvoda.SelectedValue);
+                    update.Opis = rtbOpis.Text;
 
                     var updateRequest = await service.Update<Proizvod>(_proizvod.ProizvodID, update);
 
@@ -72,6 +73,7 @@ namespace eBarberShop.WinUI
                     insert.Naziv = txtNaziv.Text;
                     insert.Slika = ImageHelper.FromImageToByte(pbSlika.Image);
                     insert.VrstaProizvodaID = Convert.ToInt32(cmbVrstaProizvoda.SelectedValue);
+                    insert.Opis = rtbOpis.Text;
 
                     var insertRequest = await service.Add<Proizvod>(insert);
 
@@ -98,6 +100,7 @@ namespace eBarberShop.WinUI
                 cmbVrstaProizvoda.SelectedValue = _proizvod.VrstaProizvodaID;
                 pbSlika.Image = ImageHelper.FromByteToImage(_proizvod.Slika);
                 pbSlika.SizeMode = PictureBoxSizeMode.StretchImage;
+                rtbOpis.Text = _proizvod.Opis.ToString();
             }
         }
 
@@ -107,13 +110,13 @@ namespace eBarberShop.WinUI
             {
                 e.Cancel = true;
                 txtNaziv.Focus();
-                errorProvider.SetError(txtNaziv, "Naslov ne moze ostati prazno polje");
+                errorProvider.SetError(txtNaziv, "Naziv ne moze ostati prazno polje");
             }
             else if (txtNaziv.Text.Length < 4)
             {
                 e.Cancel = true;
                 txtNaziv.Focus();
-                errorProvider.SetError(txtNaziv, "Naslov ne moze da sadrzi manje od 4 karaktera");
+                errorProvider.SetError(txtNaziv, "Naziv ne moze da sadrzi manje od 4 karaktera");
             }
             else
             {
@@ -164,6 +167,22 @@ namespace eBarberShop.WinUI
             {
                 e.Cancel = false;
                 errorProvider.SetError(cmbVrstaProizvoda, "");
+            }
+        }
+
+        private void rtbOpis_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(rtbOpis.Text))
+            {
+                e.Cancel = true;
+                txtCijena.Focus();
+                errorProvider.SetError(rtbOpis, "Opis ne moze ostati prazno polje");
+            }
+
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(rtbOpis, "");
             }
         }
     }

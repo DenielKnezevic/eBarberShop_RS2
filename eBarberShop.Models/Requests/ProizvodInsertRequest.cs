@@ -14,6 +14,8 @@ namespace eBarberShop.Models.Requests
         [Required(ErrorMessage = "Slika je obavezna")]
         public byte[] Slika { get; set; }
         [Required]
+        public string Opis { get; set; }
+        [Required]
         public int VrstaProizvodaID { get; set; }
     }
 }

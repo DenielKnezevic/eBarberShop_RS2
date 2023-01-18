@@ -90,9 +90,9 @@ namespace eBarberShop.Services.Database
                 );
 
             modelBuilder.Entity<Proizvod>().HasData(
-                new Proizvod { ProizvodID = 1, Cijena = 8, Naziv = "Head & Shoulders", VrstaProizvodaID = 2, Sifra = Guid.NewGuid().ToString(), Slika = Convert.FromBase64String(Images.Images.Slike[0]) },
-                new Proizvod { ProizvodID = 2, Cijena = 50, Naziv = "Frizerland masinica", VrstaProizvodaID = 1, Sifra = Guid.NewGuid().ToString(), Slika = Convert.FromBase64String(Images.Images.Slike[1]) },
-                new Proizvod { ProizvodID = 3, Cijena = 40, Naziv = "Ovnak fen", VrstaProizvodaID = 4, Sifra = Guid.NewGuid().ToString(), Slika = Convert.FromBase64String(Images.Images.Slike[2]) }
+                new Proizvod { ProizvodID = 1, Cijena = 8, Naziv = "Head & Shoulders", VrstaProizvodaID = 2, Sifra = Guid.NewGuid().ToString(), Slika = Convert.FromBase64String(Images.Images.Slike[0]), Opis="Opis prvog proizvoda" },
+                new Proizvod { ProizvodID = 2, Cijena = 50, Naziv = "Frizerland masinica", VrstaProizvodaID = 1, Sifra = Guid.NewGuid().ToString(), Slika = Convert.FromBase64String(Images.Images.Slike[1]) , Opis = "Opis drugog proizvoda" },
+                new Proizvod { ProizvodID = 3, Cijena = 40, Naziv = "Ovnak fen", VrstaProizvodaID = 4, Sifra = Guid.NewGuid().ToString(), Slika = Convert.FromBase64String(Images.Images.Slike[2]), Opis = "Opis treceg proizvoda" }
                 );
 
             modelBuilder.Entity<Termin>().HasData(

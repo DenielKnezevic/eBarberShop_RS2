@@ -93,13 +93,13 @@ class _NarudzbeScreenState extends State<NarudzbeScreen> {
           .showSnackBar(const SnackBar(content: Text("Narudzba otkazana")));
         },
         icon: Icon(Icons.delete_forever),
-        iconSize: 40,
+        iconSize: 30,
         color: Colors.red,
       ),
       title: Text("${item.brojNarudzbe}", style: TextStyle(fontSize: 14),),
       subtitle: Text(
           "Proizvodi: ${item.narudzbaProizvodi}"),
-      trailing: Text("${item.ukupnaCijena}"),
+      trailing: Text("${formatNumber(item.ukupnaCijena)} KM"),
     );
   }
 }
