@@ -36,9 +36,9 @@ Password: user
   ```
   cd eBarberShop_RS2
   ```
-5. Otvoriti eBarberShop_mobile folder
+5. Otvoriti ebarbershop_mobile folder
   ```
-  cd eRestoran.Mobile
+  cd ebarbershop_mobile
   ```
 6. Dohvatanje dependecy-a
   ```
