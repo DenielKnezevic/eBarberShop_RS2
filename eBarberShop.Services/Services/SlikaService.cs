@@ -20,7 +20,7 @@ namespace eBarberShop.Services.Services
 
         public override IQueryable<Slika> AddInclude(IQueryable<Slika> entity, SlikaSearchObject obj)
         {
-            if(obj.IncludeKorisnik.HasValue)
+            if(obj.IncludeKorisnik == true)
             {
                 entity = entity.Include(x => x.Korisnik);
             }

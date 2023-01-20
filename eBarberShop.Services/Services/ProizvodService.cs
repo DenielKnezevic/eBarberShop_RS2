@@ -23,7 +23,7 @@ namespace eBarberShop.Services.Services
 
         public override IQueryable<Proizvod> AddInclude(IQueryable<Proizvod> entity, ProizvodSearchObject obj)
         {
-            if(obj.IncludeVrstaProizvoda.HasValue)
+            if(obj.IncludeVrstaProizvoda == true)
             {
                 entity = entity.Include(x => x.VrstaProizvoda);
             }

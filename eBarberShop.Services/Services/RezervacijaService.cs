@@ -30,17 +30,17 @@ namespace eBarberShop.Services.Services
 
         public override IQueryable<Rezervacija> AddInclude(IQueryable<Rezervacija> entity, RezervacijaSearchObject obj)
         {
-            if(obj.IncludeTermin.HasValue)
+            if(obj.IncludeTermin == true)
             {
                 entity = entity.Include(x => x.Termin).ThenInclude(x => x.Korisnik);
             }
 
-            if(obj.IncludeKorisnik.HasValue)
+            if(obj.IncludeKorisnik == true)
             {
                 entity = entity.Include(y => y.Korisnik);
             }
 
-            if(obj.IncludeUsluga.HasValue)
+            if(obj.IncludeUsluga == true)
             {
                 entity = entity.Include(y => y.Usluga);
             }

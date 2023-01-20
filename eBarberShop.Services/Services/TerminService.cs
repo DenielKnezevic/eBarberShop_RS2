@@ -25,7 +25,7 @@ namespace eBarberShop.Services.Services
 
         public override IQueryable<Termin> AddInclude(IQueryable<Termin> entity, TerminSearchObject obj)
         {
-            if(obj.IncludeKorisnik.HasValue)
+            if(obj.IncludeKorisnik == true)
             {
                 entity = entity.Include(x => x.Korisnik);
             }

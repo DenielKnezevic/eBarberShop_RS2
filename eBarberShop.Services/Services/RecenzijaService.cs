@@ -20,7 +20,7 @@ namespace eBarberShop.Services.Services
 
         public override IQueryable<Recenzija> AddInclude(IQueryable<Recenzija> entity, RecenzijeSearchObject obj)
         {
-            if(obj.IncludeKorisnik.HasValue)
+            if(obj.IncludeKorisnik == true)
             {
                 entity = entity.Include(x => x.Korisnik);
             }

@@ -19,7 +19,7 @@ namespace eBarberShop.Services.Services
         }
         public override IQueryable<Novost> AddInclude(IQueryable<Novost> entity, NovostSearchObject obj)
         {
-            if(obj.IncludeKorisnik.HasValue)
+            if(obj.IncludeKorisnik == true)
             {
                 entity = entity.Include(x => x.Korisnik);
             }

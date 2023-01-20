@@ -40,17 +40,17 @@ namespace eBarberShop.Services.Services
 
         public override IQueryable<Narudzba> AddInclude(IQueryable<Narudzba> entity, NarudzbaSearchObject obj)
         {
-            if (obj.IncludeKorisnik.HasValue)
+            if (obj.IncludeKorisnik == true)
             {
                 entity = entity.Include(x => x.Korisnik);
             }
 
-            if (obj.IncludeNarudzbaProizvodi.HasValue)
+            if (obj.IncludeNarudzbaProizvodi == true)
             {
                 entity = entity.Include(x => x.Korisnik).Include(x => x.NarudzbaProizvodis).ThenInclude(x => x.Proizvod).ThenInclude(x => x.VrstaProizvoda);
             }
 
-            if(obj.IncludeUplata.HasValue)
+            if(obj.IncludeUplata == true)
             {
                 entity = entity.Include(x => x.Uplata);
             }
