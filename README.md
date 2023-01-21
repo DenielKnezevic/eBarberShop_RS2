@@ -10,12 +10,18 @@ Password: admin
 ```
 Username: uposlenik
 Password: uposlenik
+
+Username: uposlenik2
+Password: uposlenik2
 ```
 ## Kredencijali za prijavu - Mobile app
 - User Login
 ```
 Username: user
 Password: user
+
+Username: user2
+Password: user2
 ```
 - Broj kartice za placanje
 ```
