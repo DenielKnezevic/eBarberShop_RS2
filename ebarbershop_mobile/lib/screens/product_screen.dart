@@ -171,7 +171,7 @@ class _ProductScreenState extends State<ProductScreen> {
     {
       return [Text("Ucitavanje")];
     }
-    if(proizvodData.isEmpty)
+    if(proizvodData.isEmpty && _searchController.text == "")
     {
       list = recommendedData
         .map((e) => Card(

@@ -40,7 +40,7 @@ namespace eBarberShop.Services.Services
 
             if(!string.IsNullOrWhiteSpace(obj.Naziv))
             {
-                entity = entity.Where(x => x.Naziv.ToLower().StartsWith(obj.Naziv.ToLower()));
+                entity = entity.Where(x => x.Naziv.ToLower().Contains(obj.Naziv.ToLower()));
             }
 
             return entity;
