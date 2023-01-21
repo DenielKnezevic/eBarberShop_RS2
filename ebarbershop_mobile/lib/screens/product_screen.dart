@@ -166,6 +166,11 @@ class _ProductScreenState extends State<ProductScreen> {
 
   List<Widget> _buildProducts() {
     List<Widget> list = [];
+
+    if(proizvodData.isEmpty && recommendedData.isEmpty)
+    {
+      return [Text("Ucitavanje")];
+    }
     if(proizvodData.isEmpty)
     {
       list = recommendedData

@@ -152,13 +152,27 @@ class _TerminiScreenState extends State<TerminiScreen> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
-                                    "Termin kod ${e.korisnik!.ime} ${e.korisnik!.prezime} , ${formatDate(e.datumTermina!)}")
+                                Expanded(
+                                  child: Text(
+                                      "Termin kod ${e.korisnik!.ime} ${e.korisnik!.prezime}"),
+                                )
                               ],
                             ),
                           ),
+                          Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                        "${formatDate(e.datumTermina!)}"),
+                                  )
+                                ],
+                              ),
+                          ),
                           Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(e.vrijemeTermina!),
