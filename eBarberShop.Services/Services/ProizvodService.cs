@@ -166,7 +166,7 @@ namespace eBarberShop.Services.Services
             }
 
             var finalResult = predictionResult.OrderByDescending(x => x.Item2)
-                .Select(x => x.Item1).Take(3).ToList();
+                .Select(x => x.Item1).ToList();
 
             return _mapper.Map<List<Models.Proizvod>>(finalResult);
         }
