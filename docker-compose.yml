@@ -4,7 +4,7 @@ services:
         image: "mcr.microsoft.com/mssql/server:2017-latest"
         restart: unless-stopped
         environment:
-            SA_PASSWORD: "Deni123!"
+            SA_PASSWORD: "QWElkj132!"
             ACCEPT_EULA: "Y"
             MSSQL_PID: "Developer"
         ports:
@@ -16,7 +16,7 @@ services:
         restart: unless-stopped
         build: .
         environment:
-            - ConnectionStrings:eBarberShop=Server=ebarbershop-sql,1433;Database=eBarberShop;User=sa;Password=Deni123!;
+            - ConnectionStrings:eBarberShop=Server=ebarbershop-sql,1433;Database=eBarberShop;User=sa;Password=QWElkj132!;
             - ASPNETCORE_ENVIRONMENT=Development
         ports:
             - 5192:5192
