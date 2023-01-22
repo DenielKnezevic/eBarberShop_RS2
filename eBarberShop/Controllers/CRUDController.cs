@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eBarberShop.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class CRUDController<T,TSearch,TInsertRequest,TUpdateRequest> : BaseController<T,TSearch> where T : class where TSearch : class where TInsertRequest : class where TUpdateRequest : class
     {

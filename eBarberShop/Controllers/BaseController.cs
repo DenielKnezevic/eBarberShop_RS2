@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eBarberShop.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     [Authorize]
     public class BaseController<T,TSearch> : ControllerBase where T : class where TSearch : class

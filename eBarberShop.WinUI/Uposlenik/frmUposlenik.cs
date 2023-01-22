@@ -75,7 +75,7 @@ namespace eBarberShop.WinUI
             {
                 var korisnik = dgvUposlenik.SelectedRows[0].DataBoundItem as Korisnik;
 
-                KorisnikUpdateRequest request = new KorisnikUpdateRequest() { Uloga="uposlenik"};
+                KorisnikUpdateRequest request = new KorisnikUpdateRequest() { Uloga="uposlenik" , DrzavaID = korisnik.DrzavaID , GradID = korisnik.GradID , Email = korisnik.Email , Ime = korisnik.Ime , Prezime = korisnik.Prezime};
 
                 if (MessageBox.Show($"Jeste li sigurni da zelite obrisati ovog zaposlenika?", $"Message for user - {APIService.Username}", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
