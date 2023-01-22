@@ -38,10 +38,6 @@ Password: user2
   docker-compose build
   docker-compose up
   ```
-4. Otvoriti eBarberShop_RS2 folder
-  ```
-  cd eBarberShop_RS2
-  ```
 5. Otvoriti ebarbershop_mobile folder
   ```
   cd ebarbershop_mobile
